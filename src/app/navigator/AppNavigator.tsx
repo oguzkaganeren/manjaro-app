@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { HomeScreen } from '../screens/HomeScreen';
 import { UnderYourControlScreen } from '../screens/UnderYourControlScreen';
+import { ConfiguredWithOneClickScreen } from '../screens/ConfiguredWithOneClickScreen';
 import Constants from 'expo-constants';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
@@ -31,13 +32,16 @@ const AboutIcon = (props) => <Icon {...props} name="info-outline" />;
 
 function DrawerContent({ navigation, state }) {
 	const [selectedIndex, setSelectedIndex] = React.useState();
+	const routes = [['HomeScreen'], ['UnderYourControlScreen', 'ConfiguredWithOneClickScreen']];
 	return (
 		<Drawer
 			selectedIndex={selectedIndex}
 			onSelect={(index) => {
 				setSelectedIndex(index);
-				if (index.section != undefined) {
-					navigation.navigate(state.routeNames[(index.row, index.section)]);
+
+				if (index.section !== undefined) {
+					const sectionRoute = routes[index.section][index.row];
+					navigation.navigate(sectionRoute);
 				} else {
 					navigation.navigate(state.routeNames[index.row]);
 				}
@@ -74,7 +78,8 @@ function DrawerContent({ navigation, state }) {
 export const DrawerNavigator = () => (
 	<Navigator drawerContent={(props) => <DrawerContent {...props} />}>
 		<Screen name="HomeScreen" component={HomeStack} />
-		<Screen name="UnderYourControlScreen" component={FeatureStack} />
+		<Screen name="UnderYourControlScreen" component={UnderYourControlStack} />
+		<Screen name="ConfiguredWithOneClickScreen" component={ConfiguredWithOneClickStack} />
 	</Navigator>
 );
 function HomeStack() {
@@ -101,14 +106,38 @@ function HomeStack() {
 		</Stack.Navigator>
 	);
 }
-function FeatureStack() {
+function UnderYourControlStack() {
 	return (
-		<Stack.Navigator initialRouteName="UnderYourControlScreen">
+		<Stack.Navigator>
 			<Stack.Screen
 				name="UnderYourControlScreen"
 				component={UnderYourControlScreen}
 				options={{
 					title: 'Under Your Control',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+								? options.title
+								: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+		</Stack.Navigator>
+	);
+}
+function ConfiguredWithOneClickStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="ConfiguredWithOneClickScreen"
+				component={ConfiguredWithOneClickScreen}
+				options={{
+					title: 'Configured With One Click',
 					header: ({ scene, previous, navigation }) => {
 						const { options } = scene.descriptor;
 						const title =
