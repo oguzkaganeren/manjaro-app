@@ -32,10 +32,10 @@ const HomeScreenThemed: React.FC<HomeProps> = (props) => {
 				</Text>
 			</Layout>
 			<Layout style={[eva.style.buttonContainer, style]}>
-				<Button style={[eva.style.download, style]} status="primary" accessoryLeft={DownloadIcon}>
+				<Button style={[eva.style.download, style]} appearance="outline" status="primary" accessoryLeft={DownloadIcon}>
 					Download
 				</Button>
-				<Button style={[eva.style.learnMore, style]} status="info" accessoryLeft={InfoIcon}>
+				<Button style={[eva.style.learnMore, style]} appearance="outline" status="info" accessoryLeft={InfoIcon}>
 					Learn More
 				</Button>
 			</Layout>

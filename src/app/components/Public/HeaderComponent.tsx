@@ -38,7 +38,6 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 	const renderLeftControl = () => (props.previous ? <BackAction /> : <MenuAction />);
 	const renderTitle = (props) => (
 		<View style={styles.titleContainer}>
-			<Avatar style={styles.logo} shape="square" size="tiny" source={require('../../../../assets/logo.png')} />
 			<Text {...props}>Manjaro - enjoy the simplicity</Text>
 		</View>
 	);
