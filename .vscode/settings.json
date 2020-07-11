@@ -1,0 +1,66 @@
+{
+	"editor.formatOnPaste": false,
+	"editor.formatOnSave": true,
+	"prettier.printWidth": 120,
+	"prettier.useTabs": true,
+	"prettier.singleQuote": true,
+	"eslint.validate": ["javascript", { "language": "typescript" }, { "language": "typescriptreact" }],
+	"better-comments.multilineComments": true,
+	"better-comments.highlightPlainText": true,
+	"typescript.suggest.autoImports": true,
+	"javascript.suggest.autoImports": true,
+	"workbench.editor.limit.value": 5,
+	"workbench.editor.limit.enabled": true,
+	"react-native": {
+		"packager": {
+			"port": 19001
+		}
+	},
+	"better-comments.tags": [
+		{
+			"tag": "!",
+			"color": "#FF2D00",
+			"strikethrough": false,
+			"backgroundColor": "transparent"
+		},
+		{
+			"tag": "?",
+			"color": "#3498DB",
+			"strikethrough": false,
+			"backgroundColor": "transparent"
+		},
+		{
+			"tag": "//",
+			"color": "#474747",
+			"strikethrough": true,
+			"backgroundColor": "transparent"
+		},
+		{
+			"tag": "todo",
+			"color": "#FF8C00",
+			"strikethrough": false,
+			"backgroundColor": "transparent"
+		},
+		{
+			"tag": "*",
+			"color": "#98C379",
+			"strikethrough": false,
+			"backgroundColor": "transparent"
+		}
+	],
+
+	"cSpell.words": ["Formik", "Scrollable", "esnext", "refetch", "sportcial", "subquery", "tennisball", "timeago"],
+	"cSpell.ignorePaths": [
+		"/src/app/generated/components.tsx", // ignore generated file
+		"node_modules", // this will ignore anything the node_modules directory
+		"**/node_modules", // the same for this one
+		"**/node_modules/**", // the same for this one
+		"node_modules/**", // Doesn't currently work due to how the current working directory is determined.
+		"vscode-extension", //
+		".git", // Ignore the .git directory
+		"*.dll", // Ignore all .dll files.
+		"**/*.dll", // Ignore all .dll files
+		".vscode/settings.json",
+		"package.json"
+	]
+}
