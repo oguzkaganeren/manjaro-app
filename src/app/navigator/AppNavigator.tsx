@@ -12,6 +12,7 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { UnderYourControlScreen } from '../screens/UnderYourControlScreen';
 import { ConfiguredWithOneClickScreen } from '../screens/ConfiguredWithOneClickScreen';
 import { UsefulForEveryoneScreen } from '../screens/UsefulForEveryoneScreen';
+import { FreshAndStableScreen } from '../screens/FreshAndStableScreen';
 import Constants from 'expo-constants';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
@@ -35,7 +36,7 @@ function DrawerContent({ navigation, state }) {
 	const [selectedIndex, setSelectedIndex] = React.useState();
 	const routes = [
 		['HomeScreen'],
-		['UnderYourControlScreen', 'ConfiguredWithOneClickScreen', 'UsefulForEveryoneScreen'],
+		['UnderYourControlScreen', 'ConfiguredWithOneClickScreen', 'UsefulForEveryoneScreen', 'FreshAndStableScreen'],
 	];
 	return (
 		<Drawer
@@ -85,6 +86,7 @@ export const DrawerNavigator = () => (
 		<Screen name="UnderYourControlScreen" component={UnderYourControlStack} />
 		<Screen name="ConfiguredWithOneClickScreen" component={ConfiguredWithOneClickStack} />
 		<Screen name="UsefulForEveryoneScreen" component={UsefulForEveryoneStack} />
+		<Screen name="FreshAndStableScreen" component={FreshAndStableStack} />
 	</Navigator>
 );
 function HomeStack() {
@@ -167,6 +169,30 @@ function UsefulForEveryoneStack() {
 				component={UsefulForEveryoneScreen}
 				options={{
 					title: 'Useful For Everyone',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+								? options.title
+								: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+		</Stack.Navigator>
+	);
+}
+function FreshAndStableStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="FreshAndStableScreen"
+				component={FreshAndStableScreen}
+				options={{
+					title: 'Fresh & Stable',
 					header: ({ scene, previous, navigation }) => {
 						const { options } = scene.descriptor;
 						const title =

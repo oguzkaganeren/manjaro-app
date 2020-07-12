@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/bin/yarn add @types/react-native-justify
+  /usr/local/bin/node /usr/bin/yarn add @types/react-native-responsive-image
 
 PATH: 
   /home/oguz/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-native-justify: Not found
+  Error: https://registry.yarnpkg.com/@types%2freact-native-responsive-image: Not found
       at Request.params.callback [as _callback] (/usr/lib/node_modules/yarn/lib/cli.js:66987:18)
       at Request.self.callback (/usr/lib/node_modules/yarn/lib/cli.js:140748:22)
       at Request.emit (events.js:315:20)
@@ -52,8 +52,8 @@ npm manifest:
       "react-dom": "~16.11.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
       "react-native-gesture-handler": "~1.6.0",
-      "react-native-justify": "^0.0.1",
       "react-native-reanimated": "~1.9.0",
+      "react-native-responsive-image": "^2.3.1",
       "react-native-safe-area-context": "^3.1.1",
       "react-native-screens": "~2.9.0",
       "react-native-svg": "^12.1.0",
@@ -8357,19 +8357,17 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
     integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
   
-  react-native-justify@^0.0.1:
-    version "0.0.1"
-    resolved "https://registry.yarnpkg.com/react-native-justify/-/react-native-justify-0.0.1.tgz#359acdee6e19025240d25cd257e0ac29d43ab6bd"
-    integrity sha512-ESx/KUjpLwFkDm+aAg7c91Z6NKIYxDwdiyA9jmHFMa6/K2U9gWPMBL91wzu6zlHqRDDCYg7mB0mnkS5XzT/FzQ==
-    dependencies:
-      prop-types "^15.6.2"
-  
   react-native-reanimated@~1.9.0:
     version "1.9.0"
     resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.9.0.tgz#38676c99dd585504fdc7331efb45e5f48ec7339a"
     integrity sha512-Aj+spgIHRiVv7ezGADxnSH1EoKrQRD2+XaSiGY0MiB/pvRNNrZPSJ+3NVpvLwWf9lZMOP7dwqqyJIzoZgBDt8w==
     dependencies:
       fbjs "^1.0.0"
+  
+  react-native-responsive-image@^2.3.1:
+    version "2.3.1"
+    resolved "https://registry.yarnpkg.com/react-native-responsive-image/-/react-native-responsive-image-2.3.1.tgz#3f8d3882061a8eae389d70a960e3e6436da9e354"
+    integrity sha512-I9/Z5uz60qGLXZ69wWd0P6pIB4SfMX94s66NvNttJjqP1MsK1LBD0wSP4Wj4sCNQk8uz08SvagFnQ9MOREHyPg==
   
   react-native-safe-area-context@^3.1.1:
     version "3.1.1"
