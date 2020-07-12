@@ -32,7 +32,10 @@ const FreshAndStableScreenThemed: React.FC<FreshAndStableProps> = (props) => {
 						will go through these additional layers and will only be released for users who want a stable system, when
 						no more problems are found.
 					</Text>
-					<Image style={[eva.style.image, style]} source={require('../../../assets/featureImages/repositories.png')} />
+					<Image
+						style={[eva.style.image, style]}
+						source={require('../../../../assets/featureImages/repositories.png')}
+					/>
 					<Text category="h6" style={{ textAlign: 'justify' }}>
 						What about security?
 					</Text>

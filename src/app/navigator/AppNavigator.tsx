@@ -9,10 +9,11 @@ const Stack = createStackNavigator();
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { HomeScreen } from '../screens/HomeScreen';
-import { UnderYourControlScreen } from '../screens/UnderYourControlScreen';
-import { ConfiguredWithOneClickScreen } from '../screens/ConfiguredWithOneClickScreen';
-import { UsefulForEveryoneScreen } from '../screens/UsefulForEveryoneScreen';
-import { FreshAndStableScreen } from '../screens/FreshAndStableScreen';
+import { UnderYourControlScreen } from '../screens/Features/UnderYourControlScreen';
+import { ConfiguredWithOneClickScreen } from '../screens/Features/ConfiguredWithOneClickScreen';
+import { UsefulForEveryoneScreen } from '../screens/Features/UsefulForEveryoneScreen';
+import { FreshAndStableScreen } from '../screens/Features/FreshAndStableScreen';
+import { DonateScreen } from '../screens/DonateScreen';
 import Constants from 'expo-constants';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
@@ -37,6 +38,7 @@ function DrawerContent({ navigation, state }) {
 	const routes = [
 		['HomeScreen'],
 		['UnderYourControlScreen', 'ConfiguredWithOneClickScreen', 'UsefulForEveryoneScreen', 'FreshAndStableScreen'],
+		['DonateScreen'],
 	];
 	return (
 		<Drawer
@@ -48,7 +50,8 @@ function DrawerContent({ navigation, state }) {
 					const sectionRoute = routes[index.section][index.row];
 					navigation.navigate(sectionRoute);
 				} else {
-					navigation.navigate(state.routeNames[index.row]);
+					const sectionRoute = routes[index.row][0];
+					navigation.navigate(sectionRoute);
 				}
 			}}
 			style={{
@@ -87,6 +90,7 @@ export const DrawerNavigator = () => (
 		<Screen name="ConfiguredWithOneClickScreen" component={ConfiguredWithOneClickStack} />
 		<Screen name="UsefulForEveryoneScreen" component={UsefulForEveryoneStack} />
 		<Screen name="FreshAndStableScreen" component={FreshAndStableStack} />
+		<Screen name="DonateScreen" component={DonateStack} />
 	</Navigator>
 );
 function HomeStack() {
@@ -193,6 +197,30 @@ function FreshAndStableStack() {
 				component={FreshAndStableScreen}
 				options={{
 					title: 'Fresh & Stable',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+								? options.title
+								: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+		</Stack.Navigator>
+	);
+}
+function DonateStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="DonateScreen"
+				component={DonateScreen}
+				options={{
+					title: 'Donate',
 					header: ({ scene, previous, navigation }) => {
 						const { options } = scene.descriptor;
 						const title =

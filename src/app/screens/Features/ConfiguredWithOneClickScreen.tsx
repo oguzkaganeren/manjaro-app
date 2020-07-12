@@ -13,7 +13,10 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	const ChooseHeader = (props) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.subContainer, style]}>
-				<Image style={[eva.style.image, style]} source={require('../../../assets/featureImages/manjaro_pamac.png')} />
+				<Image
+					style={[eva.style.image, style]}
+					source={require('../../../../assets/featureImages/manjaro_pamac.png')}
+				/>
 				<Text category="h6">Choose, install, finished!</Text>
 			</Layout>
 		</Layout>
@@ -23,7 +26,7 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 			<Layout style={[eva.style.subContainer, style]}>
 				<Image
 					style={[eva.style.image, style]}
-					source={require('../../../assets/featureImages/manjaro_useraccounts.png')}
+					source={require('../../../../assets/featureImages/manjaro_useraccounts.png')}
 				/>
 				<Text category="h6">Divide and conquer</Text>
 			</Layout>
@@ -32,7 +35,10 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	const LanguageHeader = (props) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.subContainer, style]}>
-				<Image style={[eva.style.image, style]} source={require('../../../assets/featureImages/manjaro_locale.png')} />
+				<Image
+					style={[eva.style.image, style]}
+					source={require('../../../../assets/featureImages/manjaro_locale.png')}
+				/>
 				<Text category="h6">Manjaro speaks your language</Text>
 			</Layout>
 		</Layout>
@@ -40,7 +46,7 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	const GraphicCardHeader = (props) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.subContainer, style]}>
-				<Image style={[eva.style.image, style]} source={require('../../../assets/featureImages/manjaro_mhwd.png')} />
+				<Image style={[eva.style.image, style]} source={require('../../../../assets/featureImages/manjaro_mhwd.png')} />
 				<Text category="h6">New graphics card? One click and it's done</Text>
 			</Layout>
 		</Layout>
@@ -48,7 +54,10 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	const CoreHeader = (props) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.subContainer, style]}>
-				<Image style={[eva.style.image, style]} source={require('../../../assets/featureImages/manjaro_kernels.png')} />
+				<Image
+					style={[eva.style.image, style]}
+					source={require('../../../../assets/featureImages/manjaro_kernels.png')}
+				/>
 				<Text category="h6">Switch the core with one click</Text>
 			</Layout>
 		</Layout>
@@ -58,7 +67,7 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 			<Layout style={[eva.style.subContainer, style]}>
 				<Image
 					style={[eva.style.image, style]}
-					source={require('../../../assets/featureImages/manjaro_timeanddate.png')}
+					source={require('../../../../assets/featureImages/manjaro_timeanddate.png')}
 				/>
 				<Text category="h6">Traveling a lot?</Text>
 			</Layout>
@@ -150,8 +159,9 @@ export const ConfiguredWithOneClickScreen = withStyles(ConfiguredWithOneClickScr
 	},
 	image: {
 		marginBottom: 10,
-		width: Dimensions.get('window').width / 1.1,
-		height: Dimensions.get('window').height / 3,
+		width: Dimensions.get('window').width - 50,
+		height: Dimensions.get('window').height / 2,
+		resizeMode: 'contain',
 	},
 	buttonContainer: {
 		flexDirection: 'row',
