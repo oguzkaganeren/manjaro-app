@@ -11,6 +11,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { HomeScreen } from '../screens/HomeScreen';
 import { UnderYourControlScreen } from '../screens/UnderYourControlScreen';
 import { ConfiguredWithOneClickScreen } from '../screens/ConfiguredWithOneClickScreen';
+import { UsefulForEveryoneScreen } from '../screens/UsefulForEveryoneScreen';
 import Constants from 'expo-constants';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
@@ -32,7 +33,10 @@ const AboutIcon = (props) => <Icon {...props} name="info-outline" />;
 
 function DrawerContent({ navigation, state }) {
 	const [selectedIndex, setSelectedIndex] = React.useState();
-	const routes = [['HomeScreen'], ['UnderYourControlScreen', 'ConfiguredWithOneClickScreen']];
+	const routes = [
+		['HomeScreen'],
+		['UnderYourControlScreen', 'ConfiguredWithOneClickScreen', 'UsefulForEveryoneScreen'],
+	];
 	return (
 		<Drawer
 			selectedIndex={selectedIndex}
@@ -80,6 +84,7 @@ export const DrawerNavigator = () => (
 		<Screen name="HomeScreen" component={HomeStack} />
 		<Screen name="UnderYourControlScreen" component={UnderYourControlStack} />
 		<Screen name="ConfiguredWithOneClickScreen" component={ConfiguredWithOneClickStack} />
+		<Screen name="UsefulForEveryoneScreen" component={UsefulForEveryoneStack} />
 	</Navigator>
 );
 function HomeStack() {
@@ -138,6 +143,30 @@ function ConfiguredWithOneClickStack() {
 				component={ConfiguredWithOneClickScreen}
 				options={{
 					title: 'Configured With One Click',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+								? options.title
+								: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+		</Stack.Navigator>
+	);
+}
+function UsefulForEveryoneStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="UsefulForEveryoneScreen"
+				component={UsefulForEveryoneScreen}
+				options={{
+					title: 'Useful For Everyone',
 					header: ({ scene, previous, navigation }) => {
 						const { options } = scene.descriptor;
 						const title =
