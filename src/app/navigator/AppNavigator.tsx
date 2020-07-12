@@ -14,6 +14,7 @@ import { ConfiguredWithOneClickScreen } from '../screens/Features/ConfiguredWith
 import { UsefulForEveryoneScreen } from '../screens/Features/UsefulForEveryoneScreen';
 import { FreshAndStableScreen } from '../screens/Features/FreshAndStableScreen';
 import { DonateScreen } from '../screens/DonateScreen';
+import { LearnMoreScreen } from '../screens/LearnMoreScreen';
 import Constants from 'expo-constants';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
@@ -101,6 +102,24 @@ function HomeStack() {
 				component={HomeScreen}
 				options={{
 					title: 'Home',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+								? options.title
+								: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={false} />;
+					},
+				}}
+			/>
+			<Stack.Screen
+				name="LearnMoreScreen"
+				component={LearnMoreScreen}
+				options={{
+					title: 'Learn More',
 					header: ({ scene, previous, navigation }) => {
 						const { options } = scene.descriptor;
 						const title =

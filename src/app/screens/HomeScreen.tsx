@@ -35,7 +35,15 @@ const HomeScreenThemed: React.FC<HomeProps> = (props) => {
 				<Button style={[eva.style.download, style]} appearance="outline" status="primary" accessoryLeft={DownloadIcon}>
 					Download
 				</Button>
-				<Button style={[eva.style.learnMore, style]} appearance="outline" status="info" accessoryLeft={InfoIcon}>
+				<Button
+					style={[eva.style.learnMore, style]}
+					appearance="outline"
+					onPress={() => {
+						props.navigation.navigate('LearnMoreScreen');
+					}}
+					status="info"
+					accessoryLeft={InfoIcon}
+				>
 					Learn More
 				</Button>
 			</Layout>
