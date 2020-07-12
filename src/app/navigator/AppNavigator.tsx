@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Drawer, DrawerItem, DrawerGroup, IndexPath, Icon } from '@ui-kitten/components';
+import { Drawer, DrawerItem, DrawerGroup, IndexPath, Icon, Layout } from '@ui-kitten/components';
+import { Linking, TouchableHighlight } from 'react-native';
 import HeaderComponent from '../components/Public/HeaderComponent';
 import { Platform } from 'react-native';
 const { Navigator, Screen } = createDrawerNavigator();
@@ -35,18 +36,40 @@ const PackagesIcon = (props) => <Icon {...props} name="archive-outline" />;
 const AboutIcon = (props) => <Icon {...props} name="info-outline" />;
 
 function DrawerContent({ navigation, state }) {
-	const [selectedIndex, setSelectedIndex] = React.useState();
+	const [selectedIndex, setSelectedIndex] = React.useState({
+		equals: '',
+		row: 0,
+		section: undefined,
+	});
 	const routes = [
 		['HomeScreen'],
 		['UnderYourControlScreen', 'ConfiguredWithOneClickScreen', 'UsefulForEveryoneScreen', 'FreshAndStableScreen'],
 		['DonateScreen'],
 	];
+	const Footer = (props) => (
+		<Layout style={{ padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+			<TouchableHighlight onPress={() => Linking.openURL('https://gitlab.manjaro.org/')}>
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#FCA326' }} name="gitlab" />
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => Linking.openURL('https://twitter.com/ManjaroLinux')}>
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#5EAADE' }} name="twitter" />
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => Linking.openURL('https://www.youtube.com/channel/UCdGFLV7h9RGeTUX7wa5rqGw')}>
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#FE0000' }} name="youtube" />
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => Linking.openURL('https://www.facebook.com/ManjaroLinux')}>
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#1B78F2' }} name="facebook-f" />
+			</TouchableHighlight>
+		</Layout>
+	);
+
 	return (
 		<Drawer
+			footer={Footer}
 			selectedIndex={selectedIndex}
 			onSelect={(index) => {
 				setSelectedIndex(index);
-
+				console.log(index);
 				if (index.section !== undefined) {
 					const sectionRoute = routes[index.section][index.row];
 					navigation.navigate(sectionRoute);
@@ -129,7 +152,7 @@ function HomeStack() {
 								? options.title
 								: scene.route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={false} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
 				}}
 			/>
