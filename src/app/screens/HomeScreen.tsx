@@ -32,7 +32,15 @@ const HomeScreenThemed: React.FC<HomeProps> = (props) => {
 				</Text>
 			</Layout>
 			<Layout style={[eva.style.buttonContainer, style]}>
-				<Button style={[eva.style.download, style]} appearance="outline" status="primary" accessoryLeft={DownloadIcon}>
+				<Button
+					style={[eva.style.download, style]}
+					onPress={() => {
+						props.navigation.navigate('DownloadScreen');
+					}}
+					appearance="outline"
+					status="primary"
+					accessoryLeft={DownloadIcon}
+				>
 					Download
 				</Button>
 				<Button
