@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ScrollView, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, Button } from '@ui-kitten/components';
+import { Text, Layout, Card, Icon, Button, Modal, Divider } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 import YoutubePlayer from 'react-native-youtube-iframe';
+import * as rssParser from 'react-native-rss-parser';
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
 	route: any;
@@ -12,6 +13,8 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const playerRef = React.useRef(null);
 	const [playing, setPlaying] = React.useState(false);
+	const [downloadModalVisible, setDownloadModalVisible] = React.useState(false);
+
 	const DownloadIcon = (props) => <Icon {...props} name="arrow-circle-down-outline" />;
 	const ChooseHeader = (props) => (
 		<Layout {...props}>
@@ -19,9 +22,7 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 				<Text category="h4">XFCE</Text>
 				<Button
 					style={[eva.style.download, style]}
-					onPress={() => {
-						props.navigation.navigate('DownloadScreen');
-					}}
+					onPress={() => setDownloadModalVisible(true)}
 					appearance="outline"
 					status="primary"
 					accessoryLeft={DownloadIcon}
@@ -31,11 +32,28 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
+	var xfceUrls = [];
+	React.useEffect(() => {
+		fetch('https://osdn.net/projects/manjaro/storage/!rss')
+			.then((response) => response.text())
+			.then((responseData) => rssParser.parse(responseData))
+			.then((rss) => {
+				//console.log(typeof rss.items);
+				rss.items.reduce(function (filtered, item) {
+					//console.log(item.links[0].url);
+					/*if (item.links[0].url.endsWith('.iso')) {
+						console.log(item.links[0].url);
+					}*/
+					console.log(item);
+					return filtered;
+				}, []);
+			});
+	});
 
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card header={ChooseHeader}>
+				<Card header={ChooseHeader} disabled={true}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						For people who want a reliable and fast desktop
 					</Text>
@@ -76,6 +94,56 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 					</Text>
 				</Card>
 			</ScrollView>
+			<Modal
+				visible={downloadModalVisible}
+				backdropStyle={[eva.style.backdrop, style]}
+				onBackdropPress={() => setDownloadModalVisible(false)}
+			>
+				<Card disabled={true}>
+					<Text category="h6">XFCE 64 bit version</Text>
+					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
+					<Text>Only 64 bit is available for modern hardware</Text>
+					<Text></Text>
+
+					<Button
+						onPress={() => {
+							Linking.openURL(
+								'https://osdn.net/projects/manjaro/storage/xfce/20.0.3/manjaro-xfce-20.0.3-200606-linux56.iso'
+							);
+						}}
+						style={[eva.style.download, style]}
+						appearance="outline"
+						status="primary"
+						accessoryLeft={DownloadIcon}
+					>
+						Download
+					</Button>
+					<Text></Text>
+					<Text
+						style={{ color: 'green' }}
+						category="p1"
+						onPress={() => {
+							Linking.openURL(
+								'https://osdn.net/projects/manjaro/storage/xfce/20.0.3/manjaro-xfce-20.0.3-200606-linux56.iso.torrent'
+							);
+						}}
+					>
+						Download Torrent
+					</Text>
+					<Text
+						style={{ color: 'green' }}
+						category="p1"
+						onPress={() => {
+							Linking.openURL(
+								'https://osdn.net/projects/manjaro/storage/xfce/20.0.3/manjaro-xfce-20.0.3-200606-linux56.iso.sig'
+							);
+						}}
+					>
+						Download GPG signature
+					</Text>
+					<Text appearance="hint">SHA1: c44a2984aa2fada53c1db8c6b919b45152780489</Text>
+				</Card>
+			</Modal>
 		</Layout>
 	);
 };
@@ -122,5 +190,8 @@ export const XfceScreen = withStyles(XfceScreenThemed, (theme) => ({
 	},
 	learnMore: {
 		marginHorizontal: 15,
+	},
+	backdrop: {
+		backgroundColor: 'rgba(0, 0, 0, 0.5)',
 	},
 }));
