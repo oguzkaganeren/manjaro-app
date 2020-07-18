@@ -69,7 +69,7 @@ const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {
 					</Text>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
-						t is highly efficient, very fast and any hardware device works out of the box, only on rare occasions you
+						It is highly efficient, very fast and any hardware device works out of the box, only on rare occasions you
 						will need to install a device driver, The 64 bit version of Manjaro with the Xfce desktop, boots up in only
 						a few seconds and uses only 200MB of memory to run. Linux systems are very secure and not affected by the
 						huge amount of Windows viruses, trojans, worms or malware out there. Anti-virus software is not required.

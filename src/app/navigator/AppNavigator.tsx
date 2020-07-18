@@ -19,6 +19,7 @@ import { LearnMoreScreen } from '../screens/LearnMoreScreen';
 import { DownloadScreen } from '../screens/Download/DownloadScreen';
 import { AboutScreen } from '../screens/About/AboutScreen';
 import Constants from 'expo-constants';
+import { MailListScreen } from '../screens/MailListScreen';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
 const UnderYourControlIcon = (props) => <Icon {...props} name="options-2-outline" />;
@@ -49,7 +50,7 @@ function DrawerContent({ navigation, state }) {
 		['DonateScreen'],
 		['ShopScreen'],
 		['NewsScreen'],
-		['ListsScreen', 'SupportScreen', 'PackagesScreen', 'AboutScreen'],
+		['MailListScreen', 'SupportScreen', 'PackagesScreen', 'AboutScreen'],
 	];
 	const Footer = (props) => (
 		<Layout style={{ padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -120,6 +121,7 @@ export const DrawerNavigator = () => (
 		<Screen name="UsefulForEveryoneScreen" component={UsefulForEveryoneStack} />
 		<Screen name="FreshAndStableScreen" component={FreshAndStableStack} />
 		<Screen name="DonateScreen" component={DonateStack} />
+		<Screen name="MailListScreen" component={MailListStack} />
 		<Screen name="AboutScreen" component={AboutStack} />
 	</Navigator>
 );
@@ -287,6 +289,30 @@ function DonateStack() {
 				component={DonateScreen}
 				options={{
 					title: 'Donate',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+								? options.title
+								: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+		</Stack.Navigator>
+	);
+}
+function MailListStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="MailListScreen"
+				component={MailListScreen}
+				options={{
+					title: 'Mail Lists',
 					header: ({ scene, previous, navigation }) => {
 						const { options } = scene.descriptor;
 						const title =
