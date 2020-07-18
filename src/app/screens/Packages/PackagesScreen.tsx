@@ -1,18 +1,23 @@
 import * as React from 'react';
 import { Layout, Tab, TabView, Text, Icon } from '@ui-kitten/components';
+import { withStyles } from '@ui-kitten/components';
 import { SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { withStyles } from '@ui-kitten/components';
-export interface PackagesProps {
+import { BranchScreen } from './BranchScreen';
+import { DiscoverScreen } from './DiscoverScreen';
+import { MirrorsScreen } from './MirrorsScreen';
+
+export interface AboutProps {
 	navigation: any;
 	route: any;
 }
 
-const PackagesScreenThemed: React.FC<PackagesProps> = (props) => {
+const PackagesScreenThemed: React.FC<AboutProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const MirrorsIcon = (props) => <Icon {...props} name="flip-outline" />;
 	const DiscoverIcon = (props) => <Icon {...props} name="cube-outline" />;
 	const BranchIcon = (props) => <Icon {...props} name="shuffle-2-outline" />;
+
 	const TopTab = createMaterialTopTabNavigator();
 	const TopTabBar = ({ navigation, state }) => {
 		const onSelect = (index) => {
@@ -32,8 +37,9 @@ const PackagesScreenThemed: React.FC<PackagesProps> = (props) => {
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
-				<TopTab.Screen name="Team" component={TeamScreen} />
-				<TopTab.Screen name="Linux" component={LinuxScreen} />
+				<TopTab.Screen name="Mirrors" component={MirrorsScreen} />
+				<TopTab.Screen name="Discover" component={DiscoverScreen} />
+				<TopTab.Screen name="Branch" component={BranchScreen} />
 			</TopTab.Navigator>
 		</Layout>
 	);
@@ -42,11 +48,10 @@ const PackagesScreenThemed: React.FC<PackagesProps> = (props) => {
 export const PackagesScreen = withStyles(PackagesScreenThemed, (theme) => ({
 	container: {
 		flex: 1,
-		alignItems: 'center',
 	},
-	icon: {
-		width: 16,
-		height: 16,
+	tabContainer: {
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	sideContainer: {
 		flexDirection: 'row',

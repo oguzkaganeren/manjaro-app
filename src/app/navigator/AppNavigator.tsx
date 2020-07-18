@@ -20,6 +20,7 @@ import { DownloadScreen } from '../screens/Download/DownloadScreen';
 import { AboutScreen } from '../screens/About/AboutScreen';
 import Constants from 'expo-constants';
 import { MailListScreen } from '../screens/MailListScreen';
+import { PackagesScreen } from '../screens/Packages/PackagesScreen';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
 const UnderYourControlIcon = (props) => <Icon {...props} name="options-2-outline" />;
@@ -122,6 +123,7 @@ export const DrawerNavigator = () => (
 		<Screen name="FreshAndStableScreen" component={FreshAndStableStack} />
 		<Screen name="DonateScreen" component={DonateStack} />
 		<Screen name="MailListScreen" component={MailListStack} />
+		<Screen name="PackagesScreen" component={PackagesStack} />
 		<Screen name="AboutScreen" component={AboutStack} />
 	</Navigator>
 );
@@ -329,6 +331,30 @@ function MailListStack() {
 		</Stack.Navigator>
 	);
 }
+function PackagesStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="PackagesScreen"
+				component={PackagesScreen}
+				options={{
+					title: 'Packages',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+								? options.title
+								: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+		</Stack.Navigator>
+	);
+}
 function AboutStack() {
 	return (
 		<Stack.Navigator>
@@ -353,6 +379,7 @@ function AboutStack() {
 		</Stack.Navigator>
 	);
 }
+
 export const AppNavigator = () => (
 	<SafeAreaProvider>
 		<NavigationContainer>
