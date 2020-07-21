@@ -3,7 +3,7 @@ import { ScrollView, Dimensions, Linking } from 'react-native';
 import { Text, Layout, Card, Icon, Button, Modal, Divider } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 import YoutubePlayer from 'react-native-youtube-iframe';
-import * as rssParser from 'react-native-rss-parser';
+import { useFetch } from '../../../hooks/JsonFetcher';
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
 	route: any;
@@ -14,7 +14,7 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	const playerRef = React.useRef(null);
 	const [playing, setPlaying] = React.useState(false);
 	const [downloadModalVisible, setDownloadModalVisible] = React.useState(false);
-
+	const xfceResponse = useFetch('https://hacked.manjaro.org/downloads/official/xfce/index.json', {});
 	const DownloadIcon = (props) => <Icon {...props} name="arrow-circle-down-outline" />;
 	const ChooseHeader = (props) => (
 		<Layout {...props}>
@@ -32,23 +32,9 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	var xfceUrls = [];
-	React.useEffect(() => {
-		fetch('https://osdn.net/projects/manjaro/storage/!rss')
-			.then((response) => response.text())
-			.then((responseData) => rssParser.parse(responseData))
-			.then((rss) => {
-				//console.log(typeof rss.items);
-				rss.items.reduce(function (filtered, item) {
-					//console.log(item.links[0].url);
-					/*if (item.links[0].url.endsWith('.iso')) {
-						console.log(item.links[0].url);
-					}*/
-					console.log(item);
-					return filtered;
-				}, []);
-			});
-	});
+	if (!xfceResponse.response) {
+		return <Text>Loading...</Text>;
+	}
 
 	return (
 		<Layout style={[eva.style.container, style]}>

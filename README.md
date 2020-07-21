@@ -7,7 +7,7 @@
 ### Installing and running localy
 
 - Install on Manjaro with `pacman -S yarn git`
-- Then `yarn add expo-cli -g`
+- Then `yarn global add expo-cli`
 - Clone the repo on local machine `git clone https://github.com/oguzkaganeren/manjaro-app`
 - `cd manjaro-app` and `yarn install`
 - `yarn start`
