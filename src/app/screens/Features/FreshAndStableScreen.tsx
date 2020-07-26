@@ -14,7 +14,7 @@ const FreshAndStableScreenThemed: React.FC<FreshAndStableProps> = (props) => {
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card>
+				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Manjaro is based on the independently developed Arch operating system. Within the Linux community, Arch
 						itself is renowned for being an exceptionally fast, powerful, and lightweight distribution that provides

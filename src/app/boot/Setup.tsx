@@ -1,6 +1,6 @@
 import { AppLoading } from 'expo';
 import React, { useState, useEffect } from 'react';
-import { useFonts } from 'expo-font';
+import * as Font from 'expo-font';
 
 import ApplicationProvider from '../ApplicationProvider';
 export interface SetupProps {
@@ -12,18 +12,33 @@ export interface SetupProps {
  * @param props
  */
 const Setup: React.FC<SetupProps> = (props) => {
-	const [loaded, error] = useFonts({
-		ComfortaaRegular: require('../../../assets/fonts/Comfortaa-Regular.ttf'),
-		ComfortaaBold: require('../../../assets/fonts/Comfortaa-Bold.ttf'),
-		ComfortaaLight: require('../../../assets/fonts/Comfortaa-Light.ttf'),
-		OpenSansLight: require('../../../assets/fonts/OpenSans-Light.ttf'),
-		OpenSansRegular: require('../../../assets/fonts/OpenSans-Regular.ttf'),
-	});
+	const [isLoadingComplete, setLoadingComplete] = useState(false);
 
-	if (!loaded) {
-		return <AppLoading />;
+	if (!isLoadingComplete) {
+		return (
+			<AppLoading
+				startAsync={loadResourcesAsync}
+				onError={handleLoadingError}
+				onFinish={() => handleFinishLoading(setLoadingComplete)}
+			/>
+		);
 	} else {
 		return <ApplicationProvider />;
+	}
+	async function loadResourcesAsync() {
+		await Promise.all([
+			Font.loadAsync({
+				ComfortaaRegular: require('../../../assets/fonts/Comfortaa-Regular.ttf'),
+				ComfortaaBold: require('../../../assets/fonts/Comfortaa-Bold.ttf'),
+			}),
+		]);
+	}
+
+	function handleLoadingError(error) {
+		console.warn(error);
+	}
+	function handleFinishLoading(setLoadingComplete) {
+		setLoadingComplete(true);
 	}
 };
 export default Setup;

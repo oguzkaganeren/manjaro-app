@@ -55,7 +55,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card>
+				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Manjaro is an efficient companion to serve your variety of needs and it is versatile to adapt to all of your
 						needs. Our user base varies from home users to students & teachers, programmers & developers, professionals,
@@ -85,7 +85,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					</Text>
 				</Card>
 
-				<Card status="warning" header={ScientistsHeader}>
+				<Card disabled status="warning" header={ScientistsHeader}>
 					<Layout style={[eva.style.sideContainer, style]}>
 						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
@@ -129,7 +129,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					</Layout>
 				</Card>
 
-				<Card status="danger" header={GamersHeader}>
+				<Card disabled status="danger" header={GamersHeader}>
 					<Layout style={[eva.style.sideContainer, style]}>
 						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
@@ -173,7 +173,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					</Layout>
 				</Card>
 
-				<Card status="info" header={TSHeader}>
+				<Card disabled status="info" header={TSHeader}>
 					<Layout style={[eva.style.sideContainer, style]}>
 						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
@@ -217,7 +217,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					</Layout>
 				</Card>
 
-				<Card status="warning" header={DevelopersHeader}>
+				<Card disabled status="warning" header={DevelopersHeader}>
 					<Layout style={[eva.style.sideContainer, style]}>
 						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
@@ -261,7 +261,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					</Layout>
 				</Card>
 
-				<Card status="danger" header={HomeUsersHeader}>
+				<Card disabled status="danger" header={HomeUsersHeader}>
 					<Layout style={[eva.style.sideContainer, style]}>
 						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
@@ -305,7 +305,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					</Layout>
 				</Card>
 
-				<Card status="info" header={ArtistsHeader}>
+				<Card disabled status="info" header={ArtistsHeader}>
 					<Layout style={[eva.style.sideContainer, style]}>
 						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text

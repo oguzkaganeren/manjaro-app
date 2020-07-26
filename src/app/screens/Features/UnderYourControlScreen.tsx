@@ -45,7 +45,7 @@ const UnderYourControlScreenThemed: React.FC<UnderYourControlProps> = (props) =>
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card status="primary" header={ChangeHeader}>
+				<Card disabled status="primary" header={ChangeHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Every person is different and needs an operating system that doesn’t try to enforce a specific workflow,
 						visual style or certain programs. Manjaro comes with default settings, that we believe are helpful to most
@@ -54,7 +54,7 @@ const UnderYourControlScreenThemed: React.FC<UnderYourControlProps> = (props) =>
 						program.
 					</Text>
 				</Card>
-				<Card status="warning" header={ControlYourPCHeader}>
+				<Card disabled status="warning" header={ControlYourPCHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						As like many other Linux distributions, we believe that privacy, security and keeping control are among the
 						most valuable things for a user. We have included some clever tools to accomplish everything needed to make
@@ -62,7 +62,7 @@ const UnderYourControlScreenThemed: React.FC<UnderYourControlProps> = (props) =>
 						computer. It’s your hardware and your operating system.
 					</Text>
 				</Card>
-				<Card status="danger" header={UpdateHeader}>
+				<Card disabled status="danger" header={UpdateHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						When updates are available Manjaro will just show an unobtrusive notification. If you have important work to
 						do, are currently in a ranked game or watching a movie, you can just hide it with one click. “Not now” for
@@ -70,7 +70,7 @@ const UnderYourControlScreenThemed: React.FC<UnderYourControlProps> = (props) =>
 						automatic restarts. Manjaro does exactly what you want.
 					</Text>
 				</Card>
-				<Card status="info" header={YourDataHeaderHeader}>
+				<Card disabled status="info" header={YourDataHeaderHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Manjaro does not send any data to anybody. Why should it? It’s your data and you decide what you want to do
 						with it. You can decide if you want to use services that finance themselves with the data you generate. But

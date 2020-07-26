@@ -41,7 +41,7 @@ const FirstStepsScreenThemed: React.FC<FirstStepsProps> = (props) => {
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card>
+				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'justify' }}>
 						Introduction
 					</Text>
@@ -129,7 +129,7 @@ const FirstStepsScreenThemed: React.FC<FirstStepsProps> = (props) => {
 						</Text>
 						. Here you can find a list of all options you have and their pros and cons.
 					</Text>
-					<Card status="danger" header={VirtualHeader}>
+					<Card disabled status="danger" header={VirtualHeader}>
 						<Text appearance="hint">{'\u2B24'} Leaves your current system untouched.</Text>
 						<Text appearance="hint">{'\u2B24'} Experiment without modifying your current setup.</Text>
 						<Text appearance="hint">{'\u2B24'} Work parallel with Manjaro and your current system.</Text>
@@ -137,14 +137,14 @@ const FirstStepsScreenThemed: React.FC<FirstStepsProps> = (props) => {
 						<Text appearance="hint">{'\u2B24'} Emulation needs many system resources.</Text>
 					</Card>
 					<Text></Text>
-					<Card status="basic" header={LiveHeader}>
+					<Card disabled status="basic" header={LiveHeader}>
 						<Text appearance="hint">{'\u2B24'} Leaves your current system untouched.</Text>
 						<Text appearance="hint">{'\u2B24'} Experiment without modifying your current setup.</Text>
 						<Text appearance="hint">{'\u2B24'} No settings get stored on the medium.</Text>
 						<Text appearance="hint">{'\u2B24'} Manjaro runs slower due to slower speed of DVD or USB.</Text>
 					</Card>
 					<Text></Text>
-					<Card status="warning" header={InstallHeader}>
+					<Card disabled status="warning" header={InstallHeader}>
 						<Text appearance="hint">{'\u2B24'} Always backup your data.</Text>
 						<Text appearance="hint">{'\u2B24'} Install along side your current system or replace it.</Text>
 					</Card>

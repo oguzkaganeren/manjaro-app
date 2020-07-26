@@ -14,7 +14,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card>
+				<Card disabled>
 					<Layout style={[eva.style.sideContainer, style]}>
 						<Avatar
 							style={[eva.style.logo, style]}

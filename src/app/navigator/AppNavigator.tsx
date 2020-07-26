@@ -83,7 +83,6 @@ function DrawerContent({ navigation, state }) {
 			selectedIndex={selectedIndex}
 			onSelect={(index) => {
 				setSelectedIndex(index);
-				console.log(index);
 				if (index.section !== undefined) {
 					const sectionRoute = routes[index.section][index.row];
 					navigation.navigate(sectionRoute);

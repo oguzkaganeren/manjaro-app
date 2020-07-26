@@ -39,7 +39,7 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card header={ChooseHeader} disabled={true}>
+				<Card disabled header={ChooseHeader} disabled={true}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						For people who want a reliable and fast desktop
 					</Text>
@@ -58,7 +58,7 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 						}}
 					/>
 				</Card>
-				<Card status="warning">
+				<Card disabled status="warning">
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						This edition is supported by the Manjaro team and comes with XFCE, a reliable desktop with high
 						configurability. Xfce is a lightweight desktop environment for UNIX-like operating systems. It aims to be
@@ -85,7 +85,7 @@ const XfceScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 				backdropStyle={[eva.style.backdrop, style]}
 				onBackdropPress={() => setDownloadModalVisible(false)}
 			>
-				<Card disabled={true}>
+				<Card disabled>
 					<Text category="h6">XFCE 64 bit version</Text>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
 					<Text>Only 64 bit is available for modern hardware</Text>

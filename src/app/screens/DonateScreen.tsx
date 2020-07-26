@@ -15,7 +15,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card>
+				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'justify' }}>
 						Why does Manjaro ask for donations?
 					</Text>

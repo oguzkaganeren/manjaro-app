@@ -76,27 +76,27 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card>
+				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Manjaro comes with its own tools that help you configuring your computer the way you want - without
 						searching for scattered settings across the whole system and looking things up on the internet. Just open
 						the system control panel, open the tool and select what you want.
 					</Text>
 				</Card>
-				<Card status="warning" header={ChooseHeader}>
+				<Card disabled status="warning" header={ChooseHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Manjaro maintains its own program to install, update and remove packages from the system. Just open it,
 						choose what you want and click ‘install’. Any additionaly required packages will be installed automatically
 						and all you have to do is to start the program.
 					</Text>
 				</Card>
-				<Card status="danger" header={DivideHeader}>
+				<Card disabled status="danger" header={DivideHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						If multiple people use your computer, just create an account for each of them. Each user has their personal
 						storage and appropriate permissions on the system individually.
 					</Text>
 				</Card>
-				<Card status="info" header={LanguageHeader}>
+				<Card disabled status="info" header={LanguageHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Manjaro speaks your language! Just start our locale settings and select the language you want. After logging
 						out and in again, everything is exactly the way you want. We also offer a special tool to automatically
@@ -104,13 +104,13 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 						programs.
 					</Text>
 				</Card>
-				<Card status="warning" header={GraphicCardHeader}>
+				<Card disabled status="warning" header={GraphicCardHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Manjaro comes with MHWD, the Manjaro Hardware Detection. If you need drivers for your hardware, just open
 						it, click on “Auto Install” and wait until it’s finished. That’s it.
 					</Text>
 				</Card>
-				<Card status="danger" header={CoreHeader}>
+				<Card disabled status="danger" header={CoreHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Power-users and people who need special features of the Linux Kernel that don’t come with the default one,
 						can just switch to a different Kernel with one click. Do you make music or need other realtime features?
@@ -119,7 +119,7 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 						your selection in the boot menu.
 					</Text>
 				</Card>
-				<Card status="info" header={TravelHeader}>
+				<Card disabled status="info" header={TravelHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						If you need to change your system’s timezone because you are on holiday or a business trip, we provide you
 						with a handy tool, so you have more time to get things done or simply enjoy life.
