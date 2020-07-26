@@ -4,6 +4,7 @@ import { withStyles } from '@ui-kitten/components';
 import { SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { FirstStepsScreen } from './FirstStepsScreen';
+import { UserGuideScreen } from './UserGuideScreen';
 
 export interface SupportProps {
 	navigation: any;
@@ -12,9 +13,8 @@ export interface SupportProps {
 
 const SupportScreenThemed: React.FC<SupportProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const MirrorsIcon = (props) => <Icon {...props} name="flip-outline" />;
-	const DiscoverIcon = (props) => <Icon {...props} name="cube-outline" />;
-	const BranchIcon = (props) => <Icon {...props} name="shuffle-2-outline" />;
+	const FirstIcon = (props) => <Icon {...props} name="compass-outline" />;
+	const GuideIcon = (props) => <Icon {...props} name="book-open-outline" />;
 
 	const TopTab = createMaterialTopTabNavigator();
 	const TopTabBar = ({ navigation, state }) => {
@@ -25,9 +25,8 @@ const SupportScreenThemed: React.FC<SupportProps> = (props) => {
 		return (
 			<SafeAreaView>
 				<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
-					<Tab icon={MirrorsIcon} title="First Steps" />
-					<Tab icon={DiscoverIcon} title="Common Problems" />
-					<Tab icon={BranchIcon} title="User Guide" />
+					<Tab icon={FirstIcon} title="First Steps" />
+					<Tab icon={GuideIcon} title="User Guide" />
 				</TabView>
 			</SafeAreaView>
 		);
@@ -36,8 +35,7 @@ const SupportScreenThemed: React.FC<SupportProps> = (props) => {
 		<Layout style={[eva.style.container, style]}>
 			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
 				<TopTab.Screen name="Mirrors" component={FirstStepsScreen} />
-				<TopTab.Screen name="Discover" component={FirstStepsScreen} />
-				<TopTab.Screen name="Branch" component={FirstStepsScreen} />
+				<TopTab.Screen name="Branch" component={UserGuideScreen} />
 			</TopTab.Navigator>
 		</Layout>
 	);

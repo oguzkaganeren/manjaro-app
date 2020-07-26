@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Drawer, DrawerItem, DrawerGroup, IndexPath, Icon, Layout } from '@ui-kitten/components';
+import { Drawer, DrawerItem, DrawerGroup, Avatar, Icon, Layout } from '@ui-kitten/components';
 import { Linking, TouchableHighlight } from 'react-native';
 import HeaderComponent from '../components/Public/HeaderComponent';
 import { Platform } from 'react-native';
@@ -67,6 +67,12 @@ function DrawerContent({ navigation, state }) {
 			</TouchableHighlight>
 			<TouchableHighlight onPress={() => Linking.openURL('https://www.facebook.com/ManjaroLinux')}>
 				<Icon pack="awesome" style={{ height: 24, tintColor: '#1B78F2' }} name="facebook-f" />
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => Linking.openURL('https://forum.manjaro.org/')}>
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#32C15A' }} name="discourse" />
+			</TouchableHighlight>
+			<TouchableHighlight onPress={() => Linking.openURL('https://wiki.manjaro.org/')}>
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#32C15A' }} name="wikipedia-w" />
 			</TouchableHighlight>
 		</Layout>
 	);
