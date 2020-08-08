@@ -22,6 +22,7 @@ import Constants from 'expo-constants';
 import { MailListScreen } from '../screens/MailListScreen';
 import { PackagesScreen } from '../screens/Packages/PackagesScreen';
 import { SupportScreen } from '../screens/Support/SupportScreen';
+import { NewsScreen } from '../screens/NewsScreen';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
 const UnderYourControlIcon = (props) => <Icon {...props} name="options-2-outline" />;
@@ -39,7 +40,7 @@ const ListsIcon = (props) => <Icon {...props} name="list-outline" />;
 const SupportIcon = (props) => <Icon {...props} name="heart-outline" />;
 const PackagesIcon = (props) => <Icon {...props} name="archive-outline" />;
 const AboutIcon = (props) => <Icon {...props} name="info-outline" />;
-
+const ExternalLinkIcon = (props) => <Icon {...props} name="external-link-outline" />;
 function DrawerContent({ navigation, state }) {
 	const [selectedIndex, setSelectedIndex] = React.useState({
 		equals: '',
@@ -105,9 +106,30 @@ function DrawerContent({ navigation, state }) {
 			</DrawerGroup>
 			<DrawerItem title="Donate" accessoryLeft={DonateIcon} />
 			<DrawerGroup title="Shop" accessoryLeft={ShopIcon}>
-				<DrawerItem title="Merch & Accessories" accessoryLeft={MerchIcon} />
-				<DrawerItem title="Manjaro Stickers" accessoryLeft={StickerIcon} />
-				<DrawerItem title="Manjaro Hardware" accessoryLeft={HardwareIcon} />
+				<DrawerItem
+					title="Merch & Accessories"
+					accessoryLeft={MerchIcon}
+					accessoryRight={ExternalLinkIcon}
+					onPress={() => {
+						Linking.openURL('https://shop.spreadshirt.de/manjaro/');
+					}}
+				/>
+				<DrawerItem
+					title="Manjaro Stickers"
+					accessoryLeft={StickerIcon}
+					accessoryRight={ExternalLinkIcon}
+					onPress={() => {
+						Linking.openURL('https://linux-aarhus.dk/en/product-category/manjaro-en/stickers-en/');
+					}}
+				/>
+				<DrawerItem
+					title="Manjaro Hardware"
+					accessoryLeft={HardwareIcon}
+					accessoryRight={ExternalLinkIcon}
+					onPress={() => {
+						Linking.openURL('https://manjaro.org/hardware/');
+					}}
+				/>
 			</DrawerGroup>
 			<DrawerItem title="News" accessoryLeft={NewsIcon} />
 			<DrawerGroup title="More" accessoryLeft={MoreIcon}>
@@ -129,6 +151,7 @@ export const DrawerNavigator = () => (
 		<Screen name="FreshAndStableScreen" component={FreshAndStableStack} />
 		<Screen name="DonateScreen" component={DonateStack} />
 		<Screen name="MailListScreen" component={MailListStack} />
+		<Screen name="NewsScreen" component={NewsStack} />
 		<Screen name="SupportScreen" component={SupportStack} />
 		<Screen name="PackagesScreen" component={PackagesStack} />
 		<Screen name="AboutScreen" component={AboutStack} />
@@ -322,6 +345,30 @@ function MailListStack() {
 				component={MailListScreen}
 				options={{
 					title: 'Mail Lists',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+								? options.title
+								: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+		</Stack.Navigator>
+	);
+}
+function NewsStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="NewsScreen"
+				component={NewsScreen}
+				options={{
+					title: 'News',
 					header: ({ scene, previous, navigation }) => {
 						const { options } = scene.descriptor;
 						const title =

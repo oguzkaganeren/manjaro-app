@@ -13,7 +13,10 @@ export interface SetupProps {
  */
 const Setup: React.FC<SetupProps> = (props) => {
 	const [isLoadingComplete, setLoadingComplete] = useState(false);
-
+	let customFonts = {
+		ComfortaaRegular: require('../../../assets/fonts/Comfortaa-Regular.ttf'),
+		ComfortaaBold: require('../../../assets/fonts/Comfortaa-Bold.ttf'),
+	};
 	if (!isLoadingComplete) {
 		return (
 			<AppLoading
@@ -26,12 +29,7 @@ const Setup: React.FC<SetupProps> = (props) => {
 		return <ApplicationProvider />;
 	}
 	async function loadResourcesAsync() {
-		await Promise.all([
-			Font.loadAsync({
-				ComfortaaRegular: require('../../../assets/fonts/Comfortaa-Regular.ttf'),
-				ComfortaaBold: require('../../../assets/fonts/Comfortaa-Bold.ttf'),
-			}),
-		]);
+		await Font.loadAsync(customFonts);
 	}
 
 	function handleLoadingError(error) {
