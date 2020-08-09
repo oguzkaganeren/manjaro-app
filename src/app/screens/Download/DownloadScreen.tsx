@@ -37,6 +37,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<TopTab.Navigator
+				swipeEnabled={false}
 				tabBarOptions={{ scrollEnabled: false }}
 				lazy={true}
 				tabBar={(props) => <TopTabBar {...props} />}

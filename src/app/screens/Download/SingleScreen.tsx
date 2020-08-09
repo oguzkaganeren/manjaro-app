@@ -52,12 +52,12 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 					</Text>
 					<Text></Text>
 					{downloadJson.response ? (
-						downloadJson.response.Official[props.jsonOrder].Youtube ? (
+						downloadJson.response.[props.type][props.jsonOrder].Youtube ? (
 							<YoutubePlayer
 								ref={playerRef}
 								height={200}
 								width={Dimensions.get('window').width - 50}
-								videoId={downloadJson.response.Official[props.jsonOrder].Youtube}
+								videoId={downloadJson.response.[props.type][props.jsonOrder].Youtube}
 								play={playing}
 								volume={50}
 								playbackRate={1}
@@ -72,7 +72,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 								source={{
 									uri:
 										'https://hacked.manjaro.org/img/editions/' +
-										downloadJson.response.Official[props.jsonOrder].Screenshot,
+										downloadJson.response.[props.type][props.jsonOrder].Screenshot,
 								}}
 							/>
 						)
@@ -96,7 +96,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 
 						<Button
 							onPress={() => {
-								Linking.openURL(downloadJson.response.Official[props.jsonOrder].Download_x64);
+								Linking.openURL(downloadJson.response.[props.type][props.jsonOrder].Download_x64);
 							}}
 							style={[eva.style.download, style]}
 							appearance="outline"
@@ -111,7 +111,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 							style={{ color: 'green' }}
 							category="p1"
 							onPress={() => {
-								Linking.openURL(downloadJson.response.Official[props.jsonOrder].Download_x64_Torrent);
+								Linking.openURL(downloadJson.response.[props.type][props.jsonOrder].Download_x64_Torrent);
 							}}
 						>
 							Download Torrent
@@ -120,16 +120,16 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 							style={{ color: 'green' }}
 							category="p1"
 							onPress={() => {
-								Linking.openURL(downloadJson.response.Official[props.jsonOrder].Download_x64_Sig);
+								Linking.openURL(downloadJson.response.[props.type][props.jsonOrder].Download_x64_Sig);
 							}}
 						>
 							Download GPG signature
 						</Text>
-						<Text appearance="hint">SHA1: {downloadJson.response.Official[props.jsonOrder].Download_x64_Checksum}</Text>
+						<Text appearance="hint">SHA1: {downloadJson.response.[props.type][props.jsonOrder].Download_x64_Checksum}</Text>
 						<Text></Text>
 						<Button
 							onPress={() => {
-								Linking.openURL(downloadJson.response.Official[props.jsonOrder].Download_Minimal_x64);
+								Linking.openURL(downloadJson.response.[props.type][props.jsonOrder].Download_Minimal_x64);
 							}}
 							style={[eva.style.download, style]}
 							appearance="outline"
@@ -141,13 +141,13 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 
 						<Text></Text>
 						<Text appearance="hint">
-							Minimal SHA1: {downloadJson.response.Official[props.jsonOrder].Download_Minimal_x64_Checksum}
+							Minimal SHA1: {downloadJson.response.[props.type][props.jsonOrder].Download_Minimal_x64_Checksum}
 						</Text>
 						<Text
 							style={{ color: 'green' }}
 							category="p1"
 							onPress={() => {
-								Linking.openURL(downloadJson.response.Official[props.jsonOrder].Download_Minimal_x64_Torrent);
+								Linking.openURL(downloadJson.response.[props.type][props.jsonOrder].Download_Minimal_x64_Torrent);
 							}}
 						>
 							Download Minimal Torrent
@@ -156,7 +156,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 							style={{ color: 'green' }}
 							category="p1"
 							onPress={() => {
-								Linking.openURL(downloadJson.response.Official[props.jsonOrder].Download_x64_Sig);
+								Linking.openURL(downloadJson.response.[props.type][props.jsonOrder].Download_x64_Sig);
 							}}
 						>
 							Download GPG signature
