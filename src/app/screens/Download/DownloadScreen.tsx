@@ -4,6 +4,7 @@ import { withStyles } from '@ui-kitten/components';
 import { SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { OfficialScreen } from './Official/OfficialScreen';
+import { CommunityScreen } from './Community/CommunityScreen';
 export interface HomeProps {
 	navigation: any;
 	route: any;
@@ -19,26 +20,29 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 
 	const TopTab = createMaterialTopTabNavigator();
 	const TopTabBar = ({ navigation, state }) => {
+		console.log(state.routeNames);
 		const onSelect = (index) => {
 			navigation.navigate(state.routeNames[index]);
 		};
 
 		return (
-			<SafeAreaView>
-				<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
-					<Tab icon={OfficialIcon} title="Offical" />
-					<Tab icon={CommunityIcon} title="Community" />
-					<Tab icon={ARMIcon} title="ARM" />
-					<Tab icon={DevelopmentIcon} title="Development" />
-				</TabView>
-			</SafeAreaView>
+			<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
+				<Tab icon={OfficialIcon} title="Offical" />
+				<Tab icon={CommunityIcon} title="Community" />
+				<Tab icon={ARMIcon} title="ARM" />
+				<Tab icon={DevelopmentIcon} title="Development" />
+			</TabView>
 		);
 	};
 	return (
 		<Layout style={[eva.style.container, style]}>
-			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
+			<TopTab.Navigator
+				tabBarOptions={{ scrollEnabled: false }}
+				lazy={true}
+				tabBar={(props) => <TopTabBar {...props} />}
+			>
 				<TopTab.Screen name="Offical" component={OfficialScreen} />
-				<TopTab.Screen name="Community" component={OfficialScreen} />
+				<TopTab.Screen name="Community" component={CommunityScreen} />
 				<TopTab.Screen name="ARM" component={OfficialScreen} />
 				<TopTab.Screen name="Development" component={OfficialScreen} />
 			</TopTab.Navigator>
