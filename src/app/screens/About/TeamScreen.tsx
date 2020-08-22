@@ -86,30 +86,6 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const JonathonHeader = (props) => (
-		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
-				<Avatar
-					shape="round"
-					size="giant"
-					style={[eva.style.avatar, style]}
-					source={require('../../../../assets/logo.png')}
-				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
-					Jonathon Fernyhough{'\n'}
-					<Text category="s2">Community Lead | Sysadmin |{'\n'} Developer</Text>
-				</Text>
-				<Avatar
-					shape="rounded"
-					size="tiny"
-					style={[eva.style.flag, style]}
-					source={{
-						uri: 'https://manjaro.org/img/flags/GB.png',
-					}}
-				/>
-			</Layout>
-		</Layout>
-	);
 	const StefanoHeader = (props) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
@@ -492,13 +468,6 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 				<Card disabled status="primary" header={GuillaumeHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						He is working on libpamac, Pamac Gtk, libpamac Python bindings, and everything Gnome related.
-					</Text>
-				</Card>
-				<Card disabled status="primary" header={JonathonHeader}>
-					<Text appearance="hint" style={{ textAlign: 'justify' }}>
-						Part of the project since seeing its potential in 2013, now spending time on managing the community,
-						maintaining manjaro32, cultivating wider working relationships, developing infrastructure, packaging, and
-						trying to ensure enthusiasm doesn't overtake common sense.
 					</Text>
 				</Card>
 				<Card disabled status="primary" header={StefanoHeader}>

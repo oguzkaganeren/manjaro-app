@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { OfficialScreen } from './Official/OfficialScreen';
 import { CommunityScreen } from './Community/CommunityScreen';
+import { ARMScreen } from './ARM/ARMScreen';
+import { DevelopmentScreen } from './Development/DevelopementScreen';
 export interface HomeProps {
 	navigation: any;
 	route: any;
@@ -44,8 +46,8 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 			>
 				<TopTab.Screen name="Offical" component={OfficialScreen} />
 				<TopTab.Screen name="Community" component={CommunityScreen} />
-				<TopTab.Screen name="ARM" component={OfficialScreen} />
-				<TopTab.Screen name="Development" component={OfficialScreen} />
+				<TopTab.Screen name="ARM" component={ARMScreen} />
+				<TopTab.Screen name="Development" component={DevelopmentScreen} />
 			</TopTab.Navigator>
 		</Layout>
 	);

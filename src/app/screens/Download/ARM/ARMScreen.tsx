@@ -5,6 +5,7 @@ import { withStyles } from '@ui-kitten/components';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from 'react-native-underline-tabbar';
+import { useFetch } from '../../../hooks/JsonFetcher';
 import { NavigationContainer } from '@react-navigation/native';
 import { SingleScreen } from '../SingleScreen';
 export interface HomeProps {
@@ -12,8 +13,10 @@ export interface HomeProps {
 	route: any;
 }
 
-const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
+const ARMScreenThemed: React.FC<HomeProps> = (props) => {
 	const { eva, style, ...restProps } = props;
+	//TODO: fix this later
+	const downloadJson = useFetch('https://manjaro.org/download/index.json', {});
 
 	const TabNavigator = () => (
 		<Layout style={[eva.style.container, style]}>
@@ -43,85 +46,35 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					/>
 				)}
 			>
-				<SingleScreen
-					tabLabel={{ label: 'Awesome' }}
-					route={props.route}
-					navigation={props.navigation}
 
-					jsonOrder={0}
-					type={'Community'}
-				/>
-				<SingleScreen
-					tabLabel={{ label: 'Bspwm' }}
-					route={props.route}
-					navigation={props.navigation}
+				{downloadJson.response ? downloadJson.response.ARM.map((info, index) => (
+					<SingleScreen
+						tabLabel={{ label: info.name }}
+						route={props.route}
+						navigation={props.navigation}
 
-					jsonOrder={1}
-					type={'Community'}
-				/>
-				<SingleScreen
-					tabLabel={{ label: 'Budgie' }}
-					route={props.route}
-					navigation={props.navigation}
+						jsonOrder={index}
+						type={'ARM'}
+					/>))
 
-					jsonOrder={2}
-					type={'Community'}
-				/>
-				<SingleScreen
-					tabLabel={{ label: 'Cinnamon' }}
-					route={props.route}
-					navigation={props.navigation}
 
-					jsonOrder={3}
-					type={'Community'}
-				/>
-				<SingleScreen
-					tabLabel={{ label: 'I3' }}
-					route={props.route}
-					navigation={props.navigation}
 
-					jsonOrder={4}
-					type={'Community'}
-				/>
-				<SingleScreen
-					tabLabel={{ label: 'LXDE' }}
-					route={props.route}
-					navigation={props.navigation}
+					: <SingleScreen
+						tabLabel={{ label: 'Loading' }}
+						route={props.route}
+						navigation={props.navigation}
 
-					jsonOrder={5}
-					type={'Community'}
-				/>
-				<SingleScreen
-					tabLabel={{ label: 'LXQt' }}
-					route={props.route}
-					navigation={props.navigation}
+						jsonOrder={0}
+						type={'ARM'}
+					/>}
 
-					jsonOrder={6}
-					type={'Community'}
-				/>
-				<SingleScreen
-					tabLabel={{ label: 'Mate' }}
-					route={props.route}
-					navigation={props.navigation}
-
-					jsonOrder={7}
-					type={'Community'}
-				/>
-				<SingleScreen
-					tabLabel={{ label: 'Openbox' }}
-					route={props.route}
-					navigation={props.navigation}
-
-					jsonOrder={7}
-					type={'Community'}
-				/>
 			</ScrollableTabView>
 		</Layout>
 	);
 	return <TabNavigator />;
 };
 
-export const CommunityScreen = withStyles(CommunityScreenThemed, (theme) => ({
+export const ARMScreen = withStyles(ARMScreenThemed, (theme) => ({
 	container: {
 		flex: 1,
 	},

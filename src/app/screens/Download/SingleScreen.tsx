@@ -4,14 +4,13 @@ import { Text, Layout, Card, Icon, Button, Modal, Divider, Spinner } from '@ui-k
 import { withStyles } from '@ui-kitten/components';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { useFetch } from '../../hooks/JsonFetcher';
+import HTML from "react-native-render-html";
+import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
 	route: any;
-	name: String;
 	jsonOrder: Number;
-	slogan: String;
-	description: any;
-	type:String;
+	type: String;
 }
 
 const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
@@ -19,13 +18,13 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	const playerRef = React.useRef(null);
 	const [playing, setPlaying] = React.useState(false);
 	const [downloadModalVisible, setDownloadModalVisible] = React.useState(false);
-	const downloadJson = useFetch('https://hacked.manjaro.org/download/index.json', {});
+	const downloadJson = useFetch('https://manjaro.org/download/index.json', {});
 	const DownloadIcon = (props) => <Icon {...props} name="arrow-circle-down-outline" />;
 
 	const ChooseHeader = (subprops) => (
 		<Layout {...subprops}>
 			<Layout style={[eva.style.sideContainer, style]}>
-				<Text category="h4">{props.name}</Text>
+				{downloadJson.response ? (<Text category="h4">{downloadJson.response.[props.type][props.jsonOrder].name.substring(0, 9)}{downloadJson.response.[props.type][props.jsonOrder].name.length > 9 ? '...' : ''}</Text>) : null}
 				{downloadJson.response ? (
 					<Button
 						style={[eva.style.download, style]}
@@ -37,8 +36,8 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 						Download {downloadJson.response.[props.type][props.jsonOrder].Version}
 					</Button>
 				) : (
-					<Spinner status="success" />
-				)}
+						<Spinner status="success" />
+					)}
 			</Layout>
 		</Layout>
 	);
@@ -47,10 +46,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
 				<Card disabled header={ChooseHeader} disabled={true}>
-					<Text appearance="hint" style={{ textAlign: 'justify' }}>
-						{props.slogan}
-					</Text>
-					<Text></Text>
+
 					{downloadJson.response ? (
 						downloadJson.response.[props.type][props.jsonOrder].Youtube ? (
 							<YoutubePlayer
@@ -67,19 +63,39 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 								}}
 							/>
 						) : (
-							<Image
-								style={[eva.style.image, style]}
-								source={{
-									uri:
-										'https://hacked.manjaro.org/img/editions/' +
-										downloadJson.response.[props.type][props.jsonOrder].Screenshot,
-								}}
-							/>
-						)
+								<Image
+									style={[eva.style.image, style]}
+									source={{
+										uri:
+											'https://hacked.manjaro.org/img/editions/' +
+											downloadJson.response.[props.type][props.jsonOrder].Screenshot,
+									}}
+								/>
+							)
 					) : null}
 				</Card>
 				<Card disabled status="warning">
-					{props.description}
+					{downloadJson.response ? (
+						<HTML
+							ignoredTags={[...IGNORED_TAGS, 'br']}
+							html={downloadJson.response.[props.type][props.jsonOrder].content}
+							textSelectable={true}
+							listsPrefixesRenderers={{
+								ul: (_htmlAttribs, _children, _convertedCSSStyles, passProps) => (
+									<Text appearance="hint">{'\u2B24'} </Text>
+								)
+							}}
+							renderers={{
+								p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+								a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" onPress={() => {
+									Linking.openURL(htmlAttribs.href);
+								}} style={{ textAlign: 'justify' }}>{children}</Text>),
+
+								li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+
+							}}
+							imagesMaxWidth={Dimensions.get("window").width}
+						/>) : null}
 				</Card>
 			</ScrollView>
 			{downloadJson.response ? (
@@ -89,7 +105,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 					onBackdropPress={() => setDownloadModalVisible(false)}
 				>
 					<Card disabled>
-						<Text category="h6">{props.name}</Text>
+						{downloadJson.response ? (<Text category="h6">{downloadJson.response.[props.type][props.jsonOrder].name}</Text>) : null}
 						<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
 						<Text>Only 64 bit is available for modern hardware</Text>
 						<Text></Text>
@@ -136,7 +152,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 							status="primary"
 							accessoryLeft={DownloadIcon}
 						>
-							Download Minimal Version of {props.name}
+							Download Minimal Version of {downloadJson.response.[props.type][props.jsonOrder].name}
 						</Button>
 
 						<Text></Text>
