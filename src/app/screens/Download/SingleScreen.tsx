@@ -24,7 +24,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	const ChooseHeader = (subprops) => (
 		<Layout {...subprops}>
 			<Layout style={[eva.style.sideContainer, style]}>
-				{downloadJson.response ? (<Text category="h4">{downloadJson.response.[props.type][props.jsonOrder].name.substring(0, 9)}{downloadJson.response.[props.type][props.jsonOrder].name.length > 9 ? '...' : ''}</Text>) : null}
+				{downloadJson.response ? (<Text category="h4">{downloadJson.response.[props.type][props.jsonOrder].name.substring(0, 7)}{downloadJson.response.[props.type][props.jsonOrder].name.length > 7 ? '...' : ''}</Text>) : null}
 				{downloadJson.response ? (
 					<Button
 						style={[eva.style.download, style]}
@@ -73,30 +73,31 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 								/>
 							)
 					) : null}
-				</Card>
-				<Card disabled status="warning">
-					{downloadJson.response ? (
-						<HTML
-							ignoredTags={[...IGNORED_TAGS, 'br']}
-							html={downloadJson.response.[props.type][props.jsonOrder].content}
-							textSelectable={true}
-							listsPrefixesRenderers={{
-								ul: (_htmlAttribs, _children, _convertedCSSStyles, passProps) => (
-									<Text appearance="hint">{'\u2B24'} </Text>
-								)
-							}}
-							renderers={{
-								p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
-								a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" onPress={() => {
-									Linking.openURL(htmlAttribs.href);
-								}} style={{ textAlign: 'justify' }}>{children}</Text>),
+					<Card disabled={true} status="warning">
+						{downloadJson.response ? (
+							<HTML
+								ignoredTags={[...IGNORED_TAGS, 'br']}
+								html={downloadJson.response.[props.type][props.jsonOrder].content}
+								textSelectable={true}
+								listsPrefixesRenderers={{
+									ul: (_htmlAttribs, _children, _convertedCSSStyles, passProps) => (
+										<Text appearance="hint">{'\u2B24'} </Text>
+									)
+								}}
+								renderers={{
+									p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+									a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" onPress={() => {
+										Linking.openURL(htmlAttribs.href);
+									}} style={{ textAlign: 'justify' }}>{children}</Text>),
 
-								li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+									li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
 
-							}}
-							imagesMaxWidth={Dimensions.get("window").width}
-						/>) : null}
+								}}
+								imagesMaxWidth={Dimensions.get("window").width}
+							/>) : null}
+					</Card>
 				</Card>
+
 			</ScrollView>
 			{downloadJson.response ? (
 				<Modal

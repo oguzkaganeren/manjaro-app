@@ -13,7 +13,9 @@
         "updates": {
             "fallbackToCacheTimeout": 0
         },
-        "assetBundlePatterns": ["**/*"],
+        "assetBundlePatterns": [
+            "**/*"
+        ],
         "ios": {
             "bundleIdentifier": "com.manjaro.manjarohome",
             "buildNumber": "1.0.0",
@@ -21,7 +23,8 @@
         },
         "android": {
             "package": "com.manjaro.manjarohome",
-            "versionCode": 1
+            "versionCode": 1,
+            "enableDangerousExperimentalLeanBuilds": true
         },
         "web": {
             "favicon": "./assets/favicon.png"
