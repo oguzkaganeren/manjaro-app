@@ -6,6 +6,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import { TeamScreen } from './TeamScreen';
 import { LinuxScreen } from './LinuxScreen';
+import { ApplicationAboutScreen } from './ApplicationAboutScreen';
 export interface AboutProps {
 	navigation: any;
 	route: any;
@@ -15,7 +16,7 @@ const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const CommunityIcon = (props) => <Icon {...props} name="people-outline" />;
 	const AboutIcon = (props) => <Icon {...props} name="info-outline" />;
-
+	const ApplicationIcon = (props) => <Icon {...props} name="smartphone-outline" />;
 	const TopTab = createMaterialTopTabNavigator();
 	const TopTabBar = ({ navigation, state }) => {
 		const onSelect = (index) => {
@@ -27,6 +28,7 @@ const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 				<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
 					<Tab icon={CommunityIcon} title="Team" />
 					<Tab icon={AboutIcon} title="Linux" />
+					<Tab icon={ApplicationIcon} title="Application" />
 				</TabView>
 			</SafeAreaView>
 		);
@@ -36,6 +38,7 @@ const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
 				<TopTab.Screen name="Team" component={TeamScreen} />
 				<TopTab.Screen name="Linux" component={LinuxScreen} />
+				<TopTab.Screen name="Application" component={ApplicationAboutScreen} />
 			</TopTab.Navigator>
 		</Layout>
 	);
