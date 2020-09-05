@@ -36,7 +36,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 						Download {downloadJson.response.[props.type][props.jsonOrder].Version}
 					</Button>
 				) : (
-						<Spinner status="success" />
+						null
 					)}
 			</Layout>
 		</Layout>
@@ -45,59 +45,60 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<ScrollView>
-				<Card disabled header={ChooseHeader} disabled={true}>
+				{downloadJson.response ? (
+					<Card disabled header={ChooseHeader} disabled={true}>
 
-					{downloadJson.response ? (
-						downloadJson.response.[props.type][props.jsonOrder].Youtube ? (
-							<YoutubePlayer
-								ref={playerRef}
-								height={200}
-								width={Dimensions.get('window').width - 50}
-								videoId={downloadJson.response.[props.type][props.jsonOrder].Youtube}
-								play={playing}
-								volume={50}
-								playbackRate={1}
-								initialPlayerParams={{
-									cc_lang_pref: 'us',
-									showClosedCaptions: true,
-								}}
-							/>
-						) : (
-								<Image
-									style={[eva.style.image, style]}
-									source={{
-										uri:
-											'https://hacked.manjaro.org/img/editions/' +
-											downloadJson.response.[props.type][props.jsonOrder].Screenshot,
+						{
+							downloadJson.response.[props.type][props.jsonOrder].Youtube ? (
+								<YoutubePlayer
+									ref={playerRef}
+									height={200}
+									width={Dimensions.get('window').width - 50}
+									videoId={downloadJson.response.[props.type][props.jsonOrder].Youtube}
+									play={playing}
+									volume={50}
+									playbackRate={1}
+									initialPlayerParams={{
+										cc_lang_pref: 'us',
+										showClosedCaptions: true,
 									}}
 								/>
-							)
-					) : null}
-					<Card disabled={true} status="warning">
-						{downloadJson.response ? (
-							<HTML
-								ignoredTags={[...IGNORED_TAGS, 'br']}
-								html={downloadJson.response.[props.type][props.jsonOrder].content}
-								textSelectable={true}
-								listsPrefixesRenderers={{
-									ul: (_htmlAttribs, _children, _convertedCSSStyles, passProps) => (
-										<Text appearance="hint">{'\u2B24'} </Text>
-									)
-								}}
-								renderers={{
-									p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
-									a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" onPress={() => {
-										Linking.openURL(htmlAttribs.href);
-									}} style={{ textAlign: 'justify' }}>{children}</Text>),
+							) : (
+									<Image
+										style={[eva.style.image, style]}
+										source={{
+											uri:
+												'https://hacked.manjaro.org/img/editions/' +
+												downloadJson.response.[props.type][props.jsonOrder].Screenshot,
+										}}
+									/>
+								)
+						}
+						<Card disabled={true} status="warning">
+							{downloadJson.response ? (
+								<HTML
+									ignoredTags={[...IGNORED_TAGS, 'br']}
+									html={downloadJson.response.[props.type][props.jsonOrder].content}
+									textSelectable={true}
+									listsPrefixesRenderers={{
+										ul: (_htmlAttribs, _children, _convertedCSSStyles, passProps) => (
+											<Text appearance="hint">{'\u2B24'} </Text>
+										)
+									}}
+									renderers={{
+										p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+										a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" onPress={() => {
+											Linking.openURL(htmlAttribs.href);
+										}} style={{ textAlign: 'justify' }}>{children}</Text>),
 
-									li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+										li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
 
-								}}
-								imagesMaxWidth={Dimensions.get("window").width}
-							/>) : null}
+									}}
+									imagesMaxWidth={Dimensions.get("window").width}
+								/>) : null}
+						</Card>
 					</Card>
-				</Card>
-
+				) : <Spinner status='success' />}
 			</ScrollView>
 			{downloadJson.response ? (
 				<Modal
