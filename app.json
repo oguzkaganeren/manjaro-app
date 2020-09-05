@@ -23,8 +23,9 @@
         },
         "android": {
             "package": "com.manjaro.manjarohome",
-            "versionCode": 1,
-            "enableDangerousExperimentalLeanBuilds": true
+            "versionCode": 3,
+            "enableDangerousExperimentalLeanBuilds": true,
+            "permissions": []
         },
         "web": {
             "favicon": "./assets/favicon.png"
