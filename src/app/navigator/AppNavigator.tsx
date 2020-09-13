@@ -23,6 +23,7 @@ import { MailListScreen } from '../screens/MailListScreen';
 import { PackagesScreen } from '../screens/Packages/PackagesScreen';
 import { SupportScreen } from '../screens/Support/SupportScreen';
 import { NewsScreen } from '../screens/NewsScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
 const UnderYourControlIcon = (props) => <Icon {...props} name="options-2-outline" />;
@@ -41,6 +42,7 @@ const SupportIcon = (props) => <Icon {...props} name="heart-outline" />;
 const PackagesIcon = (props) => <Icon {...props} name="archive-outline" />;
 const AboutIcon = (props) => <Icon {...props} name="info-outline" />;
 const ExternalLinkIcon = (props) => <Icon {...props} name="external-link-outline" />;
+const SettingsIcon = (props) => <Icon {...props} name="settings-outline" />;
 function DrawerContent({ navigation, state }) {
 	const [selectedIndex, setSelectedIndex] = React.useState({
 		equals: '',
@@ -54,6 +56,7 @@ function DrawerContent({ navigation, state }) {
 		['ShopScreen'],
 		['NewsScreen'],
 		['MailListScreen', 'SupportScreen', 'PackagesScreen', 'AboutScreen'],
+		['SettingsScreen']
 	];
 	const Footer = (props) => (
 		<Layout style={{ padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -138,6 +141,7 @@ function DrawerContent({ navigation, state }) {
 				<DrawerItem title="Packages" accessoryLeft={PackagesIcon} />
 				<DrawerItem title="About" accessoryLeft={AboutIcon} />
 			</DrawerGroup>
+			<DrawerItem title="Settings" accessoryLeft={SettingsIcon} />
 		</Drawer>
 	);
 }
@@ -155,6 +159,7 @@ export const DrawerNavigator = () => (
 		<Screen name="SupportScreen" component={SupportStack} />
 		<Screen name="PackagesScreen" component={PackagesStack} />
 		<Screen name="AboutScreen" component={AboutStack} />
+		<Screen name="SettingsScreen" component={SettingsStack} />
 	</Navigator>
 );
 function HomeStack() {
@@ -171,8 +176,8 @@ function HomeStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={false} />;
 					},
@@ -189,8 +194,8 @@ function HomeStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -207,8 +212,8 @@ function HomeStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -231,8 +236,8 @@ function UnderYourControlStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -255,8 +260,8 @@ function ConfiguredWithOneClickStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -279,8 +284,8 @@ function UsefulForEveryoneStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -303,8 +308,8 @@ function FreshAndStableStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -327,8 +332,8 @@ function DonateStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -351,8 +356,8 @@ function MailListStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -375,8 +380,8 @@ function NewsStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -399,8 +404,8 @@ function SupportStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -423,8 +428,8 @@ function PackagesStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -447,8 +452,8 @@ function AboutStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-								? options.title
-								: scene.route.name;
+									? options.title
+									: scene.route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
 					},
@@ -457,7 +462,30 @@ function AboutStack() {
 		</Stack.Navigator>
 	);
 }
+function SettingsStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen
+				name="SettingsScreen"
+				component={SettingsScreen}
+				options={{
+					title: 'Settings',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+									? options.title
+									: scene.route.name;
 
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+		</Stack.Navigator>
+	);
+}
 export const AppNavigator = () => (
 	<SafeAreaProvider>
 		<NavigationContainer>
