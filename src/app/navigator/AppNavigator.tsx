@@ -141,7 +141,7 @@ function DrawerContent({ navigation, state }) {
 				<DrawerItem title="Packages" accessoryLeft={PackagesIcon} />
 				<DrawerItem title="About" accessoryLeft={AboutIcon} />
 			</DrawerGroup>
-			<DrawerItem title="Settings" accessoryLeft={SettingsIcon} />
+			{/* <DrawerItem title="Settings" accessoryLeft={SettingsIcon} /> */}
 		</Drawer>
 	);
 }
