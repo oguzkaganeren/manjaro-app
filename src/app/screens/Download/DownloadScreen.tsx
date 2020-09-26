@@ -29,7 +29,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 
 		return (
 			<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
-				<Tab icon={OfficialIcon} title="Offical" />
+				<Tab icon={OfficialIcon} title="Official" />
 				<Tab icon={CommunityIcon} title="Community" />
 				<Tab icon={ARMIcon} title="ARM" />
 				<Tab icon={DevelopmentIcon} title="Development" />
