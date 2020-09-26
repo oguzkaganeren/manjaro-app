@@ -5,6 +5,7 @@ import { withStyles } from '@ui-kitten/components';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { useFetch } from '../../hooks/JsonFetcher';
 import HTML from "react-native-render-html";
+import * as Progress from 'react-native-progress';
 import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
@@ -23,22 +24,30 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 
 	const ChooseHeader = (subprops) => (
 		<Layout {...subprops}>
+
 			<Layout style={[eva.style.sideContainer, style]}>
+
 				{downloadJson.response ? (<Text category="h4">{downloadJson.response.[props.type][props.jsonOrder].name.substring(0, 7)}{downloadJson.response.[props.type][props.jsonOrder].name.length > 7 ? '...' : ''}</Text>) : null}
 				{downloadJson.response ? (
-					<Button
-						style={[eva.style.download, style]}
-						onPress={() => setDownloadModalVisible(true)}
-						appearance="outline"
-						status="primary"
-						accessoryLeft={DownloadIcon}
-					>
-						Download {downloadJson.response.[props.type][props.jsonOrder].Version}
-					</Button>
+					<Layout>
+
+						<Button
+							style={[eva.style.download, style]}
+							onPress={() => setDownloadModalVisible(true)}
+							appearance="outline"
+							status="primary"
+							accessoryLeft={DownloadIcon}
+						>
+							Download {downloadJson.response.[props.type][props.jsonOrder].Version}
+
+						</Button>
+						<Progress.Bar progress={0.3} color="#26A456" width={175} style={{ marginLeft: 15 }} />
+					</Layout>
 				) : (
 						null
 					)}
 			</Layout>
+
 		</Layout>
 	);
 
@@ -74,6 +83,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 									/>
 								)
 						}
+
 						<Card disabled={true} status="warning">
 							{downloadJson.response ? (
 								<HTML
