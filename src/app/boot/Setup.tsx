@@ -1,4 +1,4 @@
-import { AppLoading } from 'expo';
+import  AppLoading from 'expo-app-loading';
 import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
 
