@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ScrollView, Image, Dimensions, Linking, TouchableHighlight } from 'react-native';
 import { Text, Layout, Card, Icon, Avatar, Divider, Button } from '@ui-kitten/components';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+//import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import { withStyles } from '@ui-kitten/components';
 
 export interface DonateProps {
@@ -209,7 +209,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 						other means, such as bank transfer or Paypal, depending on the Fiscal Host.
 					</Text>
 					<Text></Text>
-					<Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+					{/*<Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
 						<Row
 							textStyle={[eva.style.tableTitleText, style]}
 							data={['Host', 'Credit Card', 'Bank Transfer', 'Paypal']}
@@ -223,7 +223,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 								['Open Collective US', 'Yes', 'Yes', 'Yes'],
 							]}
 						/>
-					</Table>
+						</Table>*/}
 					<Text></Text>
 					<Text category="h6" style={{ textAlign: 'justify' }}>
 						Can I get a tax deduction?

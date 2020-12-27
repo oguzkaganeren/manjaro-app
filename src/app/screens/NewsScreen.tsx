@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, Layout, Avatar, Button, Icon } from '@ui-kitten/components';
 import { Linking } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
+import axios from 'axios';
 export interface NewsScreenProps {
 	navigation: any;
 	route: any;
@@ -9,7 +10,19 @@ export interface NewsScreenProps {
 
 const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	const { eva, style, ...restProps } = props;
+	const [allFeed, setAllFeed] = React.useState([]);
+	function getStableJson() {
+		return axios.get('https://forum.manjaro.org/c/announcements/stable-updates/12.json');
+	}
 
+	React.useEffect(() => {
+		Promise.all([getStableJson()])
+			.then(function (results) {
+				allFeed.push(results[0].data)
+			}).then(function (test) {
+				console.log(allFeed[0].topic_list);
+			});
+	}, [])
 	return (
 		<Layout style={[eva.style.container, style]}>
 			<Text style={{ marginHorizontal: 10 }} status="warning">
