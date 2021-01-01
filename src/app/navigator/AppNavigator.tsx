@@ -22,8 +22,9 @@ import Constants from 'expo-constants';
 import { MailListScreen } from '../screens/MailListScreen';
 import { PackagesScreen } from '../screens/Packages/PackagesScreen';
 import { SupportScreen } from '../screens/Support/SupportScreen';
-import { NewsScreen } from '../screens/NewsScreen';
+import { NewsScreen } from '../screens/News/NewsScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
+import { NewsSingleScreen } from '../screens/News/NewsSingleScreen';
 const HomeIcon = (props) => <Icon {...props} name="home-outline" />;
 const FeatureIcon = (props) => <Icon {...props} name="grid-outline" />;
 const UnderYourControlIcon = (props) => <Icon {...props} name="options-2-outline" />;
@@ -372,6 +373,24 @@ function NewsStack() {
 			<Stack.Screen
 				name="NewsScreen"
 				component={NewsScreen}
+				options={{
+					title: 'News',
+					header: ({ scene, previous, navigation }) => {
+						const { options } = scene.descriptor;
+						const title =
+							options.headerTitle !== undefined
+								? options.headerTitle
+								: options.title !== undefined
+									? options.title
+									: scene.route.name;
+
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+					},
+				}}
+			/>
+			<Stack.Screen
+				name="NewsSingleScreen"
+				component={NewsSingleScreen}
 				options={{
 					title: 'News',
 					header: ({ scene, previous, navigation }) => {

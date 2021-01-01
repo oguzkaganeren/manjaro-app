@@ -33,14 +33,9 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 		</Layout>
 	);
 	const onPressTopic = (idOfTopic) => {
-		axios.get('https://forum.manjaro.org/t/' + idOfTopic + '.json').then(function (response) {
-			//console.log(response);
-			setSingleTopicInfo({ item: response.data })
-			setModalVisible(true);
-		}).catch(function (error) {
-			// handle error
-			console.log(error);
-		})
+		props.navigation.navigate('NewsSingleScreen', {
+			idOfTopic: idOfTopic
+		});
 	}
 	const renderItemFooter = (footerProps, info) => (
 		<BottomNavigationTab
@@ -100,21 +95,7 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 				data={allFeed}
 				renderItem={renderItem}
 			/>
-			<Modal
-				visible={modalVisible}
-				onBackdropPress={() => setModalVisible(false)}>
-				<Card
-					disabled
-					status='success'
-					header={headerProps => renderItemHeader(headerProps, singleTopicInfo)}
-					footer={footerProps => renderItemFooter(footerProps, singleTopicInfo)}>
-					<Layout>
-						<HTML source={{ html: singleTopicInfo.item.post_stream.posts[0].cooked }} contentWidth={contentWidth} />
 
-					</Layout>
-
-				</Card>
-			</Modal>
 		</Layout>
 	);
 };
@@ -128,6 +109,10 @@ export const NewsScreen = withStyles(NewsScreenThemed, (theme) => ({
 		width: 16,
 		height: 16,
 	},
+	scrollView: {
+		height: 200
+	}
+	,
 	sideContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',
