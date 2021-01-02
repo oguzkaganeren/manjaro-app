@@ -22,7 +22,7 @@
         "@ui-kitten/components": "^5.0.0",
         "@ui-kitten/eva-icons": "^5.0.0",
         "axios": "^0.21.1",
-        "electron": "^6.0.12",
+        "electron": "^7.2.4",
         "expo": "~38.0.8",
         "expo-app-loading": "^1.0.1",
         "expo-constants": "~9.1.1",
