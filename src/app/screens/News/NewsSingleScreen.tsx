@@ -71,7 +71,6 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 			)}
 		/>
 	);
-	//TODO: add html code tag support
 	return (
 		<Layout style={[eva.style.container, style]}>
 			{!isLoading ? (<ScrollView style={[eva.style.scrollView, style]}><Card
@@ -89,9 +88,6 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 
 					renderers={{
 						p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
-						a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" onPress={() => {
-							Linking.openURL(htmlAttribs.href);
-						}} style={{ textAlign: 'justify' }}>{children}</Text>),
 						img: (htmlAttribs, children, convertedCSSStyles, passProps) => {
 							if (typeof htmlAttribs.class !== "undefined") {
 								if (htmlAttribs.class == "emoji") {
