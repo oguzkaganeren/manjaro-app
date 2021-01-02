@@ -23,7 +23,7 @@
         },
         "android": {
             "package": "com.manjaro.manjarohome",
-            "versionCode": 6,
+            "versionCode": 8,
             "enableDangerousExperimentalLeanBuilds": true,
             "permissions": []
         },
