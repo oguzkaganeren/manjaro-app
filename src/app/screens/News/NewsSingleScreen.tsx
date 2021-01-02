@@ -32,7 +32,7 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 
 		}).catch(function (error) {
 			// handle error
-			console.log(error);
+			//console.log(error);
 		})
 	}, [])
 	const renderItemFooter = (footerProps, info) => (
@@ -92,11 +92,26 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 						a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" onPress={() => {
 							Linking.openURL(htmlAttribs.href);
 						}} style={{ textAlign: 'justify' }}>{children}</Text>),
-						img: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Layout><Image style={[eva.style.image, style]} source={{
-							uri: htmlAttribs.src
-						}} /></Layout>),
+						img: (htmlAttribs, children, convertedCSSStyles, passProps) => {
+							if (typeof htmlAttribs.class !== "undefined") {
+								if (htmlAttribs.class == "emoji") {
+									return (<Layout><Image style={[eva.style.emoji, style]} source={{
+										uri: htmlAttribs.src
+									}} /></Layout>)
+								}
+							}
+							return (<Layout><Image style={[eva.style.image, style]} source={{
+								uri: htmlAttribs.src
+							}} /></Layout>)
+						},
 						li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
 						em: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify', fontStyle: 'italic' }}>{children}</Text>),
+						h1: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h1' style={{ textAlign: 'justify', }}>{children}</Text>),
+						h2: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h2' style={{ textAlign: 'justify', }}>{children}</Text>),
+						h3: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h3' style={{ textAlign: 'justify', }}>{children}</Text>),
+						h4: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h4' style={{ textAlign: 'justify', }}>{children}</Text>),
+						h5: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h5' style={{ textAlign: 'justify', }}>{children}</Text>),
+						h6: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h6' style={{ textAlign: 'justify', }}>{children}</Text>),
 
 
 					}}
@@ -104,7 +119,7 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 					ignoreNodesFunction={(node, parentTagName, parentIsText) => {
 						if (typeof node.attribs !== "undefined") {
 							if (typeof node.attribs.class !== "undefined") {
-								if (node.attribs.class == "poll" || node.attribs.class == "informations") {
+								if (node.attribs.class == "poll" || node.attribs.class == "informations" || node.attribs.class == "filename") {
 									return true
 								}
 							}
@@ -173,5 +188,10 @@ export const NewsSingleScreen = withStyles(NewsSingleScreenThemed, (theme) => ({
 	codeLayout: {
 		width: Dimensions.get('window').width - 50,
 		height: Dimensions.get('window').height / 2,
-	}
+	},
+	emoji: {
+		width: 20,
+		height: 20,
+		overflow: 'visible',
+	},
 }));
