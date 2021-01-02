@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Layout, Tab, TabView, Text, Icon } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-import { SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { OfficialScreen } from './Official/OfficialScreen';
 import { CommunityScreen } from './Community/CommunityScreen';
@@ -22,7 +21,6 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 
 	const TopTab = createMaterialTopTabNavigator();
 	const TopTabBar = ({ navigation, state }) => {
-		console.log(state.routeNames);
 		const onSelect = (index) => {
 			navigation.navigate(state.routeNames[index]);
 		};

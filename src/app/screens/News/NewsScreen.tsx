@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text, Layout, Spinner, Icon, List, BottomNavigationTab, Card, withStyles } from '@ui-kitten/components';
 import { Image, Dimensions, ScrollView, useWindowDimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import HTML from "react-native-render-html";
 import axios from 'axios';
 export interface NewsScreenProps {
 	navigation: any;

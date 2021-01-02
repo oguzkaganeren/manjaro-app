@@ -12,6 +12,7 @@ import {
 	Button,
 } from '@ui-kitten/components';
 import { DrawerActions } from '@react-navigation/native';
+import { OfflineComponent } from './OfflineComponent';
 import Constants from 'expo-constants';
 
 declare var global: any;
@@ -42,17 +43,24 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 		</View>
 	);
 	return (
-		<TopNavigation
-			style={styles.container}
-			title={props.headerTitle == 'Home' ? renderTitle : props.headerTitle}
-			accessoryLeft={renderLeftControl}
-		/>
+		<Layout>
+			<TopNavigation
+				style={styles.container}
+				title={props.headerTitle == 'Home' ? renderTitle : props.headerTitle}
+				accessoryLeft={renderLeftControl}
+			/>
+			<OfflineComponent />
+		</Layout>
+
 	);
 };
 
 const styles: any = StyleSheet.create({
 	container: {
 		marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
+	},
+	connection: {
+		marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight + 50,
 	},
 	titleContainer: {
 		flexDirection: 'row',
