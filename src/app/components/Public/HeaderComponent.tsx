@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Platform, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Platform, View, ViewStyle } from 'react-native';
 import {
 	Icon,
 	TopNavigation,
@@ -24,10 +24,10 @@ export interface HeaderProps {
 }
 
 const HeaderComponent: React.FC<HeaderProps> = (props) => {
-	const MenuIcon = (style) => <Icon {...style} name="menu-outline" />;
-	const BackIcon = (style) => <Icon {...style} name="arrow-back" />;
+	const MenuIcon = (style: ViewStyle) => <Icon {...style} name="menu-outline" />;
+	const BackIcon = (style: ViewStyle) => <Icon {...style} name="arrow-back" />;
 	const BackAction = () => <TopNavigationAction onPress={props.navigation.goBack} icon={BackIcon} />;
-	const MenuAction = (propsf) => (
+	const MenuAction = () => (
 		<TopNavigationAction
 			onPress={() => {
 				props.navigation.dispatch(DrawerActions.toggleDrawer());
@@ -37,7 +37,7 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 	);
 
 	const renderLeftControl = () => (props.previous ? <BackAction /> : <MenuAction />);
-	const renderTitle = (props) => (
+	const renderTitle = (props: any) => (
 		<View style={styles.titleContainer}>
 			<Text {...props}>Manjaro - enjoy the simplicity</Text>
 		</View>
@@ -49,7 +49,7 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 				title={props.headerTitle == 'Home' ? renderTitle : props.headerTitle}
 				accessoryLeft={renderLeftControl}
 			/>
-			<OfflineComponent />
+			<OfflineComponent eva={null} style={null} />
 		</Layout>
 
 	);

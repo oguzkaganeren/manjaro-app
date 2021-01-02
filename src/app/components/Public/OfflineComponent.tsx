@@ -4,9 +4,10 @@ import { withStyles } from '@ui-kitten/components';
 import NetInfo from "@react-native-community/netinfo";
 const { width } = Dimensions.get('window');
 export interface OfflineProps {
-
+    eva: any,
+    style: any,
 }
-const OfflineComponentThemed: React.FC<HomeProps> = (props) => {
+const OfflineComponentThemed: React.FC<OfflineProps> = (props) => {
     const { eva, style, ...restProps } = props;
     const [isConnected, setIsConnected] = React.useState(true);
     function handleConnectivityChange(isConnected: boolean) {
