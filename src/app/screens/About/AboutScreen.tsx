@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Layout, Tab, TabView, Text, Icon } from '@ui-kitten/components';
-import { withStyles } from '@ui-kitten/components';
-import { SafeAreaView } from 'react-native';
+import { Layout, Tab, TabView, Text, Icon, EvaProp } from '@ui-kitten/components';
+import { withStyles, IconProps } from '@ui-kitten/components';
+import { SafeAreaView, StyleProp, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { TeamScreen } from './TeamScreen';
@@ -10,13 +10,15 @@ import { ApplicationAboutScreen } from './ApplicationAboutScreen';
 export interface AboutProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const CommunityIcon = (props) => <Icon {...props} name="people-outline" />;
-	const AboutIcon = (props) => <Icon {...props} name="info-outline" />;
-	const ApplicationIcon = (props) => <Icon {...props} name="smartphone-outline" />;
+	const CommunityIcon = (props: IconProps) => <Icon {...props} name="people-outline" />;
+	const AboutIcon = (props: IconProps) => <Icon {...props} name="info-outline" />;
+	const ApplicationIcon = (props: IconProps) => <Icon {...props} name="smartphone-outline" />;
 	const TopTab = createMaterialTopTabNavigator();
 	const TopTabBar = ({ navigation, state }) => {
 		const onSelect = (index) => {

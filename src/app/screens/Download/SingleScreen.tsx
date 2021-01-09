@@ -69,7 +69,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 										source={{
 											uri:
 												'https://hacked.manjaro.org/img/editions/' +
-												downloadJson.response.[props.type][props.jsonOrder].Screenshot,
+												downloadJson.response.[props.type][props.jsonOrder].Screenshot, cache: 'only-i- cached'
 										}}
 									/>
 								)

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ScrollView, Image, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button } from '@ui-kitten/components';
+import { ScrollView, ViewStyle, Dimensions, Linking } from 'react-native';
+import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 
@@ -10,6 +10,8 @@ import { expo } from '../../../../app.json'
 export interface LinuxProps {
     navigation: any;
     route: any;
+    eva: EvaProp;
+    style: ViewStyle;
 }
 
 const ApplicationAboutScreenThemed: React.FC<LinuxProps> = (props) => {

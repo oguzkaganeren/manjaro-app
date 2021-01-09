@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { ScrollView, Image, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button } from '@ui-kitten/components';
+import { ScrollView, ViewStyle, Dimensions, Linking } from 'react-native';
+import { Text, Layout, Card, Icon, EvaProp, Divider, Button } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface LinuxProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {

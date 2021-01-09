@@ -118,7 +118,7 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 				header={headerProps => renderItemHeader(headerProps, info)}
 				footer={footerProps => renderItemFooter(footerProps, info)}>
 				<Image style={[eva.style.image, style]} source={{
-					uri: info.item.image_url,
+					uri: info.item.image_url, cache: 'only-i- cached'
 				}} />
 			</Card>
 		</TouchableOpacity>

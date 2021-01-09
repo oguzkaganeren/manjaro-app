@@ -14,7 +14,6 @@ const OfficialScreenThemed: React.FC<HomeProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const { Navigator, Screen } = createBottomTabNavigator();
 	const BottomTabBar = ({ navigation, state }) => {
-		console.log(state.routeNames);
 		const onSelect = (index) => {
 			navigation.navigate(state.routeNames[index]);
 		};

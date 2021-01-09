@@ -92,12 +92,12 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 							if (typeof htmlAttribs.class !== "undefined") {
 								if (htmlAttribs.class == "emoji") {
 									return (<Layout><Image style={[eva.style.emoji, style]} source={{
-										uri: htmlAttribs.src
+										uri: htmlAttribs.src, cache: 'only-i- cached'
 									}} /></Layout>)
 								}
 							}
 							return (<Layout><Image style={[eva.style.image, style]} source={{
-								uri: htmlAttribs.src
+								uri: htmlAttribs.src, cache: 'only-i- cached'
 							}} /></Layout>)
 						},
 						li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),

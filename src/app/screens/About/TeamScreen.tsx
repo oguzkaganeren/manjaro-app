@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { ScrollView } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar } from '@ui-kitten/components';
-import { withStyles } from '@ui-kitten/components';
+import { ScrollView, ViewStyle, ViewProps } from 'react-native';
+import { Text, Layout, Card, Icon, Avatar, EvaProp, CardProps, withStyles, LayoutProps } from '@ui-kitten/components';
 
 export interface TeamProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const PhilipHeader = (props) => (
+	const PhilipHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -36,7 +37,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const BernhardHeader = (props) => (
+	const BernhardHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -62,7 +63,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const GuillaumeHeader = (props) => (
+	const GuillaumeHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -86,7 +87,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const StefanoHeader = (props) => (
+	const StefanoHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -112,7 +113,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const FredeHeader = (props) => (
+	const FredeHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -136,7 +137,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const MattiHeader = (props) => (
+	const MattiHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -162,7 +163,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const DanHeader = (props) => (
+	const DanHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -188,7 +189,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const JoshHeader = (props) => (
+	const JoshHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -212,7 +213,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const VitorHeader = (props) => (
+	const VitorHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -238,7 +239,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const HelmutHeader = (props) => (
+	const HelmutHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -264,7 +265,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const BogdanHeader = (props) => (
+	const BogdanHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -290,7 +291,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const ArtemHeader = (props) => (
+	const ArtemHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -316,7 +317,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const OguzHeader = (props) => (
+	const OguzHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -342,7 +343,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const TobiasHeader = (props) => (
+	const TobiasHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -368,7 +369,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const SchrammHeader = (props) => (
+	const SchrammHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -392,7 +393,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const FurkanHeader = (props) => (
+	const FurkanHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -408,7 +409,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const RayHeader = (props) => (
+	const RayHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar
@@ -424,7 +425,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 			</Layout>
 		</Layout>
 	);
-	const CoffeeHeader = (props) => (
+	const CoffeeHeader = (props: ViewProps) => (
 		<Layout {...props}>
 			<Layout style={[eva.style.sideContainer, style]}>
 				<Avatar

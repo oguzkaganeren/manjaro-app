@@ -1,20 +1,18 @@
 import React from 'react';
-import { StyleSheet, Platform, View, ViewStyle } from 'react-native';
+import { StyleSheet, Platform, View } from 'react-native';
 import {
 	Icon,
 	TopNavigation,
 	TopNavigationAction,
-	Toggle,
-	Avatar,
 	Text,
-	Spinner,
 	Layout,
-	Button,
+	IconProps
+
 } from '@ui-kitten/components';
 import { DrawerActions } from '@react-navigation/native';
 import { OfflineComponent } from './OfflineComponent';
 import Constants from 'expo-constants';
-
+import PropTypes from 'prop-types';
 declare var global: any;
 
 export interface HeaderProps {
@@ -24,8 +22,9 @@ export interface HeaderProps {
 }
 
 const HeaderComponent: React.FC<HeaderProps> = (props) => {
-	const MenuIcon = (style: ViewStyle) => <Icon {...style} name="menu-outline" />;
-	const BackIcon = (style: ViewStyle) => <Icon {...style} name="arrow-back" />;
+
+	const MenuIcon = (style: IconProps) => <Icon {...style} name="menu-outline" />;
+	const BackIcon = (style: IconProps) => <Icon {...style} name="arrow-back" />;
 	const BackAction = () => <TopNavigationAction onPress={props.navigation.goBack} icon={BackIcon} />;
 	const MenuAction = () => (
 		<TopNavigationAction
