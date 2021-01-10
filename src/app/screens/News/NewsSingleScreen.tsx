@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Text, Layout, Modal, Icon, Input, BottomNavigationTab, Card, withStyles, Spinner } from '@ui-kitten/components';
-import { Linking, Dimensions, ScrollView, useWindowDimensions, Image } from 'react-native';
+import { Text, Layout, Modal, Icon, Input, BottomNavigationTab, Card, withStyles, Spinner, EvaProp } from '@ui-kitten/components';
+import { Linking, Dimensions, ScrollView, useWindowDimensions, Image, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import HTML from "react-native-render-html";
 import axios from 'axios';
@@ -8,6 +8,8 @@ import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
 export interface NewsScreenProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
@@ -38,33 +40,33 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	const renderItemFooter = (footerProps, info) => (
 		<BottomNavigationTab
 			icon={(footerProps) => (
-				<Layout style={[eva.style.sideContainer, style]}>
+				<Layout style={[eva.style!.sideContainer, style]}>
 					<Icon
 						{...footerProps}
 						name="eye-outline"
 					/>
-					<Text style={[eva.style.iconText, style]}>
+					<Text style={[eva.style!.iconText, style]}>
 						{info.item.views}
 					</Text>
 					<Icon
 						{...footerProps}
 						name="heart-outline"
 					/>
-					<Text style={[eva.style.iconText, style]}>
+					<Text style={[eva.style!.iconText, style]}>
 						{info.item.like_count}
 					</Text>
 					<Icon
 						{...footerProps}
 						name="message-circle-outline"
 					/>
-					<Text style={[eva.style.iconText, style]}>
+					<Text style={[eva.style!.iconText, style]}>
 						{info.item.reply_count}
 					</Text>
 					<Icon
 						{...footerProps}
 						name="calendar-outline"
 					/>
-					<Text style={[eva.style.iconText, style]}>
+					<Text style={[eva.style!.iconText, style]}>
 						{info.item.created_at.split('T')[0]}
 					</Text>
 				</Layout>
@@ -72,8 +74,8 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 		/>
 	);
 	return (
-		<Layout style={[eva.style.container, style]}>
-			{!isLoading ? (<ScrollView style={[eva.style.scrollView, style]}><Card
+		<Layout style={[eva.style!.container, style]}>
+			{!isLoading ? (<ScrollView style={[eva.style!.scrollView, style]}><Card
 				disabled
 				status='success'
 				header={headerProps => renderItemHeader(headerProps, singleTopicInfo)}
@@ -91,13 +93,13 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 						img: (htmlAttribs, children, convertedCSSStyles, passProps) => {
 							if (typeof htmlAttribs.class !== "undefined") {
 								if (htmlAttribs.class == "emoji") {
-									return (<Layout><Image style={[eva.style.emoji, style]} source={{
-										uri: htmlAttribs.src, cache: 'only-i- cached'
+									return (<Layout><Image style={[eva.style!.emoji, style]} source={{
+										uri: htmlAttribs.src, cache: 'only-if-cached'
 									}} /></Layout>)
 								}
 							}
-							return (<Layout><Image style={[eva.style.image, style]} source={{
-								uri: htmlAttribs.src, cache: 'only-i- cached'
+							return (<Layout><Image style={[eva.style!.image, style]} source={{
+								uri: htmlAttribs.src, cache: 'only-if-cached'
 							}} /></Layout>)
 						},
 						li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout, BottomNavigation, BottomNavigationTab, Text, Icon, Tab, TabView } from '@ui-kitten/components';
+import { Layout, BottomNavigation, BottomNavigationTab, Text, Icon, ViewStyle, EvaProp } from '@ui-kitten/components';
 import { Dimensions, SafeAreaView, Linking } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -9,6 +9,8 @@ import { SingleScreen } from '../SingleScreen';
 export interface HomeProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const ARMScreenThemed: React.FC<HomeProps> = (props) => {
@@ -17,7 +19,7 @@ const ARMScreenThemed: React.FC<HomeProps> = (props) => {
 	const downloadJson = useFetch('https://manjaro.org/download/index.json', {});
 
 	const TabNavigator = () => (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollableTabView
 				tabBarPosition={'bottom'}
 				tabBarActiveTextColor="#32C15A"
@@ -47,7 +49,6 @@ const ARMScreenThemed: React.FC<HomeProps> = (props) => {
 
 				{downloadJson.response ? downloadJson.response.ARM.map((info, index) => (
 					<SingleScreen
-						tabLabel={{ label: info.name }}
 						route={props.route}
 						navigation={props.navigation}
 
@@ -58,7 +59,6 @@ const ARMScreenThemed: React.FC<HomeProps> = (props) => {
 
 
 					: <SingleScreen
-						tabLabel={{ label: 'Loading' }}
 						route={props.route}
 						navigation={props.navigation}
 

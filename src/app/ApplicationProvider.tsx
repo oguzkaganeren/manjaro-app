@@ -7,7 +7,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { AwesomeIconsPack } from './theme/awesome-icons';
 import { AppNavigator } from '../app/navigator/AppNavigator';
 export default () => (
-	<ApplicationProvider {...eva} customMapping={mapping} theme={{ ...eva.dark, ...theme }}>
+	<ApplicationProvider {...eva} customMapping={{ ...eva.mapping, mapping }} theme={{ ...eva.dark, ...theme }}>
 		<IconRegistry icons={[EvaIconsPack, AwesomeIconsPack]} />
 		<AppNavigator />
 	</ApplicationProvider>

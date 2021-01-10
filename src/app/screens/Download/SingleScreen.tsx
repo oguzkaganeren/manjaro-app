@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ScrollView, Dimensions, Linking, Image } from 'react-native';
-import { Text, Layout, Card, Icon, Button, Modal, Divider, Spinner } from '@ui-kitten/components';
+import { ScrollView, Dimensions, Linking, Image, ViewStyle } from 'react-native';
+import { Text, Layout, Card, Icon, Button, Modal, Divider, Spinner, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { useFetch } from '../../hooks/JsonFetcher';
@@ -11,6 +11,8 @@ export interface ConfiguredWithOneClickProps {
 	route: any;
 	jsonOrder: Number;
 	type: String;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
@@ -23,11 +25,11 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 
 	const ChooseHeader = (subprops) => (
 		<Layout {...subprops}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				{downloadJson.response ? (<Text category="h4">{downloadJson.response.[props.type][props.jsonOrder].name.substring(0, 7)}{downloadJson.response.[props.type][props.jsonOrder].name.length > 7 ? '...' : ''}</Text>) : null}
 				{downloadJson.response ? (
 					<Button
-						style={[eva.style.download, style]}
+						style={[eva.style!.download, style]}
 						onPress={() => setDownloadModalVisible(true)}
 						appearance="outline"
 						status="primary"
@@ -43,7 +45,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	);
 
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				{downloadJson.response ? (
 					<Card disabled header={ChooseHeader} disabled={true}>
@@ -65,11 +67,11 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 								/>
 							) : (
 									<Image
-										style={[eva.style.image, style]}
+										style={[eva.style!.image, style]}
 										source={{
 											uri:
 												'https://hacked.manjaro.org/img/editions/' +
-												downloadJson.response.[props.type][props.jsonOrder].Screenshot, cache: 'only-i- cached'
+												downloadJson.response.[props.type][props.jsonOrder].Screenshot, cache: 'only-if-cached'
 										}}
 									/>
 								)
@@ -103,7 +105,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 			{downloadJson.response ? (
 				<Modal
 					visible={downloadModalVisible}
-					backdropStyle={[eva.style.backdrop, style]}
+					backdropStyle={[eva.style!.backdrop, style]}
 					onBackdropPress={() => setDownloadModalVisible(false)}
 				>
 					<Card disabled>
@@ -116,7 +118,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 							onPress={() => {
 								Linking.openURL(downloadJson.response.[props.type][props.jsonOrder].Download_x64);
 							}}
-							style={[eva.style.download, style]}
+							style={[eva.style!.download, style]}
 							appearance="outline"
 							status="primary"
 							accessoryLeft={DownloadIcon}
@@ -149,7 +151,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 							onPress={() => {
 								Linking.openURL(downloadJson.response.[props.type][props.jsonOrder].Download_Minimal_x64);
 							}}
-							style={[eva.style.download, style]}
+							style={[eva.style!.download, style]}
 							appearance="outline"
 							status="primary"
 							accessoryLeft={DownloadIcon}

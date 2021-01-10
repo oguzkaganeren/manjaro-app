@@ -1,23 +1,25 @@
 import * as React from 'react';
-import { ScrollView, Image, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button } from '@ui-kitten/components';
+import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
+import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface LearnMoreProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled>
-					<Layout style={[eva.style.sideContainer, style]}>
+					<Layout style={[eva.style!.sideContainer, style]}>
 						<Avatar
-							style={[eva.style.logo, style]}
+							style={[eva.style!.logo, style]}
 							shape="square"
 							size="small"
 							source={require('../../../assets/logo.png')}
@@ -88,8 +90,8 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 					</Text>
 					<Text></Text>
 
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="credit-card-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="credit-card-outline" />
 						<Text category="h6" style={{ textAlign: 'justify' }}>
 							Free is better
 						</Text>
@@ -102,8 +104,8 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 					</Text>
 					<Text></Text>
 
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#EC407A" name="download-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#EC407A" name="download-outline" />
 						<Text category="h6" style={{ textAlign: 'justify' }}>
 							Install Anything
 						</Text>
@@ -116,8 +118,8 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 					</Text>
 					<Text></Text>
 
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#AB47BC" name="people-outline" />
+					<Layout style={[eva.style!!.sideContainer, style]}>
+						<Icon style={[eva.style!!.icon, style]} fill="#AB47BC" name="people-outline" />
 						<Text category="h6" style={{ textAlign: 'justify' }}>
 							Great Community
 						</Text>
@@ -138,8 +140,8 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 					</Text>
 					<Text></Text>
 
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#FFA726" name="hard-drive-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#FFA726" name="hard-drive-outline" />
 						<Text category="h6" style={{ textAlign: 'justify' }}>
 							Availability
 						</Text>

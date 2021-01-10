@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Text, Layout, Spinner, Icon, List, BottomNavigationTab, Card, withStyles } from '@ui-kitten/components';
-import { Image, Dimensions, ScrollView, useWindowDimensions } from 'react-native';
+import { Text, Layout, Spinner, Icon, List, BottomNavigationTab, Card, withStyles, EvaProp } from '@ui-kitten/components';
+import { Image, Dimensions, ScrollView, useWindowDimensions, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import axios from 'axios';
 export interface NewsScreenProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
@@ -75,33 +77,33 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	const renderItemFooter = (footerProps, info) => (
 		<BottomNavigationTab
 			icon={(props) => (
-				<Layout style={[eva.style.sideContainer, style]}>
+				<Layout style={[eva.style!.sideContainer, style]}>
 					<Icon
 						{...props}
 						name="eye-outline"
 					/>
-					<Text style={[eva.style.iconText, style]}>
+					<Text style={[eva.style!.iconText, style]}>
 						{info.item.views}
 					</Text>
 					<Icon
 						{...props}
 						name="heart-outline"
 					/>
-					<Text style={[eva.style.iconText, style]}>
+					<Text style={[eva.style!.iconText, style]}>
 						{info.item.like_count}
 					</Text>
 					<Icon
 						{...props}
 						name="message-circle-outline"
 					/>
-					<Text style={[eva.style.iconText, style]}>
+					<Text style={[eva.style!.iconText, style]}>
 						{info.item.reply_count}
 					</Text>
 					<Icon
 						{...props}
 						name="calendar-outline"
 					/>
-					<Text style={[eva.style.iconText, style]}>
+					<Text style={[eva.style!.iconText, style]}>
 						{info.item.created_at.split('T')[0]}
 					</Text>
 				</Layout>
@@ -117,7 +119,7 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 				status='success'
 				header={headerProps => renderItemHeader(headerProps, info)}
 				footer={footerProps => renderItemFooter(footerProps, info)}>
-				<Image style={[eva.style.image, style]} source={{
+				<Image style={[eva.style!.image, style]} source={{
 					uri: info.item.image_url, cache: 'only-i- cached'
 				}} />
 			</Card>
@@ -125,7 +127,7 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	);
 
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			{!isLoading ? (<List
 				data={allFeed}
 				renderItem={renderItem}

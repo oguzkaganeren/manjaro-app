@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Layout, Tab, TabView, Text, Icon } from '@ui-kitten/components';
-import { withStyles } from '@ui-kitten/components';
+import { ViewStyle } from 'react-native';
+import { Layout, Tab, TabView, EvaProp, Icon, withStyles, IconProps } from '@ui-kitten/components';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { OfficialScreen } from './Official/OfficialScreen';
 import { CommunityScreen } from './Community/CommunityScreen';
@@ -9,14 +9,16 @@ import { DevelopmentScreen } from './Development/DevelopementScreen';
 export interface HomeProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const OfficialIcon = (props) => <Icon {...props} name="paper-plane-outline" />;
-	const CommunityIcon = (props) => <Icon {...props} name="people-outline" />;
-	const ARMIcon = (props) => <Icon {...props} name="smartphone-outline" />;
-	const DevelopmentIcon = (props) => <Icon {...props} name="code-outline" />;
+	const OfficialIcon = (props: IconProps) => <Icon {...props} name="paper-plane-outline" />;
+	const CommunityIcon = (props: IconProps) => <Icon {...props} name="people-outline" />;
+	const ARMIcon = (props: IconProps) => <Icon {...props} name="smartphone-outline" />;
+	const DevelopmentIcon = (props: IconProps) => <Icon {...props} name="code-outline" />;
 	const [selectedIndex, setSelectedIndex] = React.useState(0);
 
 	const TopTab = createMaterialTopTabNavigator();
@@ -35,14 +37,14 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 		);
 	};
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<TopTab.Navigator
 				swipeEnabled={false}
 				tabBarOptions={{ scrollEnabled: false }}
 				lazy={true}
 				tabBar={(props) => <TopTabBar {...props} />}
 			>
-				<TopTab.Screen name="Offical" component={OfficialScreen} />
+				<TopTab.Screen name="Official" component={OfficialScreen} />
 				<TopTab.Screen name="Community" component={CommunityScreen} />
 				<TopTab.Screen name="ARM" component={ARMScreen} />
 				<TopTab.Screen name="Development" component={DevelopmentScreen} />

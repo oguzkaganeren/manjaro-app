@@ -14,7 +14,7 @@ const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'justify' }}>

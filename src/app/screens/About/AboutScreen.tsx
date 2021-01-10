@@ -36,7 +36,7 @@ const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 		);
 	};
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
 				<TopTab.Screen name="Team" component={TeamScreen} />
 				<TopTab.Screen name="Linux" component={LinuxScreen} />

@@ -1,59 +1,61 @@
 import * as React from 'react';
-import { ScrollView, Image, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button } from '@ui-kitten/components';
+import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
+import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface UsefulForEveryoneProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const ScientistsHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Text category="h6">Scientists</Text>
 			</Layout>
 		</Layout>
 	);
 	const GamersHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Text category="h6">Gamers</Text>
 			</Layout>
 		</Layout>
 	);
 	const TSHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Text category="h6">Teachers/Students</Text>
 			</Layout>
 		</Layout>
 	);
 	const DevelopersHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Text category="h6">Developers</Text>
 			</Layout>
 		</Layout>
 	);
 	const HomeUsersHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Text category="h6">Home Users</Text>
 			</Layout>
 		</Layout>
 	);
 	const ArtistsHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Text category="h6">Artists</Text>
 			</Layout>
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -86,8 +88,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="warning" header={ScientistsHeader}>
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -100,8 +102,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Create documents and more</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -114,8 +116,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Creating LaTeX documents</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -130,8 +132,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="danger" header={GamersHeader}>
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -144,8 +146,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Software store</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -158,8 +160,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Strategy game</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -174,8 +176,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="info" header={TSHeader}>
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -188,8 +190,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Learning software</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -202,8 +204,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Geometry/mathematics</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -218,8 +220,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="warning" header={DevelopersHeader}>
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -232,8 +234,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Code editing</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -246,8 +248,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> IDE</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -262,8 +264,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="danger" header={HomeUsersHeader}>
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -276,8 +278,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Complete office-suite</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -290,8 +292,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> E-Mail client</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -306,8 +308,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="info" header={ArtistsHeader}>
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -320,8 +322,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Graphics editing, drawing</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"
@@ -334,8 +336,8 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Video editing</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style.sideContainer, style]}>
-						<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="info-outline" />
+					<Layout style={[eva.style!.sideContainer, style]}>
+						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: '#1E88E5' }}
 							category="h6"

@@ -1,21 +1,23 @@
 import * as React from 'react';
-import { Text, Layout, Avatar, Button, Icon } from '@ui-kitten/components';
-import { Linking } from 'react-native';
+import { Text, Layout, Avatar, Button, Icon, EvaProp } from '@ui-kitten/components';
+import { Linking, ViewStyle } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 export interface MirrorsProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const MirrorsScreenThemed: React.FC<MirrorsProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<Text style={{ marginHorizontal: 10 }} status="warning">
 				We are working on this screen, you can use the web page.
 			</Text>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Text
 					style={{ color: '#1E88E5' }}
 					category="h6"
@@ -25,7 +27,7 @@ const MirrorsScreenThemed: React.FC<MirrorsProps> = (props) => {
 				>
 					Manjaro Repository Web Page
 				</Text>
-				<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="external-link-outline" />
+				<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="external-link-outline" />
 			</Layout>
 		</Layout>
 	);

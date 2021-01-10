@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Layout, BottomNavigation, BottomNavigationTab, Text, Icon, Tab, TabView } from '@ui-kitten/components';
-import { Dimensions, SafeAreaView, Linking } from 'react-native';
+import { Layout, BottomNavigation, BottomNavigationTab, Text, Icon, Tab, EvaProp } from '@ui-kitten/components';
+import { Dimensions, SafeAreaView, ViewStyle } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from 'react-native-underline-tabbar';
@@ -8,13 +8,15 @@ import { SingleScreen } from '../SingleScreen';
 export interface HomeProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 
 	const TabNavigator = () => (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollableTabView
 				tabBarPosition={'bottom'}
 				tabBarActiveTextColor="#32C15A"
@@ -42,7 +44,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 				)}
 			>
 				<SingleScreen
-					tabLabel={{ label: 'Awesome' }}
 					route={props.route}
 					navigation={props.navigation}
 
@@ -50,7 +51,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					type={'Community'}
 				/>
 				<SingleScreen
-					tabLabel={{ label: 'Bspwm' }}
 					route={props.route}
 					navigation={props.navigation}
 
@@ -58,7 +58,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					type={'Community'}
 				/>
 				<SingleScreen
-					tabLabel={{ label: 'Budgie' }}
 					route={props.route}
 					navigation={props.navigation}
 
@@ -66,7 +65,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					type={'Community'}
 				/>
 				<SingleScreen
-					tabLabel={{ label: 'Cinnamon' }}
 					route={props.route}
 					navigation={props.navigation}
 
@@ -74,7 +72,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					type={'Community'}
 				/>
 				<SingleScreen
-					tabLabel={{ label: 'I3' }}
 					route={props.route}
 					navigation={props.navigation}
 
@@ -82,7 +79,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					type={'Community'}
 				/>
 				<SingleScreen
-					tabLabel={{ label: 'LXDE' }}
 					route={props.route}
 					navigation={props.navigation}
 
@@ -90,7 +86,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					type={'Community'}
 				/>
 				<SingleScreen
-					tabLabel={{ label: 'LXQt' }}
 					route={props.route}
 					navigation={props.navigation}
 
@@ -98,7 +93,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					type={'Community'}
 				/>
 				<SingleScreen
-					tabLabel={{ label: 'Mate' }}
 					route={props.route}
 					navigation={props.navigation}
 
@@ -106,7 +100,6 @@ const CommunityScreenThemed: React.FC<HomeProps> = (props) => {
 					type={'Community'}
 				/>
 				<SingleScreen
-					tabLabel={{ label: 'Openbox' }}
 					route={props.route}
 					navigation={props.navigation}
 

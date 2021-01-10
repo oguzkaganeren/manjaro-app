@@ -13,25 +13,26 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const PhilipHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/philip.jpg',
+						uri: 'https://manjaro.org/img/team/philip.jpg', cache: 'only-if-cached'
+
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, style]}>
+				<Text category="h6" style={[eva.style!.subHeader, style]}>
 					Philip Müller{'\n'}
 					<Text category="s2">Project Lead Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DE.png',
+						uri: 'https://manjaro.org/img/flags/DE.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -39,25 +40,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const BernhardHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/bernhard.jpg',
+						uri: 'https://manjaro.org/img/team/bernhard.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, style]}>
+				<Text category="h6" style={[eva.style!.subHeader, style]}>
 					Bernhard Landauer{'\n'}
 					<Text category="s2">Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/AT.png',
+						uri: 'https://manjaro.org/img/flags/AT.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -65,23 +66,23 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const GuillaumeHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={require('../../../../assets/logo.png')}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, style]}>
+				<Text category="h6" style={[eva.style!.subHeader, style]}>
 					Guillaume Benoit{'\n'}
 					<Text category="s2">Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/FR.png',
+						uri: 'https://manjaro.org/img/flags/FR.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -89,25 +90,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const StefanoHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/stefano.jpg',
+						uri: 'https://manjaro.org/img/team/stefano.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Stefano Capitani{'\n'}
 					<Text category="s2">Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/IT.png',
+						uri: 'https://manjaro.org/img/flags/IT.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -115,23 +116,23 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const FredeHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={require('../../../../assets/logo.png')}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Frede Hundewadt{'\n'}
 					<Text category="s2">DevOps | Engineer | SysAdmin</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DK.png',
+						uri: 'https://manjaro.org/img/flags/DK.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -139,25 +140,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const MattiHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/matti.jpg',
+						uri: 'https://manjaro.org/img/team/matti.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Matti Hyttinen{'\n'}
 					<Text category="s2">Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/FI.png',
+						uri: 'https://manjaro.org/img/flags/FI.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -165,25 +166,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const DanHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/dan.jpg',
+						uri: 'https://manjaro.org/img/team/dan.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Dan Johansen{'\n'}
 					<Text category="s2">ARM Lead Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DK.png',
+						uri: 'https://manjaro.org/img/flags/DK.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -191,23 +192,23 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const JoshHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={require('../../../../assets/logo.png')}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Josh Crowder{'\n'}
 					<Text category="s2">ARM Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/US.png',
+						uri: 'https://manjaro.org/img/flags/US.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -215,25 +216,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const VitorHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/vitor.jpg',
+						uri: 'https://manjaro.org/img/team/vitor.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Vitor Lopes{'\n'}
 					<Text category="s2">Web Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/PT.png',
+						uri: 'https://manjaro.org/img/flags/PT.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -241,25 +242,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const HelmutHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/helmut.jpg',
+						uri: 'https://manjaro.org/img/team/helmut.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Helmut Stult{'\n'}
 					<Text category="s2">Developer | Speaker</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DE.png',
+						uri: 'https://manjaro.org/img/flags/DE.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -267,25 +268,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const BogdanHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/bogan.jpg',
+						uri: 'https://manjaro.org/img/team/bogan.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Bogdan Covaciu{'\n'}
 					<Text category="s2">Designer | Illustrator</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/RO.png',
+						uri: 'https://manjaro.org/img/flags/RO.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -293,25 +294,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const ArtemHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/artem.jpg',
+						uri: 'https://manjaro.org/img/team/artem.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Artem Grinev{'\n'}
 					<Text category="s2">Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/RU.png',
+						uri: 'https://manjaro.org/img/flags/RU.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -319,25 +320,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const OguzHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/oguz.jpg',
+						uri: 'https://manjaro.org/img/team/oguz.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Oğuz Kağan Eren{'\n'}
 					<Text category="s2">Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/TR.png',
+						uri: 'https://manjaro.org/img/flags/TR.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -345,25 +346,25 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const TobiasHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/tobias.jpg',
+						uri: 'https://manjaro.org/img/team/tobias.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Tobias Mädel{'\n'}
 					<Text category="s2">ARM Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DE.png',
+						uri: 'https://manjaro.org/img/flags/DE.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -371,23 +372,23 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const SchrammHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={require('../../../../assets/logo.png')}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Tobias Schramm{'\n'}
 					<Text category="s2">ARM Kernel Developer</Text>
 				</Text>
 				<Avatar
 					shape="rounded"
 					size="tiny"
-					style={[eva.style.flag, style]}
+					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DE.png',
+						uri: 'https://manjaro.org/img/flags/DE.png', cache: 'only-if-cached'
 					}}
 				/>
 			</Layout>
@@ -395,14 +396,14 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const FurkanHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={require('../../../../assets/logo.png')}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Furkan Kardame{'\n'}
 					<Text category="s2">ARM Developer</Text>
 				</Text>
@@ -411,14 +412,14 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const RayHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={require('../../../../assets/logo.png')}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Ray Sherwin{'\n'}
 					<Text category="s2">ARM Developer</Text>
 				</Text>
@@ -427,16 +428,16 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const CoffeeHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.sideContainer, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
-					style={[eva.style.avatar, style]}
+					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/coffee.jpg',
+						uri: 'https://manjaro.org/img/team/coffee.jpg', cache: 'only-if-cached'
 					}}
 				/>
-				<Text category="h6" style={[eva.style.subHeader, { textAlign: 'center' }]}>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
 					Coffee{'\n'}
 					<Text category="s2">Motivator</Text>
 				</Text>
@@ -444,7 +445,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'center' }}>

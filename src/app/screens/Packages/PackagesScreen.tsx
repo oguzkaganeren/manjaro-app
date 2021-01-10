@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Layout, Tab, TabView, Text, Icon } from '@ui-kitten/components';
+import { Layout, Tab, TabView, Text, Icon, EvaProp, IconProps } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { BranchScreen } from './BranchScreen';
 import { DiscoverScreen } from './DiscoverScreen';
@@ -10,13 +10,15 @@ import { MirrorsScreen } from './MirrorsScreen';
 export interface AboutProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const PackagesScreenThemed: React.FC<AboutProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const MirrorsIcon = (props) => <Icon {...props} name="flip-outline" />;
-	const DiscoverIcon = (props) => <Icon {...props} name="cube-outline" />;
-	const BranchIcon = (props) => <Icon {...props} name="shuffle-2-outline" />;
+	const MirrorsIcon = (props: IconProps) => <Icon {...props} name="flip-outline" />;
+	const DiscoverIcon = (props: IconProps) => <Icon {...props} name="cube-outline" />;
+	const BranchIcon = (props: IconProps) => <Icon {...props} name="shuffle-2-outline" />;
 
 	const TopTab = createMaterialTopTabNavigator();
 	const TopTabBar = ({ navigation, state }) => {
@@ -35,7 +37,7 @@ const PackagesScreenThemed: React.FC<AboutProps> = (props) => {
 		);
 	};
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
 				<TopTab.Screen name="Mirrors" component={MirrorsScreen} />
 				<TopTab.Screen name="Discover" component={DiscoverScreen} />

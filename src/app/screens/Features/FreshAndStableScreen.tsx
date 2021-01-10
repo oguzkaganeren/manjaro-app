@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { ScrollView, Image, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button } from '@ui-kitten/components';
+import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
+import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface FreshAndStableProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const FreshAndStableScreenThemed: React.FC<FreshAndStableProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -33,7 +35,7 @@ const FreshAndStableScreenThemed: React.FC<FreshAndStableProps> = (props) => {
 						no more problems are found.
 					</Text>
 					<Image
-						style={[eva.style.image, style]}
+						style={[eva.style!.image, style]}
 						source={require('../../../../assets/featureImages/repositories.png')}
 					/>
 					<Text category="h6" style={{ textAlign: 'justify' }}>

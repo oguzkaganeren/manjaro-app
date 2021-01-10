@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { ScrollView, Image, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button } from '@ui-kitten/components';
+import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
+import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface FirstStepsProps {
 	navigation: any;
 	route: any;
+
+	eva: EvaProp;
+	style: ViewStyle;
 }
 /**
  * Props first steps screen themed
@@ -16,7 +19,7 @@ const FirstStepsScreenThemed: React.FC<FirstStepsProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const VirtualHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Icon pack="awesome" style={{ height: 24, tintColor: '#FCA326' }} name="window-maximize" />
 				<Text category="h6">Using a virtual machine</Text>
 			</Layout>
@@ -24,7 +27,7 @@ const FirstStepsScreenThemed: React.FC<FirstStepsProps> = (props) => {
 	);
 	const LiveHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Icon pack="awesome" style={{ height: 24, tintColor: '#AB47BC' }} name="usb" />
 				<Text category="h6">Using a live-system</Text>
 			</Layout>
@@ -32,14 +35,14 @@ const FirstStepsScreenThemed: React.FC<FirstStepsProps> = (props) => {
 	);
 	const InstallHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Icon pack="awesome" style={{ height: 24, tintColor: '#FFA726' }} name="desktop" />
 				<Text category="h6">Install Manjaro</Text>
 			</Layout>
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'justify' }}>

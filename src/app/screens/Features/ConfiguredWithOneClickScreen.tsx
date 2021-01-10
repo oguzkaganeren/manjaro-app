@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { ScrollView, Image, Dimensions } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar } from '@ui-kitten/components';
+import { ScrollView, Image, Dimensions, ViewStyle } from 'react-native';
+import { Text, Layout, Card, Icon, Avatar, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const ChooseHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Image
-					style={[eva.style.image, style]}
+					style={[eva.style!.image, style]}
 					source={require('../../../../assets/featureImages/manjaro_pamac.png')}
 				/>
 				<Text category="h6">Choose, install, finished!</Text>
@@ -23,9 +25,9 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	);
 	const DivideHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Image
-					style={[eva.style.image, style]}
+					style={[eva.style!.image, style]}
 					source={require('../../../../assets/featureImages/manjaro_useraccounts.png')}
 				/>
 				<Text category="h6">Divide and conquer</Text>
@@ -34,9 +36,9 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	);
 	const LanguageHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Image
-					style={[eva.style.image, style]}
+					style={[eva.style!.image, style]}
 					source={require('../../../../assets/featureImages/manjaro_locale.png')}
 				/>
 				<Text category="h6">Manjaro speaks your language</Text>
@@ -45,17 +47,17 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	);
 	const GraphicCardHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
-				<Image style={[eva.style.image, style]} source={require('../../../../assets/featureImages/manjaro_mhwd.png')} />
+			<Layout style={[eva.style!.subContainer, style]}>
+				<Image style={[eva.style!.image, style]} source={require('../../../../assets/featureImages/manjaro_mhwd.png')} />
 				<Text category="h6">New graphics card? One click and it's done</Text>
 			</Layout>
 		</Layout>
 	);
 	const CoreHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Image
-					style={[eva.style.image, style]}
+					style={[eva.style!.image, style]}
 					source={require('../../../../assets/featureImages/manjaro_kernels.png')}
 				/>
 				<Text category="h6">Switch the core with one click</Text>
@@ -64,9 +66,9 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	);
 	const TravelHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
+			<Layout style={[eva.style!.subContainer, style]}>
 				<Image
-					style={[eva.style.image, style]}
+					style={[eva.style!.image, style]}
 					source={require('../../../../assets/featureImages/manjaro_timeanddate.png')}
 				/>
 				<Text category="h6">Traveling a lot?</Text>
@@ -74,7 +76,7 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>

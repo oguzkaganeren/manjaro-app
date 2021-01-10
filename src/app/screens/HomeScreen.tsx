@@ -1,39 +1,42 @@
 import * as React from 'react';
-import { Text, Layout, Avatar, Button, Icon } from '@ui-kitten/components';
+import { Text, Layout, Avatar, Button, Icon, EvaProp, IconProps } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
+import { ViewStyle } from 'react-native';
 
 export interface HomeProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const HomeScreenThemed: React.FC<HomeProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const DownloadIcon = (props) => <Icon {...props} name="arrow-circle-down-outline" />;
-	const InfoIcon = (props) => <Icon {...props} name="info-outline" />;
+	const DownloadIcon = (props: IconProps) => <Icon {...props} name="arrow-circle-down-outline" />;
+	const InfoIcon = (props: IconProps) => <Icon {...props} name="info-outline" />;
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<Avatar
 				shape="square"
 				size="large"
-				style={[eva.style.logo, style]}
+				style={[eva.style!.logo, style]}
 				source={require('../../../assets/logo.png')}
 			/>
-			<Layout style={[eva.style.sideContainer, style]}>
-				<Text category="s1" style={[eva.style.sharp, style]}>
+			<Layout style={[eva.style!.sideContainer, style]}>
+				<Text category="s1" style={[eva.style!.sharp, style]}>
 					#
 				</Text>
 				<Text category="s1">FREE OPERATING SYSTEM FOR EVERYONE</Text>
 			</Layout>
-			<Layout style={[eva.style.description, style]}>
+			<Layout style={[eva.style!.description, style]}>
 				<Text category="p1" style={{ textAlign: 'justify' }}>
 					Manjaro is a professionally made operating system that is a suitable replacement for Windows or MacOS.
 					Multiple Desktop Environments are available through our Official and Community editions.
 				</Text>
 			</Layout>
-			<Layout style={[eva.style.buttonContainer, style]}>
+			<Layout style={[eva.style!.buttonContainer, style]}>
 				<Button
-					style={[eva.style.download, style]}
+					style={[eva.style!.download, style]}
 					onPress={() => {
 						props.navigation.navigate('DownloadScreen');
 					}}
@@ -44,7 +47,7 @@ const HomeScreenThemed: React.FC<HomeProps> = (props) => {
 					Download
 				</Button>
 				<Button
-					style={[eva.style.learnMore, style]}
+					style={[eva.style!.learnMore, style]}
 					appearance="outline"
 					onPress={() => {
 						props.navigation.navigate('LearnMoreScreen');

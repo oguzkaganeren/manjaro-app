@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Layout, BottomNavigation, BottomNavigationTab, Text, Icon, Tab, TabView } from '@ui-kitten/components';
-import { Dimensions, SafeAreaView, Linking } from 'react-native';
+import { Layout, BottomNavigation, BottomNavigationTab, Text, Icon, Tab, EvaProp } from '@ui-kitten/components';
+import { Dimensions, SafeAreaView, ViewStyle } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from 'react-native-underline-tabbar';
@@ -8,13 +8,15 @@ import { SingleScreen } from '../SingleScreen';
 export interface HomeProps {
     navigation: any;
     route: any;
+    eva: EvaProp;
+    style: ViewStyle;
 }
 
 const DevelopmentScreenThemed: React.FC<HomeProps> = (props) => {
     const { eva, style, ...restProps } = props;
 
     const TabNavigator = () => (
-        <Layout style={[eva.style.container, style]}>
+        <Layout style={[eva.style!.container, style]}>
             <ScrollableTabView
                 tabBarPosition={'bottom'}
                 tabBarActiveTextColor="#32C15A"
@@ -42,7 +44,6 @@ const DevelopmentScreenThemed: React.FC<HomeProps> = (props) => {
                 )}
             >
                 <SingleScreen
-                    tabLabel={{ label: 'Development' }}
                     route={props.route}
                     navigation={props.navigation}
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Layout, Tab, TabView, Text, Icon } from '@ui-kitten/components';
+import { Layout, Tab, TabView, Text, Icon, EvaProp, IconProps } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { FirstStepsScreen } from './FirstStepsScreen';
 import { UserGuideScreen } from './UserGuideScreen';
@@ -9,15 +9,17 @@ import { UserGuideScreen } from './UserGuideScreen';
 export interface SupportProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const SupportScreenThemed: React.FC<SupportProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const FirstIcon = (props) => <Icon {...props} name="compass-outline" />;
-	const GuideIcon = (props) => <Icon {...props} name="book-open-outline" />;
+	const FirstIcon = (props: IconProps) => <Icon {...props} name="compass-outline" />;
+	const GuideIcon = (props: IconProps) => <Icon {...props} name="book-open-outline" />;
 
 	const TopTab = createMaterialTopTabNavigator();
-	const TopTabBar = ({ navigation, state }) => {
+	function TopTabBar({ navigation, state }) {
 		const onSelect = (index) => {
 			navigation.navigate(state.routeNames[index]);
 		};
@@ -30,9 +32,9 @@ const SupportScreenThemed: React.FC<SupportProps> = (props) => {
 				</TabView>
 			</SafeAreaView>
 		);
-	};
+	}
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
 				<TopTab.Screen name="Mirrors" component={FirstStepsScreen} />
 				<TopTab.Screen name="Branch" component={UserGuideScreen} />

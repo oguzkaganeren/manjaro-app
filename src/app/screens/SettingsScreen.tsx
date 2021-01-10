@@ -1,25 +1,29 @@
 import * as React from 'react';
-import { Text, Layout, ListItem, Toggle, Icon } from '@ui-kitten/components';
-import { Linking } from 'react-native';
+import { Text, Layout, ListItem, Toggle, Icon, EvaProp } from '@ui-kitten/components';
+import { Linking, ViewStyle } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 export interface NewsScreenProps {
     navigation: any;
     route: any;
+    eva: EvaProp;
+    style: ViewStyle;
 }
 
 const SettingsScreenThemed: React.FC<NewsScreenProps> = (props) => {
     const { eva, style, ...restProps } = props;
     const [checked, setChecked] = React.useState(false);
 
-    const onCheckedChange = (isChecked) => {
+    const onCheckedChange = (isChecked: boolean) => {
         setChecked(isChecked);
     };
 
-    const InstallButton = (props) => (
-        <Toggle checked={checked} onChange={onCheckedChange} />
-    );
+    function InstallButton(props) {
+        return (
+            <Toggle {...props} checked={checked} onChange={onCheckedChange} />
+        );
+    }
     return (
-        <Layout style={[eva.style.container, style]}>
+        <Layout style={[eva.style!.container, style]}>
             <ListItem
                 title={props => <Text {...props}>Notification</Text>}
                 description={props => <Text {...props}>It sends you news</Text>}

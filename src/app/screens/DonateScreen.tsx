@@ -1,19 +1,21 @@
 import * as React from 'react';
-import { ScrollView, Image, Dimensions, Linking, TouchableHighlight } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button } from '@ui-kitten/components';
+import { ScrollView, Image, Dimensions, Linking, TouchableHighlight, ViewStyle } from 'react-native';
+import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
 //import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import { withStyles } from '@ui-kitten/components';
 
 export interface DonateProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'justify' }}>
@@ -44,7 +46,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					</Text>
 					<TouchableHighlight onPress={() => Linking.openURL('https://funding.communitybridge.org/projects/manjaro')}>
 						<Image
-							style={[eva.style.donateImage, style]}
+							style={[eva.style!.donateImage, style]}
 							source={require('../../../assets/donateImages/donate-cb.png')}
 						/>
 					</TouchableHighlight>
@@ -53,7 +55,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					</Text>
 					<TouchableHighlight onPress={() => Linking.openURL('https://opencollective.com/manjaro/donate')}>
 						<Image
-							style={[eva.style.donateImage, style]}
+							style={[eva.style!.donateImage, style]}
 							source={require('../../../assets/donateImages/donate-cl.png')}
 						/>
 					</TouchableHighlight>
@@ -62,7 +64,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					</Text>
 					<TouchableHighlight onPress={() => Linking.openURL('https://opencollective.com/manjaro-uk/donate')}>
 						<Image
-							style={[eva.style.donateImage, style]}
+							style={[eva.style!.donateImage, style]}
 							source={require('../../../assets/donateImages/donate-cl-uk.png')}
 						/>
 					</TouchableHighlight>
@@ -71,7 +73,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					</Text>
 					<TouchableHighlight onPress={() => Linking.openURL('https://opencollective.com/manjaro-us/donate')}>
 						<Image
-							style={[eva.style.donateImage, style]}
+							style={[eva.style!.donateImage, style]}
 							source={require('../../../assets/donateImages/donate-cl-us.png')}
 						/>
 					</TouchableHighlight>
@@ -94,7 +96,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						{'\u2B24'} Hardware and hosting costs of dedicated community projects
 					</Text>
-					<Image style={[eva.style.image, style]} source={require('../../../assets/donateImages/uses.png')} />
+					<Image style={[eva.style!.image, style]} source={require('../../../assets/donateImages/uses.png')} />
 					<Text category="h6" style={{ textAlign: 'justify' }}>
 						Who is deciding on how my donation is used for?
 					</Text>
@@ -211,11 +213,11 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					<Text></Text>
 					{/*<Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
 						<Row
-							textStyle={[eva.style.tableTitleText, style]}
+							textStyle={[eva.style!.tableTitleText, style]}
 							data={['Host', 'Credit Card', 'Bank Transfer', 'Paypal']}
 						/>
 						<Rows
-							textStyle={[eva.style.tableText, style]}
+							textStyle={[eva.style!.tableText, style]}
 							data={[
 								['Community Bridge', 'Yes', 'Yes', 'No'],
 								['Open Collective EU', 'Yes', 'Yes', 'No'],

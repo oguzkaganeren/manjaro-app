@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Layout, BottomNavigation, BottomNavigationTab, Text, Icon } from '@ui-kitten/components';
-import { Dimensions, SafeAreaView, Linking } from 'react-native';
+import { Layout, BottomNavigation, BottomNavigationTab, Text, EvaProp } from '@ui-kitten/components';
+import { Dimensions, SafeAreaView, ViewStyle } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,6 +8,8 @@ import { SingleScreen } from '../SingleScreen';
 export interface HomeProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const OfficialScreenThemed: React.FC<HomeProps> = (props) => {

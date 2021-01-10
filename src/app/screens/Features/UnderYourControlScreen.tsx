@@ -1,49 +1,51 @@
 import * as React from 'react';
-import { ScrollView } from 'react-native';
-import { Text, Layout, Card, Icon } from '@ui-kitten/components';
+import { ScrollView, ViewStyle } from 'react-native';
+import { Text, Layout, Card, Icon, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface UnderYourControlProps {
 	navigation: any;
 	route: any;
+	eva: EvaProp;
+	style: ViewStyle;
 }
 
 const UnderYourControlScreenThemed: React.FC<UnderYourControlProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const ChangeHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
-				<Icon style={[eva.style.icon, style]} fill="#1E88E5" name="options-2-outline" />
+			<Layout style={[eva.style!.subContainer, style]}>
+				<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="options-2-outline" />
 				<Text category="h6">Change everything you need</Text>
 			</Layout>
 		</Layout>
 	);
 	const ControlYourPCHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
-				<Icon style={[eva.style.icon, style]} fill="#EC407A" name="settings-2-outline" />
+			<Layout style={[eva.style!.subContainer, style]}>
+				<Icon style={[eva.style!.icon, style]} fill="#EC407A" name="settings-2-outline" />
 				<Text category="h6">Control Your PC</Text>
 			</Layout>
 		</Layout>
 	);
 	const UpdateHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
-				<Icon style={[eva.style.icon, style]} fill="#AB47BC" name="download-outline" />
+			<Layout style={[eva.style!.subContainer, style]}>
+				<Icon style={[eva.style!.icon, style]} fill="#AB47BC" name="download-outline" />
 				<Text category="h6">Update when you want</Text>
 			</Layout>
 		</Layout>
 	);
 	const YourDataHeaderHeader = (props) => (
 		<Layout {...props}>
-			<Layout style={[eva.style.subContainer, style]}>
-				<Icon style={[eva.style.icon, style]} fill="#FFA726" name="shield-outline" />
+			<Layout style={[eva.style!.subContainer, style]}>
+				<Icon style={[eva.style!.icon, style]} fill="#FFA726" name="shield-outline" />
 				<Text category="h6">Your data not ours</Text>
 			</Layout>
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style.container, style]}>
+		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
 				<Card disabled status="primary" header={ChangeHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
