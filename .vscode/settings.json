@@ -49,7 +49,20 @@
 		}
 	],
 
-	"cSpell.words": ["Formik", "Scrollable", "esnext", "refetch", "sportcial", "subquery", "tennisball", "timeago"],
+	"cSpell.words": [
+		"Formik",
+		"Scrollable",
+		"esnext",
+		"pamac",
+		"player",
+		"refetch",
+		"sportcial",
+		"subquery",
+		"tennisball",
+		"timeago",
+		"useraccounts",
+		"youtube"
+	],
 	"cSpell.ignorePaths": [
 		"/src/app/generated/components.tsx", // ignore generated file
 		"node_modules", // this will ignore anything the node_modules directory

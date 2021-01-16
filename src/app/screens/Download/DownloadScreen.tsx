@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { ViewStyle } from 'react-native';
-import { Layout, Tab, TabView, EvaProp, Icon, withStyles, IconProps } from '@ui-kitten/components';
+import { Layout, Tab, TabView, EvaProp, Icon, withStyles, IconProps, Spinner } from '@ui-kitten/components';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { OfficialScreen } from './Official/OfficialScreen';
-import { CommunityScreen } from './Community/CommunityScreen';
-import { ARMScreen } from './ARM/ARMScreen';
-import { DevelopmentScreen } from './Development/DevelopementScreen';
+import { DownloadEditionScreen } from './DownloadEditionScreen';
+import { useFetch } from '../../hooks/JsonFetcher';
 export interface HomeProps {
 	navigation: any;
 	route: any;
@@ -15,11 +13,11 @@ export interface HomeProps {
 
 const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 	const { eva, style, ...restProps } = props;
+	const downloadJson = useFetch('https://manjaro.org/download/index.json', {});
 	const OfficialIcon = (props: IconProps) => <Icon {...props} name="paper-plane-outline" />;
 	const CommunityIcon = (props: IconProps) => <Icon {...props} name="people-outline" />;
 	const ARMIcon = (props: IconProps) => <Icon {...props} name="smartphone-outline" />;
 	const DevelopmentIcon = (props: IconProps) => <Icon {...props} name="code-outline" />;
-	const [selectedIndex, setSelectedIndex] = React.useState(0);
 
 	const TopTab = createMaterialTopTabNavigator();
 	const TopTabBar = ({ navigation, state }) => {
@@ -38,17 +36,42 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 	};
 	return (
 		<Layout style={[eva.style!.container, style]}>
-			<TopTab.Navigator
+
+			{downloadJson.response ? <TopTab.Navigator
 				swipeEnabled={false}
-				tabBarOptions={{ scrollEnabled: false }}
 				lazy={true}
+				tabBarOptions={{ scrollEnabled: false }}
 				tabBar={(props) => <TopTabBar {...props} />}
-			>
-				<TopTab.Screen name="Official" component={OfficialScreen} />
-				<TopTab.Screen name="Community" component={CommunityScreen} />
-				<TopTab.Screen name="ARM" component={ARMScreen} />
-				<TopTab.Screen name="Development" component={DevelopmentScreen} />
-			</TopTab.Navigator>
+			><TopTab.Screen name="Official" component={() => <DownloadEditionScreen
+				eva={props.eva}
+				style={props.style}
+				navigation={props.navigation}
+				route={props.route}
+				responseJson={downloadJson.response!.Official}
+			/>} />
+				<TopTab.Screen name="Community" component={() => <DownloadEditionScreen
+					eva={props.eva}
+					style={props.style}
+					navigation={props.navigation}
+					route={props.route}
+					responseJson={downloadJson.response!.Community}
+				/>} />
+				<TopTab.Screen name="ARM" component={() => <DownloadEditionScreen
+					eva={props.eva}
+					style={props.style}
+					navigation={props.navigation}
+					route={props.route}
+					responseJson={downloadJson.response!.ARM}
+				/>} />
+				<TopTab.Screen name="Development" component={() => <DownloadEditionScreen
+					eva={props.eva}
+					style={props.style}
+					navigation={props.navigation}
+					route={props.route}
+					responseJson={downloadJson.response!.Development}
+				/>} /></TopTab.Navigator> : <Spinner />}
+
+
 		</Layout>
 	);
 };

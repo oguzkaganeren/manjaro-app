@@ -1,4 +1,3 @@
-import  AppLoading from 'expo-app-loading';
 import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
 
@@ -18,13 +17,9 @@ const Setup: React.FC<SetupProps> = (props) => {
 		ComfortaaBold: require('../../../assets/fonts/Comfortaa-Bold.ttf'),
 	};
 	if (!isLoadingComplete) {
-		return (
-			<AppLoading
-				startAsync={loadResourcesAsync}
-				onError={handleLoadingError}
-				onFinish={() => handleFinishLoading(setLoadingComplete)}
-			/>
-		);
+		loadResourcesAsync().then(() => handleFinishLoading(true))
+		return null
+
 	} else {
 		return <ApplicationProvider />;
 	}
@@ -32,11 +27,8 @@ const Setup: React.FC<SetupProps> = (props) => {
 		await Font.loadAsync(customFonts);
 	}
 
-	function handleLoadingError(error) {
-		console.warn(error);
-	}
-	function handleFinishLoading(setLoadingComplete) {
-		setLoadingComplete(true);
+	function handleFinishLoading(loadingComplete: boolean) {
+		setLoadingComplete(loadingComplete);
 	}
 };
 export default Setup;
