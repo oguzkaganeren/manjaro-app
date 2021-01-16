@@ -34,6 +34,18 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 			</TabView>
 		);
 	};
+	const Official = props => (
+		<DownloadEditionScreen responseJson={downloadJson.response!.Official} {...props} />
+	);
+	const Community = props => (
+		<DownloadEditionScreen responseJson={downloadJson.response!.Community} {...props} />
+	);
+	const ARM = props => (
+		<DownloadEditionScreen responseJson={downloadJson.response!.ARM} {...props} />
+	);
+	const Development = props => (
+		<DownloadEditionScreen responseJson={downloadJson.response!.Development} {...props} />
+	);
 	return (
 		<Layout style={[eva.style!.container, style]}>
 
@@ -41,35 +53,11 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 				swipeEnabled={false}
 				lazy={true}
 				tabBarOptions={{ scrollEnabled: false }}
-				tabBar={(props) => <TopTabBar {...props} />}
-			><TopTab.Screen name="Official" component={() => <DownloadEditionScreen
-				eva={props.eva}
-				style={props.style}
-				navigation={props.navigation}
-				route={props.route}
-				responseJson={downloadJson.response!.Official}
-			/>} />
-				<TopTab.Screen name="Community" component={() => <DownloadEditionScreen
-					eva={props.eva}
-					style={props.style}
-					navigation={props.navigation}
-					route={props.route}
-					responseJson={downloadJson.response!.Community}
-				/>} />
-				<TopTab.Screen name="ARM" component={() => <DownloadEditionScreen
-					eva={props.eva}
-					style={props.style}
-					navigation={props.navigation}
-					route={props.route}
-					responseJson={downloadJson.response!.ARM}
-				/>} />
-				<TopTab.Screen name="Development" component={() => <DownloadEditionScreen
-					eva={props.eva}
-					style={props.style}
-					navigation={props.navigation}
-					route={props.route}
-					responseJson={downloadJson.response!.Development}
-				/>} /></TopTab.Navigator> : <Spinner />}
+				tabBar={TopTabBar}
+			><TopTab.Screen name="Official" component={Official} />
+				<TopTab.Screen name="Community" component={Community} />
+				<TopTab.Screen name="ARM" component={ARM} />
+				<TopTab.Screen name="Development" component={Development} /></TopTab.Navigator> : <Spinner />}
 
 
 		</Layout>

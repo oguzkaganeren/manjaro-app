@@ -35,14 +35,14 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 	const getScenes = () => {
 		editionNames.forEach((name, index) => {
 			scenes.push(
-				() => <SingleScreen
+				() => (<SingleScreen
 					key={index}
 					route={props.route}
 					navigation={props.navigation}
 					eva={props.eva}
 					style={props.style}
 					responseJson={responseJson[index]}
-				/>
+				/>)
 			)
 		})
 	}
