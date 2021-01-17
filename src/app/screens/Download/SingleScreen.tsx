@@ -18,8 +18,11 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	const playerRef = React.useRef(null);
 	const [playing, setPlaying] = React.useState(false);
 	const [downloadModalVisible, setDownloadModalVisible] = React.useState(false);
-	const DownloadIcon = (props) => <Icon {...props} name="arrow-circle-down-outline" />;
 
+	const DownloadIcon = (props) => <Icon {...props} name="arrow-circle-down-outline" />;
+	function showModal() {
+		setDownloadModalVisible(true)
+	}
 	const ChooseHeader = (subprops) => (
 		<Layout {...subprops}>
 			<Layout style={[eva.style!.sideContainer, style]}>
@@ -27,7 +30,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 
 				<Button
 					style={[eva.style!.download, style]}
-					onPress={() => setDownloadModalVisible(true)}
+					onPress={showModal}
 					appearance="outline"
 					status="primary"
 					accessoryLeft={DownloadIcon}

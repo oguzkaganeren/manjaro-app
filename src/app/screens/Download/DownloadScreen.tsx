@@ -3,6 +3,7 @@ import { ViewStyle } from 'react-native';
 import { Layout, Tab, TabView, EvaProp, Icon, withStyles, IconProps, Spinner } from '@ui-kitten/components';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { DownloadEditionScreen } from './DownloadEditionScreen';
+import { NavigationContainer } from '@react-navigation/native';
 import { useFetch } from '../../hooks/JsonFetcher';
 export interface HomeProps {
 	navigation: any;
@@ -46,7 +47,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 		<DownloadEditionScreen key="Development" responseJson={downloadJson.response!.Development} {...props} />
 	);
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<NavigationContainer independent={true} >
 
 			{downloadJson.response ? <TopTab.Navigator
 				lazy={true}
@@ -58,7 +59,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 				<TopTab.Screen name="Development" component={Development} /></TopTab.Navigator> : <Spinner />}
 
 
-		</Layout>
+		</NavigationContainer>
 	);
 };
 

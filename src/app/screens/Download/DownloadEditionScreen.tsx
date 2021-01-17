@@ -21,11 +21,12 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 	const [sceneMap, setSceneMap] = React.useState({});
 	const initialLayout = { width: Dimensions.get('window').width };
 	React.useEffect(() => {
-		console.log(responseJson.length)
+
 		getEditionNames();
 		getScenes();
 		getRoutes();
 		getSceneMap()
+
 	}, [])
 	function getEditionNames() {
 
