@@ -58,7 +58,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 			sceneMap[route.key] = scenes[index]
 		})
 	}
-	const renderScene = SceneMap(sceneMap);
+	//const renderScene = SceneMap(sceneMap);
 
 	const renderTabBar = (props) => (
 		<TabBar
@@ -67,12 +67,17 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 			indicatorStyle={{ backgroundColor: 'white', height: 5, borderRadius: 10 }}
 		/>
 	);
+	const renderScene = ({ route }) => {
+		console.log(route.key)
+		return sceneMap[route.key]
+	};
 	return <TabView
 		navigationState={{ index, routes }}
 		renderTabBar={renderTabBar}
 		renderScene={renderScene}
 		tabBarPosition='bottom'
 		lazy={true}
+
 		onIndexChange={setIndex}
 		initialLayout={initialLayout}
 	/>;
