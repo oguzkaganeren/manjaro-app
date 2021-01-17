@@ -76,20 +76,20 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 
 						<HTML
 							ignoredTags={[...IGNORED_TAGS, 'br']}
-							html={jsonData.content}
-							textSelectable={true}
+							source={{ html: jsonData.content }}
+							defaultWebViewProps={{ textSelectable: true }}
 							listsPrefixesRenderers={{
 								ul: (_htmlAttribs, _children, _convertedCSSStyles, passProps) => (
 									<Text appearance="hint">{'\u2B24'} </Text>
 								)
 							}}
 							renderers={{
-								p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
-								a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" onPress={() => {
+								p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text key={Math.random()} appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+								a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text key={Math.random()} appearance="hint" onPress={() => {
 									Linking.openURL(htmlAttribs.href.toString());
 								}} style={{ textAlign: 'justify' }}>{children?.toString()}</Text>),
 
-								li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+								li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text key={Math.random()} appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
 
 							}}
 							imagesMaxWidth={Dimensions.get("window").width}

@@ -51,6 +51,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 
 			{downloadJson.response ? <TopTab.Navigator
 				lazy={true}
+				swipeEnabled={false}
 				tabBarOptions={{ scrollEnabled: false }}
 				tabBar={TopTabBar}
 			><TopTab.Screen name="Official" component={Official} />
