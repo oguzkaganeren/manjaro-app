@@ -20,14 +20,15 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 	const [scenes, setScenes] = React.useState([]) as any;
 	const [sceneMap, setSceneMap] = React.useState({});
 	const initialLayout = { width: Dimensions.get('window').width };
-
 	React.useEffect(() => {
+		console.log(responseJson.length)
 		getEditionNames();
-		getRoutes();
 		getScenes();
+		getRoutes();
 		getSceneMap()
 	}, [])
 	function getEditionNames() {
+
 		for (let index = 0; index < responseJson.length; index++) {
 			editionNames.push(responseJson[index].name)
 		}
@@ -36,11 +37,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 		editionNames.forEach((name, index) => {
 			scenes.push(
 				() => (<SingleScreen
-					key={index}
-					route={props.route}
-					navigation={props.navigation}
-					eva={props.eva}
-					style={props.style}
+					{...props}
 					responseJson={responseJson[index]}
 				/>)
 			)

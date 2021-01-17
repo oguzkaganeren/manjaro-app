@@ -24,7 +24,6 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 		const onSelect = (index) => {
 			navigation.navigate(state.routeNames[index]);
 		};
-
 		return (
 			<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
 				<Tab icon={OfficialIcon} title="Official" />
@@ -35,22 +34,21 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 		);
 	};
 	const Official = props => (
-		<DownloadEditionScreen responseJson={downloadJson.response!.Official} {...props} />
+		<DownloadEditionScreen key="Official" responseJson={downloadJson.response!.Official} {...props} />
 	);
 	const Community = props => (
-		<DownloadEditionScreen responseJson={downloadJson.response!.Community} {...props} />
+		<DownloadEditionScreen key="Community" responseJson={downloadJson.response!.Community} {...props} />
 	);
 	const ARM = props => (
-		<DownloadEditionScreen responseJson={downloadJson.response!.ARM} {...props} />
+		<DownloadEditionScreen key="ARM" responseJson={downloadJson.response!.ARM} {...props} />
 	);
 	const Development = props => (
-		<DownloadEditionScreen responseJson={downloadJson.response!.Development} {...props} />
+		<DownloadEditionScreen key="Development" responseJson={downloadJson.response!.Development} {...props} />
 	);
 	return (
 		<Layout style={[eva.style!.container, style]}>
 
 			{downloadJson.response ? <TopTab.Navigator
-				swipeEnabled={false}
 				lazy={true}
 				tabBarOptions={{ scrollEnabled: false }}
 				tabBar={TopTabBar}

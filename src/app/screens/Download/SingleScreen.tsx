@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ScrollView, Dimensions, Linking, Image, ViewStyle } from 'react-native';
-import { Text, Layout, Card, Icon, Button, Modal, Divider, Spinner, EvaProp } from '@ui-kitten/components';
-import { withStyles } from '@ui-kitten/components';
+import { Text, Layout, Card, Icon, Button, Modal, Divider, withStyles, EvaProp } from '@ui-kitten/components';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import HTML from "react-native-render-html";
 import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
