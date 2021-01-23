@@ -3,7 +3,7 @@ import { EvaProp } from '@ui-kitten/components';
 import { Dimensions, SafeAreaView, ViewStyle } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import { SingleScreen } from './SingleScreen';
-import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import DynamicTabView from "react-native-dynamic-tab-view";
 export interface HomeProps {
 	navigation: any;
 	route: any;
@@ -17,15 +17,10 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 	const [index, setIndex] = React.useState(0);
 	const [routes, setRoutes] = React.useState([]);
 	const [editionNames, setEditionNames] = React.useState([]);
-	const [scenes, setScenes] = React.useState([]) as any;
-	const [sceneMap, setSceneMap] = React.useState({});
-	const initialLayout = { width: Dimensions.get('window').width };
 	React.useEffect(() => {
 
 		getEditionNames();
-		getScenes();
 		getRoutes();
-		getSceneMap()
 
 	}, [])
 	function getEditionNames() {
@@ -33,16 +28,6 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 		for (let index = 0; index < responseJson.length; index++) {
 			editionNames.push(responseJson[index].name)
 		}
-	}
-	const getScenes = () => {
-		editionNames.forEach((name, index) => {
-			scenes.push(
-				() => (<SingleScreen
-					{...props}
-					responseJson={responseJson[index]}
-				/>)
-			)
-		})
 	}
 	const getRoutes = () => {
 		editionNames.forEach(name => {
@@ -53,33 +38,24 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 		})
 	}
 
-	const getSceneMap = () => {
-		routes.forEach((route, index) => {
-			sceneMap[route.key] = scenes[index]
-		})
-	}
-	//const renderScene = SceneMap(sceneMap);
-
-	const renderTabBar = (props) => (
-		<TabBar
-			{...props}
-			scrollEnabled={true}
-			indicatorStyle={{ backgroundColor: 'white', height: 5, borderRadius: 10 }}
-		/>
-	);
-	const renderScene = ({ route }) => {
-		console.log(route.key)
-		return sceneMap[route.key]
+	const _renderItem = (item, index) => {
+		return (
+			<SingleScreen
+				{...props}
+				key={item["key"]}
+				responseJson={responseJson[index]}
+			/>
+		);
 	};
-	return <TabView
-		navigationState={{ index, routes }}
-		renderTabBar={renderTabBar}
-		renderScene={renderScene}
-		tabBarPosition='bottom'
-		lazy={true}
-
-		onIndexChange={setIndex}
-		initialLayout={initialLayout}
+	const onChangeTab = index => { };
+	return <DynamicTabView
+		data={routes}
+		renderTab={_renderItem}
+		defaultIndex={index}
+		containerStyle={[eva.style!.container, style]}
+		headerBackgroundColor={'#26A456'}
+		onChangeTab={onChangeTab}
+		headerUnderlayColor={'white'}
 	/>;
 };
 
@@ -95,9 +71,8 @@ export const DownloadEditionScreen = withStyles(DownloadEditionScreenThemed, (th
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
+	subTabBarHeader: {
+
 	},
 	description: {
 		backgroundColor: 'rgba(53, 191, 92, 0.1)',
