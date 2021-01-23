@@ -39,6 +39,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 	}
 
 	const _renderItem = (item, index) => {
+		console.log(index)
 		return (
 			<SingleScreen
 				{...props}

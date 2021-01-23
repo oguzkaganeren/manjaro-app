@@ -4,7 +4,6 @@ import { Text, Layout, Card, Icon, Button, Modal, Divider, withStyles, EvaProp }
 import YoutubePlayer from 'react-native-youtube-iframe';
 import HTML from "react-native-render-html";
 import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
-import SkeletonContent from 'react-native-skeleton-content';
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
 	route: any;
