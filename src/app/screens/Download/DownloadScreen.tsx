@@ -59,7 +59,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 			><TopTab.Screen name="Official" component={Official} />
 				<TopTab.Screen name="Community" component={Community} />
 				<TopTab.Screen name="ARM" component={ARM} />
-				<TopTab.Screen name="Development" component={Development} /></TopTab.Navigator> : <Spinner />}
+				<TopTab.Screen name="Development" component={Development} /></TopTab.Navigator> : <Layout style={[eva.style!.container, style]}><Spinner /></Layout>}
 
 
 		</NavigationContainer>
@@ -69,7 +69,8 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 export const DownloadScreen = withStyles(DownloadScreenThemed, (theme) => ({
 	container: {
 		flex: 1,
-		backgroundColor: theme['color-primary-500'],
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	tabContainer: {
 		justifyContent: 'center',

@@ -3,7 +3,7 @@ import { EvaProp } from '@ui-kitten/components';
 import { Dimensions, SafeAreaView, ViewStyle } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import { SingleScreen } from './SingleScreen';
-import DynamicTabView from "react-native-dynamic-tab-view";
+import DynamicTabView from "react-native-dynamic-tab-view-test";
 export interface HomeProps {
 	navigation: any;
 	route: any;
@@ -39,7 +39,6 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 	}
 
 	const _renderItem = (item, index) => {
-		console.log(index)
 		return (
 			<SingleScreen
 				{...props}
@@ -48,7 +47,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 			/>
 		);
 	};
-	const onChangeTab = index => { };
+	const onChangeTab = index => { console.log(index) };
 	return <DynamicTabView
 		data={routes}
 		renderTab={_renderItem}

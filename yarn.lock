@@ -9279,10 +9279,10 @@ react-native-appearance@~0.3.3:
     invariant "^2.2.4"
     use-subscription "^1.0.0"
 
-react-native-dynamic-tab-view@^1.0.7-0:
-  version "1.0.7-0"
-  resolved "https://registry.yarnpkg.com/react-native-dynamic-tab-view/-/react-native-dynamic-tab-view-1.0.7-0.tgz#32b518f48af55d01a7102ec6cc6dccd9f7712e79"
-  integrity sha512-4W2LBFPUFFqUT6S0aJUpOblLJdEXV4TksUZhpf607eIyzzBksQJL6bk4eS0YV9LMTqnoo0NvjhbdtnihSDV70A==
+react-native-dynamic-tab-view-test@^1.0.1-0:
+  version "1.0.1-0"
+  resolved "https://registry.yarnpkg.com/react-native-dynamic-tab-view-test/-/react-native-dynamic-tab-view-test-1.0.1-0.tgz#d5609d900c882bd78fc0336b77fd44fd751a8dba"
+  integrity sha512-QAIsJfDULQNT9mX4PFXEnjD5dIJkK4aBmBu/ZAnewUIMpWSQOJje83DrS8HOj427QBnYzyN+2GouBB9BXjIDDA==
 
 react-native-eva-icons@^1.3.1:
   version "1.3.1"
