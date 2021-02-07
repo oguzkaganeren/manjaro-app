@@ -6,15 +6,14 @@ import {
 	TopNavigationAction,
 	Text,
 	Layout,
-	IconProps
+	IconProps,
+	Button
 
 } from '@ui-kitten/components';
 import { DrawerActions } from '@react-navigation/native';
 import { OfflineComponent } from './OfflineComponent';
 import Constants from 'expo-constants';
-import PropTypes from 'prop-types';
-declare var global: any;
-
+import { ThemeContext } from '../../../../theme-context';
 export interface HeaderProps {
 	headerTitle?: any;
 	previous: any;
@@ -22,7 +21,7 @@ export interface HeaderProps {
 }
 
 const HeaderComponent: React.FC<HeaderProps> = (props) => {
-
+	const themeContext = React.useContext(ThemeContext);
 	const MenuIcon = (style: IconProps) => <Icon {...style} name="menu-outline" />;
 	const BackIcon = (style: IconProps) => <Icon {...style} name="arrow-back" />;
 	const BackAction = () => <TopNavigationAction onPress={props.navigation.goBack} icon={BackIcon} />;
@@ -34,7 +33,9 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 			icon={MenuIcon}
 		/>
 	);
-
+	const renderRightControl = (props: any) => (
+		<Button style={{ marginVertical: 4 }} onPress={themeContext.toggleTheme}>TOGGLE THEME</Button>
+	);
 	const renderLeftControl = () => (props.previous ? <BackAction /> : <MenuAction />);
 	const renderTitle = (props: any) => (
 		<View style={styles.titleContainer}>
@@ -47,6 +48,7 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 				style={styles.container}
 				title={props.headerTitle == 'Home' ? renderTitle : props.headerTitle}
 				accessoryLeft={renderLeftControl}
+				accessoryRight={renderRightControl}
 			/>
 			<OfflineComponent eva={null} style={null} />
 		</Layout>
