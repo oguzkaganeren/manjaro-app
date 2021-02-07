@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
+import { Text, Layout, Card, Icon, Avatar, Divider, useTheme, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface UsefulForEveryoneProps {
@@ -12,6 +12,7 @@ export interface UsefulForEveryoneProps {
 
 const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) => {
 	const { eva, style, ...restProps } = props;
+	const theme = useTheme();
 	const ScientistsHeader = (props) => (
 		<Layout {...props}>
 			<Layout style={[eva.style!.subContainer, style]}>
@@ -64,7 +65,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						art enthusiast, music lovers, multimedia professionals and many more, For a overview of all available
 						applications visit{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org');
 							}}
@@ -76,7 +77,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						We asked our users why they use Manjaro and what software they use to relax, learn or do their work. Here
 						you can find an incomplete list of software, that in most cases is instantly available via the{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org');
 							}}
@@ -91,7 +92,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://www.latex-project.org/');
@@ -105,7 +106,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/texstudio');
@@ -119,7 +120,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/lyx');
@@ -135,7 +136,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/packages/steam-manjaro');
@@ -149,7 +150,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/0ad');
@@ -163,7 +164,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/playonlinux');
@@ -179,7 +180,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/gcompris-qt');
@@ -193,7 +194,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/geogebra');
@@ -207,7 +208,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/minuet');
@@ -223,7 +224,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/code');
@@ -237,7 +238,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/kdevelop');
@@ -251,7 +252,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/geany');
@@ -267,7 +268,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/libreoffice-still');
@@ -281,7 +282,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/thunderbird');
@@ -295,7 +296,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/firefox');
@@ -311,7 +312,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/krita');
@@ -325,7 +326,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/kdenlive');
@@ -339,7 +340,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 					<Layout style={[eva.style!.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
-							style={{ color: '#1E88E5' }}
+							style={{ color: theme['color-primary-400'] }}
 							category="h6"
 							onPress={() => {
 								Linking.openURL('https://discover.manjaro.org/applications/ardour');

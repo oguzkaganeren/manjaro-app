@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
+import { Text, Layout, Card, Icon, Avatar, Divider, useTheme, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface LearnMoreProps {
@@ -12,7 +12,7 @@ export interface LearnMoreProps {
 
 const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-
+	const theme = useTheme();
 	return (
 		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
@@ -46,7 +46,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						It is easily possible to run many popular Windows applications, using compatibility software such as{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://www.winehq.org/');
 							}}
@@ -55,7 +55,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 						</Text>
 						,
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://www.playonlinux.com/');
 							}}
@@ -65,7 +65,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 						</Text>{' '}
 						or{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://www.protondb.com/');
 							}}
@@ -74,7 +74,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 						</Text>{' '}
 						via{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://store.steampowered.com/about/');
 							}}
@@ -128,7 +128,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						We have a polite, friendly and cheerful{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://forum.manjaro.org/');
 							}}
@@ -150,7 +150,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Manjaro is available for 64 Bit architectures.{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://www.xfce.org/');
 							}}
@@ -159,7 +159,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 						</Text>
 						,{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://kde.org/');
 							}}
@@ -168,7 +168,7 @@ const LearnMoreScreenThemed: React.FC<LearnMoreProps> = (props) => {
 						</Text>{' '}
 						and{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://www.gnome.org/gnome-3/');
 							}}

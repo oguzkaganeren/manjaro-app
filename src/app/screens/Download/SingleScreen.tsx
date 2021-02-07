@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, Dimensions, Linking, Image, ViewStyle } from 'react-native';
-import { Text, Layout, Card, Icon, Button, Modal, Divider, withStyles, EvaProp } from '@ui-kitten/components';
+import { Text, Layout, Card, Icon, Button, Modal, Divider, withStyles, EvaProp, useTheme } from '@ui-kitten/components';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import HTML from "react-native-render-html";
 import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
@@ -18,7 +18,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	const playerRef = React.useRef(null);
 	const [playing, setPlaying] = React.useState(false);
 	const [downloadModalVisible, setDownloadModalVisible] = React.useState(false);
-
+	const theme = useTheme();
 	const DownloadIcon = (props) => <Icon {...props} name="arrow-circle-down-outline" />;
 	function showModal() {
 		setDownloadModalVisible(true)
@@ -83,13 +83,43 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 									<Text appearance="hint">{'\u2B24'} </Text>
 								)
 							}}
+							tagsStyles={{
+								p: {
+									color: theme['color-basic-600'],
+									textAlign: 'justify',
+									marginTop: 5
+								},
+								li: {
+									color: theme['color-basic-600'],
+									textAlign: 'justify',
+									marginTop: 5
+								},
+								em: {
+									color: theme['color-basic-600'],
+									textAlign: 'justify',
+									fontStyle: 'italic'
+								},
+								h1: { color: theme['color-basic-600'], },
+								h2: { color: theme['color-basic-600'], },
+								h3: { color: theme['color-basic-600'], },
+								h4: { color: theme['color-basic-600'], },
+								h5: { color: theme['color-basic-600'], },
+								h6: { color: theme['color-basic-600'], },
+								a: { color: theme['color-primary-400'], }
+							}}
 							renderers={{
-								p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text key={Math.random()} appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
-								a: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text key={Math.random()} appearance="hint" onPress={() => {
-									Linking.openURL(htmlAttribs.href.toString());
-								}} style={{ textAlign: 'justify' }}>{children?.toString()}</Text>),
-
-								li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text key={Math.random()} appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
+								img: (htmlAttribs, children, convertedCSSStyles, passProps) => {
+									if (typeof htmlAttribs.class !== "undefined") {
+										if (htmlAttribs.class == "emoji") {
+											return (<Layout><Image style={[eva.style!.emoji, style]} source={{
+												uri: htmlAttribs.src, cache: 'only-if-cached'
+											}} /></Layout>)
+										}
+									}
+									return (<Layout><Image style={[eva.style!.image, style]} source={{
+										uri: htmlAttribs.src, cache: 'only-if-cached'
+									}} /></Layout>)
+								},
 
 							}}
 							imagesMaxWidth={Dimensions.get("window").width}

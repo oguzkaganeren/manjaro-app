@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Layout, Modal, Icon, Input, BottomNavigationTab, Card, withStyles, Spinner, EvaProp } from '@ui-kitten/components';
+import { Text, Layout, useTheme, Icon, Input, BottomNavigationTab, Card, withStyles, Spinner, EvaProp } from '@ui-kitten/components';
 import { Linking, Dimensions, ScrollView, useWindowDimensions, Image, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import HTML from "react-native-render-html";
@@ -18,7 +18,7 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	const [singleTopicInfo, setSingleTopicInfo] = React.useState({ item: { post_stream: { posts: [{}] }, created_at: '' } });
 	const [isLoading, setIsLoading] = React.useState(true);
 	const contentWidth = useWindowDimensions().width;
-
+	const theme = useTheme();
 	const renderItemHeader = (headerProps, info) => (
 		<Layout {...headerProps}>
 			<Text category='h6'>
@@ -81,15 +81,37 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 				header={headerProps => renderItemHeader(headerProps, singleTopicInfo)}
 				footer={footerProps => renderItemFooter(footerProps, singleTopicInfo)}>
 
-				<HTML source={{ html: singleTopicInfo.item.post_stream.posts[0].cooked }} textSelectable={true} listsPrefixesRenderers={{
+				<HTML source={{ html: singleTopicInfo.item.post_stream.posts[0].cooked }} listsPrefixesRenderers={{
 					ul: (_htmlAttribs, _children, _convertedCSSStyles, passProps) => (
 						<Text appearance="hint">{'\u2B24'} </Text>
 					)
 				}}
-					ignoredTags={[...IGNORED_TAGS, 'br', 'code']}
-
+					ignoredTags={[...IGNORED_TAGS, 'br', 'code', 'aside']}
+					tagsStyles={{
+						p: {
+							color: theme['color-basic-600'],
+							textAlign: 'justify',
+							marginTop: 5
+						},
+						li: {
+							color: theme['color-basic-600'],
+							textAlign: 'justify',
+							marginTop: 5
+						},
+						em: {
+							color: theme['color-basic-600'],
+							textAlign: 'justify',
+							fontStyle: 'italic'
+						},
+						h1: { color: theme['color-basic-600'], },
+						h2: { color: theme['color-basic-600'], },
+						h3: { color: theme['color-basic-600'], },
+						h4: { color: theme['color-basic-600'], },
+						h5: { color: theme['color-basic-600'], },
+						h6: { color: theme['color-basic-600'], },
+						a: { color: theme['color-primary-400'], }
+					}}
 					renderers={{
-						p: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
 						img: (htmlAttribs, children, convertedCSSStyles, passProps) => {
 							if (typeof htmlAttribs.class !== "undefined") {
 								if (htmlAttribs.class == "emoji") {
@@ -101,17 +123,7 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 							return (<Layout><Image style={[eva.style!.image, style]} source={{
 								uri: htmlAttribs.src, cache: 'only-if-cached'
 							}} /></Layout>)
-						},
-						li: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify' }}>{children}</Text>),
-						em: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text appearance="hint" style={{ textAlign: 'justify', fontStyle: 'italic' }}>{children}</Text>),
-						h1: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h1' style={{ textAlign: 'justify', }}>{children}</Text>),
-						h2: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h2' style={{ textAlign: 'justify', }}>{children}</Text>),
-						h3: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h3' style={{ textAlign: 'justify', }}>{children}</Text>),
-						h4: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h4' style={{ textAlign: 'justify', }}>{children}</Text>),
-						h5: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h5' style={{ textAlign: 'justify', }}>{children}</Text>),
-						h6: (htmlAttribs, children, convertedCSSStyles, passProps) => (<Text category='h6' style={{ textAlign: 'justify', }}>{children}</Text>),
-
-
+						}
 					}}
 					contentWidth={contentWidth}
 					ignoreNodesFunction={(node, parentTagName, parentIsText) => {

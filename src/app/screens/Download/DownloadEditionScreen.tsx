@@ -47,7 +47,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 			/>
 		);
 	};
-	const onChangeTab = index => { console.log(index) };
+	const onChangeTab = index => { };
 	return <DynamicTabView
 		data={routes}
 		renderTab={_renderItem}

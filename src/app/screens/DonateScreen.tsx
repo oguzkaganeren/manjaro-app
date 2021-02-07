@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, Image, Dimensions, Linking, TouchableHighlight, ViewStyle } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
+import { Text, Layout, Card, Icon, useTheme, Divider, Button, EvaProp } from '@ui-kitten/components';
 //import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import { withStyles } from '@ui-kitten/components';
 
@@ -13,7 +13,7 @@ export interface DonateProps {
 
 const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-
+	const theme = useTheme();
 	return (
 		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
@@ -38,25 +38,25 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					</Text>
 					<Text></Text>
 					<Text category="h6" style={{ textAlign: 'justify' }}>
-						Choose a donation method
+						Choose a donation method (x64)
 					</Text>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
-						Manjaro Global ( Preferred )
-					</Text>
-					<TouchableHighlight onPress={() => Linking.openURL('https://funding.communitybridge.org/projects/manjaro')}>
-						<Image
-							style={[eva.style!.donateImage, style]}
-							source={require('../../../assets/donateImages/donate-cb.png')}
-						/>
-					</TouchableHighlight>
-					<Text appearance="hint" style={{ textAlign: 'justify' }}>
-						Manjaro Europe
+						Manjaro Europe ( Preferred )
 					</Text>
 					<TouchableHighlight onPress={() => Linking.openURL('https://opencollective.com/manjaro/donate')}>
 						<Image
 							style={[eva.style!.donateImage, style]}
 							source={require('../../../assets/donateImages/donate-cl.png')}
+						/>
+					</TouchableHighlight>
+					<Text appearance="hint" style={{ textAlign: 'justify' }}>
+						Manjaro US
+					</Text>
+					<TouchableHighlight onPress={() => Linking.openURL('https://crowdfunding.lfx.linuxfoundation.org/projects/manjaro')}>
+						<Image
+							style={[eva.style!.donateImage, style]}
+							source={require('../../../assets/donateImages/lfx_donation_button.png')}
 						/>
 					</TouchableHighlight>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -74,9 +74,37 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					<TouchableHighlight onPress={() => Linking.openURL('https://opencollective.com/manjaro-us/donate')}>
 						<Image
 							style={[eva.style!.donateImage, style]}
-							source={require('../../../assets/donateImages/donate-cl-us.png')}
+							source={require('../../../assets/donateImages/donate-cl.png')}
 						/>
 					</TouchableHighlight>
+
+
+					<Text category="h6" style={{ textAlign: 'justify' }}>
+						Choose a donation method (ARM)
+					</Text>
+					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
+					<Text appearance="hint" style={{ textAlign: 'justify' }}>
+						Manjaro ARM Europe
+					</Text>
+					<TouchableHighlight onPress={() => Linking.openURL('https://opencollective.com/manjaro-arm/donate')}>
+						<Image
+							style={[eva.style!.donateImage, style]}
+							source={require('../../../assets/donateImages/donate-cl.png')}
+						/>
+					</TouchableHighlight>
+					<Text appearance="hint" style={{ textAlign: 'justify' }}>
+						Manjaro US
+					</Text>
+					<TouchableHighlight onPress={() => Linking.openURL('https://www.patreon.com/bePatron?u=12307494&redirect_uri=https%3A%2F%2Fmanjaro.org%2Fdonate%2F&utm_medium=widget')}>
+						<Image
+							style={[eva.style!.donateImage, style]}
+							source={require('../../../assets/donateImages/patreon3.png')}
+						/>
+					</TouchableHighlight>
+
+
+
+
 					<Text category="h6" style={{ textAlign: 'justify' }}>
 						For what will my donations be used for?
 					</Text>
@@ -134,7 +162,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 						accountability and trust. With this we have a transparent budget for our community related activities, while
 						keeping personal info private. More on how it works can be found here:{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://docs.linuxfoundation.org/display/DOCS/Donate');
 							}}
@@ -145,7 +173,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 							,{' '}
 						</Text>
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://opencollective.com/how-it-works');
 							}}
@@ -170,7 +198,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 						Visit the info pages of our fiscal hosts to get more details on their fees:
 					</Text>
 					<Text
-						style={{ color: 'green' }}
+						style={{ color: theme['color-primary-400'] }}
 						onPress={() => {
 							Linking.openURL('https://docs.linuxfoundation.org/display/DOCS/CommunityBridge+FAQs');
 						}}
@@ -178,7 +206,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 						{'\u2B24'} Global: Linux Foundation 501(c)(6)
 					</Text>
 					<Text
-						style={{ color: 'green' }}
+						style={{ color: theme['color-primary-400'] }}
 						onPress={() => {
 							Linking.openURL('https://opencollective.com/europe');
 						}}
@@ -186,7 +214,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 						{'\u2B24'} Europe: Open Collective Europe ASBL
 					</Text>
 					<Text
-						style={{ color: 'green' }}
+						style={{ color: theme['color-primary-400'] }}
 						onPress={() => {
 							Linking.openURL('https://opencollective.com/uk');
 						}}
@@ -194,14 +222,14 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 						{'\u2B24'} United Kingdom: Open Collective UK
 					</Text>
 					<Text
-						style={{ color: 'green' }}
+						style={{ color: theme['color-primary-400'] }}
 						onPress={() => {
 							Linking.openURL('https://opencollective.com/opensource');
 						}}
 					>
 						{'\u2B24'} America: Open Source Collective 501(c)(6)
 					</Text>
-					<Text></Text>
+
 					<Text category="h6" style={{ textAlign: 'justify' }}>
 						What payment methods can I use?
 					</Text>
@@ -234,7 +262,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						The{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://communitybridge.org/service-terms/');
 							}}
@@ -243,7 +271,7 @@ const DonateScreenThemed: React.FC<DonateProps> = (props) => {
 						</Text>{' '}
 						and The{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://opencollective.com/opensource');
 							}}
@@ -310,6 +338,7 @@ export const DonateScreen = withStyles(DonateScreenThemed, (theme) => ({
 		marginVertical: 5,
 		width: Dimensions.get('window').width - 50,
 		resizeMode: 'contain',
+		height: 50
 	},
 	buttonContainer: {
 		flexDirection: 'row',
