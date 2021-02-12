@@ -82,28 +82,28 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 						{...props}
 						name="eye-outline"
 					/>
-					<Text style={[eva.style!.iconText, style]}>
+					<Text appearance="hint" style={[eva.style!.iconText, style]}>
 						{info.item.views}
 					</Text>
 					<Icon
 						{...props}
 						name="heart-outline"
 					/>
-					<Text style={[eva.style!.iconText, style]}>
+					<Text appearance="hint" style={[eva.style!.iconText, style]}>
 						{info.item.like_count}
 					</Text>
 					<Icon
 						{...props}
 						name="message-circle-outline"
 					/>
-					<Text style={[eva.style!.iconText, style]}>
+					<Text appearance="hint" style={[eva.style!.iconText, style]}>
 						{info.item.reply_count}
 					</Text>
 					<Icon
 						{...props}
 						name="calendar-outline"
 					/>
-					<Text style={[eva.style!.iconText, style]}>
+					<Text appearance="hint" style={[eva.style!.iconText, style]}>
 						{info.item.created_at.split('T')[0]}
 					</Text>
 				</Layout>
@@ -186,7 +186,6 @@ export const NewsScreen = withStyles(NewsScreenThemed, (theme) => ({
 		resizeMode: 'contain',
 	},
 	iconText: {
-		color: 'rgba(255, 255, 255, 0.4)',
 		marginRight: 20,
 		marginLeft: 5
 	}

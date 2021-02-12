@@ -53,7 +53,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 		renderTab={_renderItem}
 		defaultIndex={index}
 		containerStyle={[eva.style!.container, style]}
-		headerBackgroundColor={'#26A456'}
+		headerBackgroundColor={'#35BF5C'}
 		onChangeTab={onChangeTab}
 		headerUnderlayColor={'white'}
 	/>;

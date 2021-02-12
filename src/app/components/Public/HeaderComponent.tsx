@@ -7,7 +7,7 @@ import {
 	Text,
 	Layout,
 	IconProps,
-	Button
+	Toggle
 
 } from '@ui-kitten/components';
 import { DrawerActions } from '@react-navigation/native';
@@ -34,7 +34,10 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 		/>
 	);
 	const renderRightControl = (props: any) => (
-		<Button style={{ marginVertical: 4 }} onPress={themeContext.toggleTheme}>TOGGLE THEME</Button>
+		<Toggle
+			style={styles.toggle}
+			checked={themeContext.theme == 'light' ? false : true}
+			onChange={themeContext.toggleTheme} />
 	);
 	const renderLeftControl = () => (props.previous ? <BackAction /> : <MenuAction />);
 	const renderTitle = (props: any) => (
