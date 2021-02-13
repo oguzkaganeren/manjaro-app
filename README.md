@@ -13,6 +13,33 @@
 - `yarn start`
 - To start with android emulator press `a` or open web interface with pressing `d` then click run on android emulator
 
+### To build local
+
+```
+yarn global add turtle-cli
+```
+
+Inside of project folder run the command:
+
+```
+expo export --public-url http://127.0.0.1:8000 --dev --force
+```
+
+Then, go dist folder `cd dist` and
+
+```
+python -m http.server 8000
+```
+
+After that run
+
+```
+EXPO_ANDROID_KEYSTORE_PASSWORD="yourkey"
+EXPO_ANDROID_KEY_PASSWORD="yourkey"
+sudo turtle build:android --type apk --keystore-path <yourjkslocation> --keystore-alias "yourkey" --allow-non-https-public-url --public-url http://127.0.0.1:8000/android-index.json
+
+```
+
 ### Libraries used, get familiar with them
 
 - [react-native](https://www.reactnative.com/)
