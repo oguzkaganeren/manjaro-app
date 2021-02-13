@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, ViewStyle, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
+import { Text, Layout, Card, Icon, Avatar, Divider, useTheme, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 
@@ -16,7 +16,7 @@ export interface LinuxProps {
 
 const ApplicationAboutScreenThemed: React.FC<LinuxProps> = (props) => {
     const { eva, style, ...restProps } = props;
-
+    const theme = useTheme();
     return (
         <Layout style={[eva.style!.container, style]}>
             <ScrollView>
@@ -26,17 +26,16 @@ const ApplicationAboutScreenThemed: React.FC<LinuxProps> = (props) => {
 					</Text>
                     <Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
                     <Text appearance="hint" style={{ textAlign: 'justify' }}>
-
                         The application is free and no-ads, also{' '}
                         <Text
-                            style={{ color: 'green' }}
+                            style={{ color: theme['color-primary-500'] }}
                             onPress={() => {
                                 Linking.openURL('https://github.com/oguzkaganeren/manjaro-app');
                             }}
                         >
                             open source.
 						</Text>{' '}
-                    You can contribute the application.
+                    Free to feel to contribute the application ;)
                     </Text>
                     <Text></Text>
                     <Text appearance="hint" style={{ textAlign: 'justify' }}>

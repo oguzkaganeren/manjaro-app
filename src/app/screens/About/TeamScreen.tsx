@@ -407,6 +407,14 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					Furkan Kardame{'\n'}
 					<Text category="s2">ARM Developer</Text>
 				</Text>
+				<Avatar
+					shape="rounded"
+					size="tiny"
+					style={[eva.style!.flag, style]}
+					source={{
+						uri: 'https://manjaro.org/img/flags/IN.png', cache: 'only-if-cached'
+					}}
+				/>
 			</Layout>
 		</Layout>
 	);
@@ -423,6 +431,39 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					Ray Sherwin{'\n'}
 					<Text category="s2">ARM Developer</Text>
 				</Text>
+				<Avatar
+					shape="rounded"
+					size="tiny"
+					style={[eva.style!.flag, style]}
+					source={{
+						uri: 'https://manjaro.org/img/flags/US.png', cache: 'only-if-cached'
+					}}
+				/>
+			</Layout>
+		</Layout>
+	);
+
+	const MarkHeader = (props: ViewProps) => (
+		<Layout {...props}>
+			<Layout style={[eva.style!.sideContainer, style]}>
+				<Avatar
+					shape="round"
+					size="giant"
+					style={[eva.style!.avatar, style]}
+					source={require('../../../../assets/logo.png')}
+				/>
+				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
+					Mark Wagie{'\n'}
+					<Text category="s2">Package Maintainer</Text>
+				</Text>
+				<Avatar
+					shape="rounded"
+					size="tiny"
+					style={[eva.style!.flag, style]}
+					source={{
+						uri: 'https://manjaro.org/img/flags/US.png', cache: 'only-if-cached'
+					}}
+				/>
 			</Layout>
 		</Layout>
 	);
@@ -518,7 +559,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 				</Card>
 				<Card disabled status="primary" header={ArtemHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
-						Works on Pamac-QT
+						He is involved in our development tools, codes on Pamac-QT and other Manjaro Software.
 					</Text>
 				</Card>
 				<Card disabled status="primary" header={OguzHeader}>
@@ -545,6 +586,11 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 				<Card disabled status="primary" header={RayHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						Maintains the Raspberry Pi devices, the Raspberry Pi kernels and some of the Edition profiles.
+					</Text>
+				</Card>
+				<Card disabled status="primary" header={MarkHeader}>
+					<Text appearance="hint" style={{ textAlign: 'justify' }}>
+						Helps keep your software fresh and stable, assists with GNOME development.
 					</Text>
 				</Card>
 				<Card disabled status="primary" header={CoffeeHeader}>

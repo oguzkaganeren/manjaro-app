@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollView, ViewStyle, Dimensions, Linking } from 'react-native';
-import { Text, Layout, Card, Icon, EvaProp, Divider, Button } from '@ui-kitten/components';
+import { Text, Layout, Card, Icon, EvaProp, Divider, useTheme } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 
 export interface LinuxProps {
@@ -12,7 +12,7 @@ export interface LinuxProps {
 
 const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-
+	const theme = useTheme();
 	return (
 		<Layout style={[eva.style!.container, style]}>
 			<ScrollView>
@@ -23,7 +23,7 @@ const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://en.wikipedia.org/wiki/Linux');
 							}}
@@ -32,7 +32,7 @@ const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {
 						</Text>{' '}
 						is the name of the kernel powering the GNU system. GNU/Linux, also called Linux is a free and{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://en.wikipedia.org/wiki/Open-source_software');
 							}}
@@ -53,7 +53,7 @@ const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {
 						{' '}
 						Originally developed in 1991 by Finnish Programmer{' '}
 						<Text
-							style={{ color: 'green' }}
+							style={{ color: theme['color-primary-400'] }}
 							onPress={() => {
 								Linking.openURL('https://en.wikipedia.org/wiki/Linus_Torvalds');
 							}}
