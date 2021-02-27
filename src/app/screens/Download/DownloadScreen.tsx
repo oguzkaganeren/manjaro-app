@@ -5,7 +5,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { DownloadEditionScreen } from './DownloadEditionScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFetch } from '../../hooks/JsonFetcher';
-import SkeletonContent from 'react-native-skeleton-content';
 export interface HomeProps {
 	navigation: any;
 	route: any;

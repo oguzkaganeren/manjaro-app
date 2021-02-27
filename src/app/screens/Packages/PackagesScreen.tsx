@@ -6,7 +6,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { BranchScreen } from './BranchScreen';
 import { DiscoverScreen } from './DiscoverScreen';
 import { MirrorsScreen } from './MirrorsScreen';
-
+import { NavigationContainer } from '@react-navigation/native';
 export interface AboutProps {
 	navigation: any;
 	route: any;
@@ -19,8 +19,10 @@ const PackagesScreenThemed: React.FC<AboutProps> = (props) => {
 	const MirrorsIcon = (props: IconProps) => <Icon {...props} name="flip-outline" />;
 	const DiscoverIcon = (props: IconProps) => <Icon {...props} name="cube-outline" />;
 	const BranchIcon = (props: IconProps) => <Icon {...props} name="shuffle-2-outline" />;
-
+	const [subTabIndex, setSubTabIndex] = React.useState(0);
 	const TopTab = createMaterialTopTabNavigator();
+	const X64Icon = (props: IconProps) => <Icon {...props} name="monitor-outline" />;
+	const ARMIcon = (props: IconProps) => <Icon {...props} name="smartphone-outline" />;
 	const TopTabBar = ({ navigation, state }) => {
 		const onSelect = (index) => {
 			navigation.navigate(state.routeNames[index]);
@@ -36,14 +38,29 @@ const PackagesScreenThemed: React.FC<AboutProps> = (props) => {
 			</SafeAreaView>
 		);
 	};
+	const SubTabBar = () => (
+
+		<TabView selectedIndex={subTabIndex} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={(index) => setSubTabIndex(index)}>
+			<Tab icon={X64Icon} title="X64" />
+			<Tab icon={ARMIcon} title="ARM" />
+		</TabView>
+	)
+	const BranchScreenWithSubBar = () => (
+		<Layout>
+			<SubTabBar />
+			<BranchScreen tabIndex={subTabIndex} {...props} />
+		</Layout>
+	)
 	return (
-		<Layout style={[eva.style!.container, style]}>
-			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
+		<NavigationContainer independent={true} >
+			<TopTab.Navigator lazy swipeEnabled={false}
+				lazyPreloadDistance={2}
+				tabBarOptions={{ scrollEnabled: false }} tabBar={TopTabBar}>
 				<TopTab.Screen name="Mirrors" component={MirrorsScreen} />
 				<TopTab.Screen name="Discover" component={DiscoverScreen} />
-				<TopTab.Screen name="Branch" component={BranchScreen} />
+				<TopTab.Screen name="Branch" component={BranchScreenWithSubBar} />
 			</TopTab.Navigator>
-		</Layout>
+		</NavigationContainer>
 	);
 };
 

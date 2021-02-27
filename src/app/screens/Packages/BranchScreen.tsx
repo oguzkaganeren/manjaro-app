@@ -1,29 +1,38 @@
 import * as React from 'react';
-import { Text, Layout, Spinner, List, Card, EvaProp, Input, Button, Icon } from '@ui-kitten/components';
+import { Text, Layout, Spinner, List, Card, EvaProp, Input, withStyles, Icon, TabView, Tab, IconProps } from '@ui-kitten/components';
 import { View, ViewStyle, Dimensions } from 'react-native';
-import { withStyles } from '@ui-kitten/components';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import axios from 'axios';
-import filter from 'lodash.filter';
 export interface BranchProps {
 	navigation: any;
 	route: any;
 	eva: EvaProp;
 	style: ViewStyle;
+	tabIndex: Number;
 }
 
 const BranchScreenThemed: React.FC<BranchProps> = (props) => {
-	const { eva, style, ...restProps } = props;
+	const { eva, style, tabIndex, ...restProps } = props;
 	const [isLoading, setIsLoading] = React.useState(true);
-	const [fullData, setFullData] = React.useState([]);
+	const [x64fullData, setX64FullData] = React.useState([]);
+	const [ARMfullData, setARMFullData] = React.useState([]);
 	const [listDataSource, setListDataSource] = React.useState([]);
 	const [query, setQuery] = React.useState('');
+
+	const TopTab = createMaterialTopTabNavigator();
+	let filteredData;
+
 
 	function getX64Json() {
 		return axios.get('https://manjaro.org/branch-compare/packages.x86_64.json');
 	}
+	function getARMJson() {
+		return axios.get('https://manjaro.org/branch-compare/packages.arm.json');
+	}
 	const SearchIcon = (props) => (
 		<Icon {...props} name='search-outline' />
 	);
+
 	React.useEffect(() => {
 		Promise.all([getX64Json()])
 			.then(function (results) {
@@ -35,15 +44,26 @@ const BranchScreenThemed: React.FC<BranchProps> = (props) => {
 
 				});
 				setIsLoading(false)
-				setFullData(allResults)
+				setX64FullData(allResults)
 				setListDataSource(allResults)
+			}).then(function () {
+				Promise.all([getARMJson()]).then(function (results) {
+					let allResults = [];
+					results.forEach(element => {
+						element.data.packages.forEach(elementTopic => {
+							allResults.push(elementTopic);
+						});
+
+					});
+					setARMFullData(allResults)
+				})
 			});
 	}, [])
 
 	const renderItemHeader = (headerProps, info) => {
 		return <View {...headerProps}>
 			<Text category='h6'>
-				{info.item[0]}
+				{info.item[0].replace('core#', '').replace('extra#', '').replace('community#', '')}
 			</Text>
 		</View>
 	};
@@ -67,29 +87,37 @@ const BranchScreenThemed: React.FC<BranchProps> = (props) => {
 			<Text category='h6'>Unstable</Text>
 		</Layout>
 	)
-	const searchButton = (searchButtonProps) => (
-		<Button status='primary' accessoryLeft={SearchIcon} onPress={searchFilterFunction} />
-	)
-	const searchFilterFunction = (text) => {
+	const searchFilterFunction = text => {
 		// Check if searched text is not blank
 		if (text) {
-			// Inserted text is not blank
-			// Filter the masterDataSource
-			// Update FilteredDataSource
-			const newData = fullData.filter(
-				function (item) {
-					const itemData = item[0];
-					const textData = text.toLowerCase();
-					return itemData.indexOf(textData) > -1;
-				});
-			setListDataSource(newData)
+			if (tabIndex == 0) {
+				filteredData = x64fullData.filter(
+					function (item) {
+						const itemData = item[0];
+						const textData = text.toLowerCase();
+						return itemData.indexOf(textData) > -1;
+					});
+			} else {
+				filteredData = ARMfullData.filter(
+					function (item) {
+						const itemData = item[0];
+						const textData = text.toLowerCase();
+						return itemData.indexOf(textData) > -1;
+					});
+			}
+			setListDataSource(filteredData)
 		} else {
-			// Inserted text is blank
-			// Update FilteredDataSource with masterDataSource
-			setListDataSource(fullData)
+			if (tabIndex == 0) {
+				setListDataSource(x64fullData)
+			} else {
+				setListDataSource(ARMfullData)
+			}
+
 		}
+
 		setQuery(text)
 	};
+
 	const renderItem = (info) => (
 		<Card
 			status='basic'
@@ -112,7 +140,7 @@ const BranchScreenThemed: React.FC<BranchProps> = (props) => {
 		</Card>
 	);
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<Layout>
 			<Input
 				autoCapitalize="none"
 				autoCorrect={false}
@@ -121,6 +149,7 @@ const BranchScreenThemed: React.FC<BranchProps> = (props) => {
 				accessoryRight={SearchIcon}
 				onChangeText={searchFilterFunction}
 			/>
+
 			{!isLoading ? <List
 				data={listDataSource}
 				renderItem={renderItem}
