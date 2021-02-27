@@ -51,17 +51,17 @@ const MirrorsScreenThemed: React.FC<MirrorsProps> = (props) => {
 	}, [])
 
 	const renderItemHeader = (headerProps, info) => {
-		return <View {...headerProps}>
+		return <Layout  {...headerProps} style={[eva.style!.sideContainer, style]}>
 			<Text category='h6'>
 				{info.item.country}
 			</Text>
-		</View>
+			<Text appearance="hint"  {...headerProps}>
+				Last sync: {info.item.last_sync == -1 ? 'N/A' : info.item.last_sync}
+			</Text>
+		</Layout>
 	};
 	const renderItemFooter = (footerProps, info) => (
 		<Layout style={[eva.style!.sideContainer, style]}>
-			<Text appearance="hint"  {...footerProps}>
-				Last sync : {info.item.last_sync == -1 ? 'N/A' : info.item.last_sync}
-			</Text>
 			<Text appearance="hint"  {...footerProps}>
 				Protocol(s): {info.item.protocols.join(", ")}
 			</Text>
