@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, Layout, ListItem, Toggle, Icon, EvaProp } from '@ui-kitten/components';
 import { Linking, ViewStyle } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
+import { ThemeContext } from '../../../theme-context';
 export interface NewsScreenProps {
     navigation: any;
     route: any;
@@ -10,24 +11,21 @@ export interface NewsScreenProps {
 }
 
 const SettingsScreenThemed: React.FC<NewsScreenProps> = (props) => {
+    const themeContext = React.useContext(ThemeContext);
     const { eva, style, ...restProps } = props;
     const [checked, setChecked] = React.useState(false);
 
-    const onCheckedChange = (isChecked: boolean) => {
-        setChecked(isChecked);
-    };
-
-    function InstallButton(props) {
-        return (
-            <Toggle {...props} checked={checked} onChange={onCheckedChange} />
-        );
-    }
+    const renderThemeToggleControl = (props: any) => (
+        <Toggle
+            checked={themeContext.theme == 'light' ? false : true}
+            onChange={themeContext.toggleTheme} />
+    );
     return (
         <Layout style={[eva.style!.container, style]}>
             <ListItem
-                title={props => <Text {...props}>Notification</Text>}
-                description={props => <Text {...props}>It sends you news</Text>}
-                accessoryRight={InstallButton}
+                title={props => <Text {...props}>Dark Theme</Text>}
+                description={props => <Text {...props}>For dark lovers</Text>}
+                accessoryRight={renderThemeToggleControl}
             />
         </Layout>
     );
