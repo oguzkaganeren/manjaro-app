@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Layout, Avatar, Button, Icon, EvaProp, IconProps } from '@ui-kitten/components';
+import { Text, Layout, Avatar, Button, Icon, EvaProp, IconProps, Card } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 import { ViewStyle } from 'react-native';
 
@@ -24,23 +24,22 @@ const HomeScreenThemed: React.FC<HomeProps> = (props) => {
 			/>
 			<Layout style={[eva.style!.sideContainer, style]}>
 				<Text category="s1" style={[eva.style!.sharp, style]}>
-					#
+					Manjaro
 				</Text>
-				<Text category="s1">FREE OPERATING SYSTEM FOR EVERYONE</Text>
+				<Text category="p2">is a free and open source operating system</Text>
 			</Layout>
-			<Layout style={[eva.style!.description, style]}>
-				<Text category="p1" style={{ textAlign: 'justify' }}>
-					Manjaro is a professionally made operating system that is a suitable replacement for Windows or MacOS.
-					Multiple Desktop Environments are available through our Official and Community editions.
+			<Card style={[eva.style!.description, style]} status='warning'>
+				<Text category="p2" style={{ textAlign: 'justify' }}>
+					It is available for X86 and ARM architectures and it can be installed in a range of hardware, including desktops, smartphones, laptops and tablet computers. Retail devices are also available with manjaro pre-installed.
+					Install once, updatable forever.
 				</Text>
-			</Layout>
+			</Card>
 			<Layout style={[eva.style!.buttonContainer, style]}>
 				<Button
 					style={[eva.style!.download, style]}
 					onPress={() => {
 						props.navigation.navigate('DownloadScreen');
 					}}
-					appearance="outline"
 					status="primary"
 					accessoryLeft={DownloadIcon}
 				>
@@ -48,7 +47,6 @@ const HomeScreenThemed: React.FC<HomeProps> = (props) => {
 				</Button>
 				<Button
 					style={[eva.style!.learnMore, style]}
-					appearance="outline"
 					onPress={() => {
 						props.navigation.navigate('LearnMoreScreen');
 					}}
@@ -77,10 +75,18 @@ export const HomeScreen = withStyles(HomeScreenThemed, (theme) => ({
 		paddingRight: 3,
 	},
 	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.1)',
 		marginTop: 10,
 		marginHorizontal: 15,
-		padding: 20,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 5,
+		},
+		shadowOpacity: 0.36,
+		shadowRadius: 6.68,
+
+		elevation: 11,
+		borderRadius: 10,
 	},
 	logo: {
 		marginBottom: 10,
@@ -91,8 +97,27 @@ export const HomeScreen = withStyles(HomeScreenThemed, (theme) => ({
 	},
 	download: {
 		marginHorizontal: 15,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 5,
+		},
+		shadowOpacity: 0.36,
+		shadowRadius: 6.68,
+
+		elevation: 11,
+
 	},
 	learnMore: {
 		marginHorizontal: 15,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 5,
+		},
+		shadowOpacity: 0.36,
+		shadowRadius: 6.68,
+
+		elevation: 11,
 	},
 }));

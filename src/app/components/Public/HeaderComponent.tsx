@@ -7,7 +7,6 @@ import {
 	Text,
 	Layout,
 	IconProps,
-	Toggle
 
 } from '@ui-kitten/components';
 import { DrawerActions } from '@react-navigation/native';
@@ -20,7 +19,7 @@ export interface HeaderProps {
 }
 
 const HeaderComponent: React.FC<HeaderProps> = (props) => {
-	const MenuIcon = (style: IconProps) => <Icon {...style} name="menu-outline" />;
+	const MenuIcon = (style: IconProps) => <Icon {...style} name="menu-2" />;
 	const BackIcon = (style: IconProps) => <Icon {...style} name="arrow-back" />;
 	const BackAction = () => <TopNavigationAction onPress={props.navigation.goBack} icon={BackIcon} />;
 	const MenuAction = () => (
