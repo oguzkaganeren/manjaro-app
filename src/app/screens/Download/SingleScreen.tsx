@@ -31,7 +31,6 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 				<Button
 					style={[eva.style!.download, style]}
 					onPress={showModal}
-					appearance="outline"
 					status="primary"
 					accessoryLeft={DownloadIcon}
 				>
@@ -62,15 +61,15 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 								}}
 							/>
 						) : (
-								<Image
-									style={[eva.style!.image, style]}
-									source={{
-										uri:
-											'https://hacked.manjaro.org/img/editions/' +
-											jsonData.Screenshot, cache: 'only-if-cached'
-									}}
-								/>
-							)
+							<Image
+								style={[eva.style!.image, style]}
+								source={{
+									uri:
+										'https://hacked.manjaro.org/img/editions/' +
+										jsonData.Screenshot, cache: 'only-if-cached'
+								}}
+							/>
+						)
 					}
 					<Card disabled={true} status="warning">
 

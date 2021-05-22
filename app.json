@@ -24,7 +24,6 @@
         "android": {
             "package": "com.manjaro.manjarohome",
             "versionCode": 10,
-            "enableDangerousExperimentalLeanBuilds": true,
             "permissions": []
         },
         "web": {
