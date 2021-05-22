@@ -49,7 +49,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 						jsonData.Youtube ? (
 							<YoutubePlayer
 								ref={playerRef}
-								height={200}
+								height={Dimensions.get('window').height / 4}
 								width={Dimensions.get('window').width - 50}
 								videoId={jsonData.Youtube}
 								play={playing}
@@ -241,7 +241,7 @@ export const SingleScreen = withStyles(SingleScreenThemed, (theme) => ({
 	},
 	image: {
 		width: Dimensions.get('window').width - 50,
-		height: Dimensions.get('window').height / 2,
+		height: Dimensions.get('window').height / 3,
 		resizeMode: 'contain',
 	},
 	buttonContainer: {
