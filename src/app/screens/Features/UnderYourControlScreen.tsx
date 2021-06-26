@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, ViewStyle } from 'react-native';
 import { Text, Layout, Card, Icon, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-
+import globalStyle from './../../theme/GlobalStyle'
 export interface UnderYourControlProps {
 	navigation: any;
 	route: any;
@@ -45,7 +45,7 @@ const UnderYourControlScreenThemed: React.FC<UnderYourControlProps> = (props) =>
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<Layout style={[globalStyle.containerCentered, style]}>
 			<ScrollView>
 				<Card disabled status="primary" header={ChangeHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -86,14 +86,6 @@ const UnderYourControlScreenThemed: React.FC<UnderYourControlProps> = (props) =>
 };
 
 export const UnderYourControlScreen = withStyles(UnderYourControlScreenThemed, (theme) => ({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-	},
-	sideContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
 	subContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -102,27 +94,7 @@ export const UnderYourControlScreen = withStyles(UnderYourControlScreenThemed, (
 		width: 48,
 		height: 48,
 	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
-	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.3)',
-		marginTop: 10,
-		marginHorizontal: 15,
-		padding: 20,
-	},
-	logo: {
-		marginBottom: 10,
-	},
-	buttonContainer: {
-		flexDirection: 'row',
-		padding: 20,
-	},
 	download: {
-		marginHorizontal: 15,
-	},
-	learnMore: {
 		marginHorizontal: 15,
 	},
 }));

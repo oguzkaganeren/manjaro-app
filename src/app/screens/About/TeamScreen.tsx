@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ScrollView, ViewStyle, ViewProps } from 'react-native';
 import { Text, Layout, Card, Icon, Avatar, EvaProp, CardProps, withStyles, LayoutProps } from '@ui-kitten/components';
-
+import globalStyle from './../../theme/GlobalStyle'
 export interface TeamProps {
 	navigation: any;
 	route: any;
@@ -13,7 +13,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const PhilipHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -40,7 +40,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const BernhardHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -66,7 +66,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const GuillaumeHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -90,7 +90,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const StefanoHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -116,7 +116,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const FredeHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -140,7 +140,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const MattiHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -166,7 +166,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const DanHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -192,7 +192,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const JoshHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -216,7 +216,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const VitorHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -242,7 +242,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const HelmutHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -268,7 +268,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const BogdanHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -294,7 +294,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const ArtemHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -320,7 +320,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const OguzHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -346,7 +346,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const TobiasHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -372,7 +372,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const SchrammHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -396,7 +396,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const FurkanHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -420,7 +420,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const RayHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -445,7 +445,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 
 	const MarkHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -469,7 +469,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 	);
 	const CoffeeHeader = (props: ViewProps) => (
 		<Layout {...props}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Avatar
 					shape="round"
 					size="giant"
@@ -486,7 +486,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<Layout style={[globalStyle.containerCentered, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'center' }}>
@@ -604,49 +604,13 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 };
 
 export const TeamScreen = withStyles(TeamScreenThemed, (theme) => ({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-	},
-	sideContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	subContainer: {
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	icon: {
-		width: 48,
-		height: 48,
-	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
-	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.3)',
-		marginTop: 10,
-		marginHorizontal: 15,
-		padding: 20,
-	},
 	avatar: {
 		marginHorizontal: 10,
 	},
 	flag: {
 		marginHorizontal: 15,
 	},
-	buttonContainer: {
-		flexDirection: 'row',
-		padding: 20,
-	},
 	subHeader: {
 		lineHeight: 25,
-	},
-	download: {
-		marginHorizontal: 15,
-	},
-	learnMore: {
-		marginHorizontal: 15,
-	},
+	}
 }));

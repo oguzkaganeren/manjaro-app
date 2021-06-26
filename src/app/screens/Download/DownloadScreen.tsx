@@ -5,7 +5,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { DownloadEditionScreen } from './DownloadEditionScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFetch } from '../../hooks/JsonFetcher';
-import SkeletonContent from 'react-native-skeleton-content';
 export interface HomeProps {
 	navigation: any;
 	route: any;
@@ -72,35 +71,7 @@ export const DownloadScreen = withStyles(DownloadScreenThemed, (theme) => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	tabContainer: {
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	sideContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
-	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.1)',
-		marginTop: 10,
-		marginHorizontal: 15,
-		padding: 20,
-	},
-	logo: {
-		marginBottom: 10,
-	},
-	buttonContainer: {
-		flexDirection: 'row',
-		padding: 20,
-	},
 	download: {
-		marginHorizontal: 15,
-	},
-	learnMore: {
 		marginHorizontal: 15,
 	},
 }));

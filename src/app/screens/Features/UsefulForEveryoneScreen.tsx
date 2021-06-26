@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
 import { Text, Layout, Card, Icon, Avatar, Divider, useTheme, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-
+import globalStyle from './../../theme/GlobalStyle'
 export interface UsefulForEveryoneProps {
 	navigation: any;
 	route: any;
@@ -56,7 +56,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<Layout style={[globalStyle.containerCentered, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -89,7 +89,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="warning" header={ScientistsHeader}>
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -103,7 +103,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Create documents and more</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -117,7 +117,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Creating LaTeX documents</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -133,7 +133,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="danger" header={GamersHeader}>
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -147,7 +147,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Software store</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -161,7 +161,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Strategy game</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -177,7 +177,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="info" header={TSHeader}>
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -191,7 +191,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Learning software</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -205,7 +205,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Geometry/mathematics</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -221,7 +221,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="warning" header={DevelopersHeader}>
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -235,7 +235,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Code editing</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -249,7 +249,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> IDE</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -265,7 +265,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="danger" header={HomeUsersHeader}>
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -279,7 +279,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Complete office-suite</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -293,7 +293,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> E-Mail client</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -309,7 +309,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 				</Card>
 
 				<Card disabled status="info" header={ArtistsHeader}>
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -323,7 +323,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Graphics editing, drawing</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -337,7 +337,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 						<Text appearance="hint"> Video editing</Text>
 					</Layout>
 					<Divider style={{ backgroundColor: 'gray', marginVertical: 10 }} />
-					<Layout style={[eva.style!.sideContainer, style]}>
+					<Layout style={[globalStyle.sideContainer, style]}>
 						<Icon style={[eva.style!.icon, style]} fill="#1E88E5" name="info-outline" />
 						<Text
 							style={{ color: theme['color-primary-400'] }}
@@ -357,14 +357,6 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 };
 
 export const UsefulForEveryoneScreen = withStyles(UsefulForEveryoneScreenThemed, (theme) => ({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-	},
-	sideContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
 	subContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -374,29 +366,7 @@ export const UsefulForEveryoneScreen = withStyles(UsefulForEveryoneScreenThemed,
 		height: 32,
 		marginHorizontal: 5,
 	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
-	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.3)',
-		marginTop: 10,
-		marginHorizontal: 15,
-		padding: 20,
-	},
-	image: {
-		marginBottom: 10,
-		width: Dimensions.get('window').width / 1.1,
-		height: Dimensions.get('window').height / 3,
-	},
-	buttonContainer: {
-		flexDirection: 'row',
-		padding: 20,
-	},
 	download: {
 		marginHorizontal: 15,
-	},
-	learnMore: {
-		marginHorizontal: 15,
-	},
+	}
 }));

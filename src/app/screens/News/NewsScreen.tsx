@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, Layout, Spinner, Icon, List, BottomNavigationTab, Card, withStyles, EvaProp } from '@ui-kitten/components';
 import { Image, Dimensions, ScrollView, useWindowDimensions, ViewStyle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import globalStyle from './../../theme/GlobalStyle'
 import axios from 'axios';
 export interface NewsScreenProps {
 	navigation: any;
@@ -77,7 +78,7 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	const renderItemFooter = (footerProps, info) => (
 		<BottomNavigationTab
 			icon={(props) => (
-				<Layout style={[eva.style!.sideContainer, style]}>
+				<Layout style={[globalStyle.sideContainer, style]}>
 					<Icon
 						{...props}
 						name="eye-outline"
@@ -127,7 +128,7 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	);
 
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<Layout style={[globalStyle.containerCentered, style]}>
 			{!isLoading ? (<List
 				data={allFeed}
 				renderItem={renderItem}
@@ -138,45 +139,10 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 };
 
 export const NewsScreen = withStyles(NewsScreenThemed, (theme) => ({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-	},
+
 	icon: {
 		width: 16,
 		height: 16,
-	},
-	scrollView: {
-		height: 200
-	}
-	,
-	sideContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-
-	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
-	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.1)',
-		marginTop: 10,
-		marginHorizontal: 15,
-		padding: 20,
-	},
-	logo: {
-		marginBottom: 10,
-	},
-	buttonContainer: {
-		flexDirection: 'row',
-		padding: 20,
-	},
-	download: {
-		marginHorizontal: 15,
-	},
-	learnMore: {
-		marginHorizontal: 15,
 	},
 	image: {
 		marginVertical: 10,

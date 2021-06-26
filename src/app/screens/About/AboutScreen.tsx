@@ -3,10 +3,10 @@ import { Layout, Tab, TabView, Text, Icon, EvaProp } from '@ui-kitten/components
 import { withStyles, IconProps } from '@ui-kitten/components';
 import { SafeAreaView, StyleProp, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
 import { TeamScreen } from './TeamScreen';
 import { LinuxScreen } from './LinuxScreen';
 import { ApplicationAboutScreen } from './ApplicationAboutScreen';
+import globalStyle from './../../theme/GlobalStyle'
 export interface AboutProps {
 	navigation: any;
 	route: any;
@@ -36,7 +36,7 @@ const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 		);
 	};
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<Layout style={[globalStyle.container, style]}>
 			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
 				<TopTab.Screen name="Team" component={TeamScreen} />
 				<TopTab.Screen name="Linux" component={LinuxScreen} />
@@ -47,38 +47,5 @@ const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 };
 
 export const AboutScreen = withStyles(AboutScreenThemed, (theme) => ({
-	container: {
-		flex: 1,
-	},
-	tabContainer: {
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	sideContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
-	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.1)',
-		marginTop: 10,
-		marginHorizontal: 15,
-		padding: 20,
-	},
-	logo: {
-		marginBottom: 10,
-	},
-	buttonContainer: {
-		flexDirection: 'row',
-		padding: 20,
-	},
-	download: {
-		marginHorizontal: 15,
-	},
-	learnMore: {
-		marginHorizontal: 15,
-	},
+
 }));
