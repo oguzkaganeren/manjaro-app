@@ -50,6 +50,7 @@
         "react-native-vector-icons": "^7.1.0",
         "react-native-web": "~0.13.12",
         "react-native-webview": "11.2.3",
+        "react-native-x2-carousel": "^1.0.1",
         "react-native-youtube-iframe": "^1.4.0"
     },
     "devDependencies": {
