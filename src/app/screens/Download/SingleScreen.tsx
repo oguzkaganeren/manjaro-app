@@ -4,6 +4,7 @@ import { Text, Layout, Card, Icon, Button, Modal, Divider, withStyles, EvaProp, 
 import YoutubePlayer from 'react-native-youtube-iframe';
 import HTML from "react-native-render-html";
 import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
+import globalStyle from './../../theme/GlobalStyle'
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
 	route: any;
@@ -25,13 +26,12 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	}
 	const ChooseHeader = (subprops) => (
 		<Layout {...subprops}>
-			<Layout style={[eva.style!.sideContainer, style]}>
+			<Layout style={[globalStyle.sideContainer, style]}>
 				<Text category="h4">{jsonData.name.substring(0, 7)}{jsonData.name.length > 7 ? '...' : ''}</Text>
 
 				<Button
 					style={[eva.style!.download, style]}
 					onPress={showModal}
-					appearance="outline"
 					status="primary"
 					accessoryLeft={DownloadIcon}
 				>
@@ -43,14 +43,14 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 	);
 
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<Layout style={[globalStyle.containerCentered, style]}>
 			<ScrollView>
 				<Card disabled header={ChooseHeader}>
 					{
 						jsonData.Youtube ? (
 							<YoutubePlayer
 								ref={playerRef}
-								height={200}
+								height={Dimensions.get('window').height / 4}
 								width={Dimensions.get('window').width - 50}
 								videoId={jsonData.Youtube}
 								play={playing}
@@ -62,15 +62,15 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 								}}
 							/>
 						) : (
-								<Image
-									style={[eva.style!.image, style]}
-									source={{
-										uri:
-											'https://hacked.manjaro.org/img/editions/' +
-											jsonData.Screenshot, cache: 'only-if-cached'
-									}}
-								/>
-							)
+							<Image
+								style={[eva.style!.image, style]}
+								source={{
+									uri:
+										'https://hacked.manjaro.org/img/editions/' +
+										jsonData.Screenshot, cache: 'only-if-cached'
+								}}
+							/>
+						)
 					}
 					<Card disabled={true} status="warning">
 
@@ -214,45 +214,13 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 };
 
 export const SingleScreen = withStyles(SingleScreenThemed, (theme) => ({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-	},
-	sideContainer: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-	},
-	subContainer: {
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	icon: {
-		width: 48,
-		height: 48,
-	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
-	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.3)',
-		marginTop: 10,
-		marginHorizontal: 15,
-		padding: 20,
-	},
+
 	image: {
 		width: Dimensions.get('window').width - 50,
-		height: Dimensions.get('window').height / 2,
+		height: Dimensions.get('window').height / 3,
 		resizeMode: 'contain',
 	},
-	buttonContainer: {
-		flexDirection: 'row',
-		padding: 20,
-	},
 	download: {
-		marginHorizontal: 15,
-	},
-	learnMore: {
 		marginHorizontal: 15,
 	},
 	backdrop: {

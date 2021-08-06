@@ -60,18 +60,18 @@ function DrawerContent({ navigation, state }) {
 		['SettingsScreen']
 	];
 	const Footer = (props) => (
-		<Layout style={{ padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+		<Layout style={{ padding: 20, borderTopWidth: 1, borderColor: '#F2F6FF', flexDirection: 'row', justifyContent: 'space-between' }}>
 			<TouchableHighlight onPress={() => Linking.openURL('https://gitlab.manjaro.org/')}>
-				<Icon pack="awesome" style={{ height: 24, tintColor: '#FCA326' }} name="gitlab" />
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#32C15A' }} name="gitlab" />
 			</TouchableHighlight>
 			<TouchableHighlight onPress={() => Linking.openURL('https://twitter.com/ManjaroLinux')}>
-				<Icon pack="awesome" style={{ height: 24, tintColor: '#5EAADE' }} name="twitter" />
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#32C15A' }} name="twitter" />
 			</TouchableHighlight>
 			<TouchableHighlight onPress={() => Linking.openURL('https://www.youtube.com/channel/UCdGFLV7h9RGeTUX7wa5rqGw')}>
-				<Icon pack="awesome" style={{ height: 24, tintColor: '#FE0000' }} name="youtube" />
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#32C15A' }} name="youtube" />
 			</TouchableHighlight>
 			<TouchableHighlight onPress={() => Linking.openURL('https://www.facebook.com/ManjaroLinux')}>
-				<Icon pack="awesome" style={{ height: 24, tintColor: '#1B78F2' }} name="facebook-f" />
+				<Icon pack="awesome" style={{ height: 24, tintColor: '#32C15A' }} name="facebook-f" />
 			</TouchableHighlight>
 			<TouchableHighlight onPress={() => Linking.openURL('https://forum.manjaro.org/')}>
 				<Icon pack="awesome" style={{ height: 24, tintColor: '#32C15A' }} name="discourse" />
@@ -142,7 +142,7 @@ function DrawerContent({ navigation, state }) {
 				<DrawerItem title="Packages" accessoryLeft={PackagesIcon} />
 				<DrawerItem title="About" accessoryLeft={AboutIcon} />
 			</DrawerGroup>
-			{/* <DrawerItem title="Settings" accessoryLeft={SettingsIcon} /> */}
+			<DrawerItem title="Settings" accessoryLeft={SettingsIcon} />
 		</Drawer>
 	);
 }

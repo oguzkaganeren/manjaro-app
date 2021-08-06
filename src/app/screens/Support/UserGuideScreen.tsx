@@ -44,8 +44,7 @@ const UserGuideScreenThemed: React.FC<UserGuideProps> = (props) => {
 				>
 					Guide De L'utilisateur
 				</Button>
-			</Layout>
-			<Button
+				<Button
 				style={[eva.style!.download, style]}
 				onPress={() => {
 					Linking.openURL('https://en.osdn.net/projects/manjaro/storage/Manjaro-User-Guide-Turkish.pdf');
@@ -56,6 +55,8 @@ const UserGuideScreenThemed: React.FC<UserGuideProps> = (props) => {
 			>
 				Kullanıcı Rehberi
 			</Button>
+			</Layout>
+			
 		</Layout>
 	);
 };
@@ -84,11 +85,13 @@ export const UserGuideScreen = withStyles(UserGuideScreenThemed, (theme) => ({
 		marginBottom: 10,
 	},
 	buttonContainer: {
-		flexDirection: 'row',
+		flexDirection: 'column',
 		padding: 20,
+		
 	},
 	download: {
 		marginHorizontal: 15,
+		marginTop:15
 	},
 	learnMore: {
 		marginHorizontal: 15,

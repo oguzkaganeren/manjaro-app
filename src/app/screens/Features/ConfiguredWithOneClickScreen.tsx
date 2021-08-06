@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, Image, Dimensions, ViewStyle } from 'react-native';
 import { Text, Layout, Card, Icon, Avatar, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-
+import globalStyle from './../../theme/GlobalStyle'
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
 	route: any;
@@ -76,7 +76,7 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 		</Layout>
 	);
 	return (
-		<Layout style={[eva.style!.container, style]}>
+		<Layout style={[globalStyle.containerCentered, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -133,46 +133,14 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 };
 
 export const ConfiguredWithOneClickScreen = withStyles(ConfiguredWithOneClickScreenThemed, (theme) => ({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-	},
-	sideContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
 	subContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-	icon: {
-		width: 48,
-		height: 48,
-	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
-	description: {
-		backgroundColor: 'rgba(53, 191, 92, 0.3)',
-		marginTop: 10,
-		marginHorizontal: 15,
-		padding: 20,
 	},
 	image: {
 		marginBottom: 10,
 		width: Dimensions.get('window').width - 50,
 		height: Dimensions.get('window').height / 2,
 		resizeMode: 'contain',
-	},
-	buttonContainer: {
-		flexDirection: 'row',
-		padding: 20,
-	},
-	download: {
-		marginHorizontal: 15,
-	},
-	learnMore: {
-		marginHorizontal: 15,
-	},
+	}
 }));

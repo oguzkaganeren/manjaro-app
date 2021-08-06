@@ -7,13 +7,11 @@ import {
 	Text,
 	Layout,
 	IconProps,
-	Toggle
 
 } from '@ui-kitten/components';
 import { DrawerActions } from '@react-navigation/native';
 import { OfflineComponent } from './OfflineComponent';
 import Constants from 'expo-constants';
-import { ThemeContext } from '../../../../theme-context';
 export interface HeaderProps {
 	headerTitle?: any;
 	previous: any;
@@ -21,8 +19,7 @@ export interface HeaderProps {
 }
 
 const HeaderComponent: React.FC<HeaderProps> = (props) => {
-	const themeContext = React.useContext(ThemeContext);
-	const MenuIcon = (style: IconProps) => <Icon {...style} name="menu-outline" />;
+	const MenuIcon = (style: IconProps) => <Icon {...style} name="menu-2" />;
 	const BackIcon = (style: IconProps) => <Icon {...style} name="arrow-back" />;
 	const BackAction = () => <TopNavigationAction onPress={props.navigation.goBack} icon={BackIcon} />;
 	const MenuAction = () => (
@@ -33,12 +30,7 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 			icon={MenuIcon}
 		/>
 	);
-	const renderRightControl = (props: any) => (
-		<Toggle
-			style={styles.toggle}
-			checked={themeContext.theme == 'light' ? false : true}
-			onChange={themeContext.toggleTheme} />
-	);
+
 	const renderLeftControl = () => (props.previous ? <BackAction /> : <MenuAction />);
 	const renderTitle = (props: any) => (
 		<View style={styles.titleContainer}>
@@ -51,7 +43,6 @@ const HeaderComponent: React.FC<HeaderProps> = (props) => {
 				style={styles.container}
 				title={props.headerTitle == 'Home' ? renderTitle : props.headerTitle}
 				accessoryLeft={renderLeftControl}
-				accessoryRight={renderRightControl}
 			/>
 			<OfflineComponent eva={null} style={null} />
 		</Layout>
