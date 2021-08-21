@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Drawer, DrawerItem, DrawerGroup, Avatar, Icon, Layout } from '@ui-kitten/components';
+import { Drawer, DrawerItem, DrawerGroup, Avatar, Icon, Layout, IndexPath } from '@ui-kitten/components';
 import { Linking, TouchableHighlight } from 'react-native';
 import HeaderComponent from '../components/Public/HeaderComponent';
 import { Platform } from 'react-native';
@@ -45,11 +45,7 @@ const AboutIcon = (props) => <Icon {...props} name="info-outline" />;
 const ExternalLinkIcon = (props) => <Icon {...props} name="external-link-outline" />;
 const SettingsIcon = (props) => <Icon {...props} name="settings-outline" />;
 function DrawerContent({ navigation, state }) {
-	const [selectedIndex, setSelectedIndex] = React.useState({
-		equals: '',
-		row: 0,
-		section: undefined,
-	});
+	const [selectedIndex, setSelectedIndex] = React.useState(new IndexPath(0));
 	const routes = [
 		['HomeScreen'],
 		['UnderYourControlScreen', 'ConfiguredWithOneClickScreen', 'UsefulForEveryoneScreen', 'FreshAndStableScreen'],
@@ -95,7 +91,6 @@ function DrawerContent({ navigation, state }) {
 			footer={Footer}
 			selectedIndex={selectedIndex}
 			onSelect={(index) => {
-				setSelectedIndex(index);
 				if (index.section !== undefined) {
 					const sectionRoute = routes[index.section][index.row];
 					navigation.navigate(sectionRoute);
@@ -103,6 +98,7 @@ function DrawerContent({ navigation, state }) {
 					const sectionRoute = routes[index.row][0];
 					navigation.navigate(sectionRoute);
 				}
+				setSelectedIndex(index);
 			}}
 			style={{
 				marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
@@ -156,7 +152,7 @@ function DrawerContent({ navigation, state }) {
 }
 
 export const DrawerNavigator = () => (
-	<Navigator drawerContent={(props) => <DrawerContent {...props} />}>
+	<Navigator drawerContent={(props) => <DrawerContent {...props} />} screenOptions={{ headerShown: false }}>
 		<Screen name="HomeScreen" component={HomeStack} />
 		<Screen name="UnderYourControlScreen" component={UnderYourControlStack} />
 		<Screen name="ConfiguredWithOneClickScreen" component={ConfiguredWithOneClickStack} />
