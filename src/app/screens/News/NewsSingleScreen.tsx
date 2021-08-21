@@ -4,7 +4,6 @@ import { Linking, Dimensions, ScrollView, useWindowDimensions, Image, ViewStyle 
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import HTML from "react-native-render-html";
 import axios from 'axios';
-import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
 export interface NewsScreenProps {
 	navigation: any;
 	route: any;
@@ -86,7 +85,7 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 						<Text appearance="hint">{'\u2B24'} </Text>
 					)
 				}}
-					ignoredTags={[...IGNORED_TAGS, 'br', 'code', 'aside']}
+					ignoredTags={[ 'br', 'code', 'aside']}
 					tagsStyles={{
 						p: {
 							color: theme['color-basic-600'],

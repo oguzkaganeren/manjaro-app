@@ -171,14 +171,13 @@ function HomeStack() {
 				component={HomeScreen}
 				options={{
 					title: 'Home',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={false} />;
 					},
@@ -189,16 +188,16 @@ function HomeStack() {
 				component={LearnMoreScreen}
 				options={{
 					title: 'Learn More',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -207,16 +206,16 @@ function HomeStack() {
 				component={DownloadScreen}
 				options={{
 					title: 'Download',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -231,16 +230,16 @@ function UnderYourControlStack() {
 				component={UnderYourControlScreen}
 				options={{
 					title: 'Under Your Control',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -255,16 +254,16 @@ function ConfiguredWithOneClickStack() {
 				component={ConfiguredWithOneClickScreen}
 				options={{
 					title: 'Configured With One Click',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -279,16 +278,16 @@ function UsefulForEveryoneStack() {
 				component={UsefulForEveryoneScreen}
 				options={{
 					title: 'Useful For Everyone',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -303,16 +302,16 @@ function FreshAndStableStack() {
 				component={FreshAndStableScreen}
 				options={{
 					title: 'Fresh & Stable',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -327,16 +326,16 @@ function DonateStack() {
 				component={DonateScreen}
 				options={{
 					title: 'Donate',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -351,16 +350,16 @@ function MailListStack() {
 				component={MailListScreen}
 				options={{
 					title: 'Mail Lists',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -375,16 +374,16 @@ function NewsStack() {
 				component={NewsScreen}
 				options={{
 					title: 'News',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -393,16 +392,16 @@ function NewsStack() {
 				component={NewsSingleScreen}
 				options={{
 					title: 'News',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -417,16 +416,16 @@ function SupportStack() {
 				component={SupportScreen}
 				options={{
 					title: 'Support',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -441,16 +440,16 @@ function PackagesStack() {
 				component={PackagesScreen}
 				options={{
 					title: 'Packages',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -465,16 +464,16 @@ function AboutStack() {
 				component={AboutScreen}
 				options={{
 					title: 'About',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>
@@ -489,16 +488,16 @@ function SettingsStack() {
 				component={SettingsScreen}
 				options={{
 					title: 'Settings',
-					header: ({ scene, previous, navigation }) => {
-						const { options } = scene.descriptor;
+					header: ({ route, options,  navigation }) => {
+						
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
 									? options.title
-									: scene.route.name;
+									: route.name;
 
-						return <HeaderComponent navigation={navigation} headerTitle={title} previous={previous} />;
+						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
 				}}
 			/>

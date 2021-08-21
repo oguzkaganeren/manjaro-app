@@ -3,7 +3,6 @@ import { ScrollView, Dimensions, Linking, Image, ViewStyle } from 'react-native'
 import { Text, Layout, Card, Icon, Button, Modal, Divider, withStyles, EvaProp, useTheme } from '@ui-kitten/components';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import HTML from "react-native-render-html";
-import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
 import globalStyle from './../../theme/GlobalStyle'
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
@@ -75,7 +74,7 @@ const SingleScreenThemed: React.FC<ConfiguredWithOneClickProps> = (props) => {
 					<Card disabled={true} status="warning">
 
 						<HTML
-							ignoredTags={[...IGNORED_TAGS, 'br']}
+							ignoredTags={[ 'br']}
 							source={{ html: jsonData.content }}
 							defaultWebViewProps={{ textSelectable: true }}
 							listsPrefixesRenderers={{
