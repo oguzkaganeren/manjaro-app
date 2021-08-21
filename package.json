@@ -51,7 +51,7 @@
         "react-native-web": "~0.13.12",
         "react-native-webview": "11.2.3",
         "react-native-x2-carousel": "^1.0.1",
-        "react-native-youtube-iframe": "^1.4.0"
+        "react-native-youtube-iframe": "^2.1.2"
     },
     "devDependencies": {
         "@babel/core": "~7.9.0",
