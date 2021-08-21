@@ -11,6 +11,9 @@
 	"javascript.suggest.autoImports": true,
 	"workbench.editor.limit.value": 5,
 	"workbench.editor.limit.enabled": true,
+	"[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 	"react-native": {
 		"packager": {
 			"port": 19001

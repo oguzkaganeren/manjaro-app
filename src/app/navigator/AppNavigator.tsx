@@ -57,10 +57,18 @@ function DrawerContent({ navigation, state }) {
 		['ShopScreen'],
 		['NewsScreen'],
 		['MailListScreen', 'SupportScreen', 'PackagesScreen', 'AboutScreen'],
-		['SettingsScreen']
+		['SettingsScreen'],
 	];
 	const Footer = (props) => (
-		<Layout style={{ padding: 20, borderTopWidth: 1, borderColor: '#F2F6FF', flexDirection: 'row', justifyContent: 'space-between' }}>
+		<Layout
+			style={{
+				padding: 20,
+				borderTopWidth: 1,
+				borderColor: '#F2F6FF',
+				flexDirection: 'row',
+				justifyContent: 'space-between',
+			}}
+		>
 			<TouchableHighlight onPress={() => Linking.openURL('https://gitlab.manjaro.org/')}>
 				<Icon pack="awesome" style={{ height: 24, tintColor: '#32C15A' }} name="gitlab" />
 			</TouchableHighlight>
@@ -176,8 +184,8 @@ function HomeStack() {
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={false} />;
 					},
@@ -188,14 +196,13 @@ function HomeStack() {
 				component={LearnMoreScreen}
 				options={{
 					title: 'Learn More',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -206,14 +213,13 @@ function HomeStack() {
 				component={DownloadScreen}
 				options={{
 					title: 'Download',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -230,14 +236,13 @@ function UnderYourControlStack() {
 				component={UnderYourControlScreen}
 				options={{
 					title: 'Under Your Control',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -254,14 +259,13 @@ function ConfiguredWithOneClickStack() {
 				component={ConfiguredWithOneClickScreen}
 				options={{
 					title: 'Configured With One Click',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -278,14 +282,13 @@ function UsefulForEveryoneStack() {
 				component={UsefulForEveryoneScreen}
 				options={{
 					title: 'Useful For Everyone',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -302,14 +305,13 @@ function FreshAndStableStack() {
 				component={FreshAndStableScreen}
 				options={{
 					title: 'Fresh & Stable',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -326,14 +328,13 @@ function DonateStack() {
 				component={DonateScreen}
 				options={{
 					title: 'Donate',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -350,14 +351,13 @@ function MailListStack() {
 				component={MailListScreen}
 				options={{
 					title: 'Mail Lists',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -374,14 +374,13 @@ function NewsStack() {
 				component={NewsScreen}
 				options={{
 					title: 'News',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -392,14 +391,13 @@ function NewsStack() {
 				component={NewsSingleScreen}
 				options={{
 					title: 'News',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -416,14 +414,13 @@ function SupportStack() {
 				component={SupportScreen}
 				options={{
 					title: 'Support',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -440,14 +437,13 @@ function PackagesStack() {
 				component={PackagesScreen}
 				options={{
 					title: 'Packages',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -464,14 +460,13 @@ function AboutStack() {
 				component={AboutScreen}
 				options={{
 					title: 'About',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
@@ -488,14 +483,13 @@ function SettingsStack() {
 				component={SettingsScreen}
 				options={{
 					title: 'Settings',
-					header: ({ route, options,  navigation }) => {
-						
+					header: ({ route, options, navigation }) => {
 						const title =
 							options.headerTitle !== undefined
 								? options.headerTitle
 								: options.title !== undefined
-									? options.title
-									: route.name;
+								? options.title
+								: route.name;
 
 						return <HeaderComponent navigation={navigation} headerTitle={title} previous={navigation.canGoBack} />;
 					},
