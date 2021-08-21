@@ -95,8 +95,10 @@ function DrawerContent({ navigation, state }) {
 					const sectionRoute = routes[index.section][index.row];
 					navigation.navigate(sectionRoute);
 				} else {
-					const sectionRoute = routes[index.row][0];
-					navigation.navigate(sectionRoute);
+					if (1 !== index.row && 3 !== index.row && 5 !== index.row) {
+						const sectionRoute = routes[index.row][0];
+						navigation.navigate(sectionRoute);
+					}
 				}
 				setSelectedIndex(index);
 			}}
@@ -171,7 +173,7 @@ function HomeStack() {
 	return (
 		<Stack.Navigator initialRouteName="HomeScreen">
 			<Stack.Screen
-				name="HomeScreen"
+				name="Home"
 				component={HomeScreen}
 				options={{
 					title: 'Home',
@@ -228,7 +230,7 @@ function UnderYourControlStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="UnderYourControlScreen"
+				name="UnderYourControl"
 				component={UnderYourControlScreen}
 				options={{
 					title: 'Under Your Control',
@@ -251,7 +253,7 @@ function ConfiguredWithOneClickStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="ConfiguredWithOneClickScreen"
+				name="ConfiguredWithOneClick"
 				component={ConfiguredWithOneClickScreen}
 				options={{
 					title: 'Configured With One Click',
@@ -274,7 +276,7 @@ function UsefulForEveryoneStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="UsefulForEveryoneScreen"
+				name="UsefulForEveryone"
 				component={UsefulForEveryoneScreen}
 				options={{
 					title: 'Useful For Everyone',
@@ -297,7 +299,7 @@ function FreshAndStableStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="FreshAndStableScreen"
+				name="FreshAndStable"
 				component={FreshAndStableScreen}
 				options={{
 					title: 'Fresh & Stable',
@@ -320,7 +322,7 @@ function DonateStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="DonateScreen"
+				name="Donate"
 				component={DonateScreen}
 				options={{
 					title: 'Donate',
@@ -343,7 +345,7 @@ function MailListStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="MailListScreen"
+				name="MailList"
 				component={MailListScreen}
 				options={{
 					title: 'Mail Lists',
@@ -366,7 +368,7 @@ function NewsStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="NewsScreen"
+				name="News"
 				component={NewsScreen}
 				options={{
 					title: 'News',
@@ -383,7 +385,7 @@ function NewsStack() {
 				}}
 			/>
 			<Stack.Screen
-				name="NewsSingleScreen"
+				name="NewsSingle"
 				component={NewsSingleScreen}
 				options={{
 					title: 'News',
@@ -406,7 +408,7 @@ function SupportStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="SupportScreen"
+				name="Support"
 				component={SupportScreen}
 				options={{
 					title: 'Support',
@@ -429,7 +431,7 @@ function PackagesStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="PackagesScreen"
+				name="Packages"
 				component={PackagesScreen}
 				options={{
 					title: 'Packages',
@@ -452,7 +454,7 @@ function AboutStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="AboutScreen"
+				name="About"
 				component={AboutScreen}
 				options={{
 					title: 'About',
@@ -475,7 +477,7 @@ function SettingsStack() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="SettingsScreen"
+				name="Settings"
 				component={SettingsScreen}
 				options={{
 					title: 'Settings',
