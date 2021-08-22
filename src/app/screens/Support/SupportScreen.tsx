@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout, Tab, TabView, Text, Icon, EvaProp, IconProps } from '@ui-kitten/components';
+import { Layout, EvaProp, useTheme } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
 import { SafeAreaView, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -15,27 +15,22 @@ export interface SupportProps {
 
 const SupportScreenThemed: React.FC<SupportProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const FirstIcon = (props: IconProps) => <Icon {...props} name="compass-outline" />;
-	const GuideIcon = (props: IconProps) => <Icon {...props} name="book-open-outline" />;
 
 	const TopTab = createMaterialTopTabNavigator();
-	function TopTabBar({ navigation, state }) {
-		const onSelect = (index) => {
-			navigation.navigate(state.routeNames[index]);
-		};
-
-		return (
-			<SafeAreaView>
-				<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
-					<Tab icon={FirstIcon} title="First Steps" />
-					<Tab icon={GuideIcon} title="User Guide" />
-				</TabView>
-			</SafeAreaView>
-		);
-	}
+	const theme = useTheme();
 	return (
 		<Layout style={[eva.style!.container, style]}>
-			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
+			<TopTab.Navigator
+				screenOptions={{
+					tabBarLabelStyle: { fontFamily: 'ComfortaaRegular', color: '#fff' },
+					tabBarStyle: { backgroundColor: theme['color-primary-default'] },
+					tabBarIndicatorStyle: {
+						backgroundColor: '#fff',
+					},
+					lazy: true,
+					swipeEnabled: false,
+				}}
+			>
 				<TopTab.Screen name="Mirrors" component={FirstStepsScreen} />
 				<TopTab.Screen name="Branch" component={UserGuideScreen} />
 			</TopTab.Navigator>
