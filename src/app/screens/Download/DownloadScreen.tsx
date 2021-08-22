@@ -27,13 +27,15 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 	const Development = (props) => (
 		<DownloadEditionScreen key="Development" responseJson={downloadJson.response!.Development} {...props} />
 	);
+	const PlaceHolderLoading = () => (
+		<Layout style={[eva.style!.container, style]}>
+			<Spinner />
+		</Layout>
+	);
 	return (
 		<NavigationContainer independent={true}>
 			{downloadJson.response ? (
 				<TopTab.Navigator
-					lazy={true}
-					swipeEnabled={false}
-					lazyPreloadDistance={2}
 					tabBarOptions={{ scrollEnabled: true }}
 					screenOptions={{
 						tabBarLabelStyle: { fontFamily: 'ComfortaaRegular', color: '#fff' },
@@ -43,6 +45,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 						},
 						lazy: true,
 						swipeEnabled: false,
+						lazyPlaceholder: () => <PlaceHolderLoading />,
 					}}
 				>
 					<TopTab.Screen name="Official" component={Official} />
@@ -51,9 +54,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 					<TopTab.Screen name="Development" component={Development} />
 				</TopTab.Navigator>
 			) : (
-				<Layout style={[eva.style!.container, style]}>
-					<Spinner />
-				</Layout>
+				<PlaceHolderLoading />
 			)}
 		</NavigationContainer>
 	);

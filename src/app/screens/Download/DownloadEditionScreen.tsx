@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { EvaProp } from '@ui-kitten/components';
+import { EvaProp, Layout, Spinner, useTheme, withStyles } from '@ui-kitten/components';
 import { Dimensions, SafeAreaView, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { withStyles } from '@ui-kitten/components';
 import { SingleScreen } from './SingleScreen';
-import DynamicTabView from 'react-native-dynamic-tab-view-test';
 import globalStyle from './../../theme/GlobalStyle';
 export interface HomeProps {
 	navigation: any;
@@ -18,6 +16,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 	const { eva, style, responseJson, ...restProps } = props;
 	const [index, setIndex] = React.useState(0);
 	const [routes, setRoutes] = React.useState([]);
+	const theme = useTheme();
 	const [editionNames, setEditionNames] = React.useState([]);
 	const TopTab = createMaterialTopTabNavigator();
 	React.useEffect(() => {
@@ -30,31 +29,48 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 		}
 	}
 	const getRoutes = () => {
+		let tempRoutes = [];
 		editionNames.forEach((name) => {
-			routes.push({
-				key: name,
-				title: name,
-			});
+			tempRoutes.push({ key: name, title: name });
 		});
+		setRoutes([...routes, ...tempRoutes]);
 	};
-
-	const _renderItem = (item, index) => {
-		return <SingleScreen {...props} key={item['key']} responseJson={responseJson[index]} />;
-	};
-	const onChangeTab = (index) => {};
-	return (
-		<TopTab.Navigator lazy={true} lazyPreloadDistance={3}>
-			{editionNames.map((subCategory) => (
-				<TopTab.Screen
-					key={subCategory.key}
-					name={subCategory.title}
-					component={_renderItem}
-					options={{ tabBarLabel: subCategory.title }}
-					initialParams={{ subCategory }}
-				/>
-			))}
-		</TopTab.Navigator>
+	const tabnavigatorRender = routes.map((subCategory, index) => (
+		<TopTab.Screen
+			key={subCategory.key}
+			name={subCategory.title}
+			options={{ tabBarLabel: subCategory.title }}
+			initialParams={{ subCategory }}
+		>
+			{(props) => <SingleScreen {...props} key={subCategory['key']} responseJson={responseJson[index]} />}
+		</TopTab.Screen>
+	));
+	const PlaceHolderLoading = () => (
+		<Layout style={[globalStyle.container, { justifyContent: 'center', alignItems: 'center' }]}>
+			<Spinner />
+		</Layout>
 	);
+	if (routes.length != 0) {
+		return (
+			<TopTab.Navigator
+				tabBarOptions={{ scrollEnabled: true }}
+				screenOptions={{
+					tabBarLabelStyle: { fontFamily: 'ComfortaaRegular', color: '#fff' },
+					tabBarStyle: { backgroundColor: theme['color-primary-default'] },
+					tabBarIndicatorStyle: {
+						backgroundColor: '#fff',
+					},
+					lazy: true,
+					swipeEnabled: false,
+					lazyPlaceholder: () => <PlaceHolderLoading />,
+				}}
+			>
+				{tabnavigatorRender}
+			</TopTab.Navigator>
+		);
+	} else {
+		return <PlaceHolderLoading />;
+	}
 };
 
 export const DownloadEditionScreen = withStyles(DownloadEditionScreenThemed, (theme) => ({}));
