@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Layout, Tab, TabView, Text, Icon, EvaProp } from '@ui-kitten/components';
-import { withStyles, IconProps } from '@ui-kitten/components';
+import { Layout, Tab, TabBar, useTheme, Icon, EvaProp, withStyles, IconProps } from '@ui-kitten/components';
 import { SafeAreaView, StyleProp, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TeamScreen } from './TeamScreen';
 import { LinuxScreen } from './LinuxScreen';
 import { ApplicationAboutScreen } from './ApplicationAboutScreen';
-import globalStyle from './../../theme/GlobalStyle'
+import globalStyle from './../../theme/GlobalStyle';
 export interface AboutProps {
 	navigation: any;
 	route: any;
@@ -16,28 +15,20 @@ export interface AboutProps {
 
 const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const CommunityIcon = (props: IconProps) => <Icon {...props} name="people-outline" />;
-	const AboutIcon = (props: IconProps) => <Icon {...props} name="info-outline" />;
-	const ApplicationIcon = (props: IconProps) => <Icon {...props} name="smartphone-outline" />;
+	const theme = useTheme();
 	const TopTab = createMaterialTopTabNavigator();
-	const TopTabBar = ({ navigation, state }) => {
-		const onSelect = (index) => {
-			navigation.navigate(state.routeNames[index]);
-		};
 
-		return (
-			<SafeAreaView>
-				<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
-					<Tab icon={CommunityIcon} title="Team" />
-					<Tab icon={AboutIcon} title="Linux" />
-					<Tab icon={ApplicationIcon} title="Application" />
-				</TabView>
-			</SafeAreaView>
-		);
-	};
 	return (
 		<Layout style={[globalStyle.container, style]}>
-			<TopTab.Navigator tabBar={(props) => <TopTabBar {...props} />}>
+			<TopTab.Navigator
+				screenOptions={{
+					tabBarLabelStyle: { fontFamily: 'ComfortaaRegular', color: '#fff' },
+					tabBarStyle: { backgroundColor: theme['color-primary-default'] },
+					tabBarIndicatorStyle: {
+						backgroundColor: '#fff',
+					},
+				}}
+			>
 				<TopTab.Screen name="Team" component={TeamScreen} />
 				<TopTab.Screen name="Linux" component={LinuxScreen} />
 				<TopTab.Screen name="Application" component={ApplicationAboutScreen} />
@@ -46,6 +37,4 @@ const AboutScreenThemed: React.FC<AboutProps> = (props) => {
 	);
 };
 
-export const AboutScreen = withStyles(AboutScreenThemed, (theme) => ({
-
-}));
+export const AboutScreen = withStyles(AboutScreenThemed, (theme) => ({}));

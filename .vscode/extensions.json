@@ -17,6 +17,7 @@
         "PKief.material-icon-theme",
         "streetsidesoftware.code-spell-checker",
         "waderyan.gitblame",
-        "wayou.vscode-todo-highlight"
+        "wayou.vscode-todo-highlight",
+        "kamikillerto.vscode-colorize"
     ]
 }

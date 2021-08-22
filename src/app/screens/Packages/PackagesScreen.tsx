@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Layout, Tab, TabView, Text, Icon, EvaProp, IconProps } from '@ui-kitten/components';
-import { withStyles } from '@ui-kitten/components';
+import { Layout, Tab, TabView, useTheme, Icon, EvaProp, IconProps, withStyles, TabBar } from '@ui-kitten/components';
 import { SafeAreaView, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { BranchScreen } from './BranchScreen';
@@ -16,46 +15,41 @@ export interface AboutProps {
 
 const PackagesScreenThemed: React.FC<AboutProps> = (props) => {
 	const { eva, style, ...restProps } = props;
-	const MirrorsIcon = (props: IconProps) => <Icon {...props} name="flip-outline" />;
-	const DiscoverIcon = (props: IconProps) => <Icon {...props} name="cube-outline" />;
-	const BranchIcon = (props: IconProps) => <Icon {...props} name="shuffle-2-outline" />;
 	const [subTabIndex, setSubTabIndex] = React.useState(0);
 	const TopTab = createMaterialTopTabNavigator();
+	const theme = useTheme();
 	const X64Icon = (props: IconProps) => <Icon {...props} name="monitor-outline" />;
 	const ARMIcon = (props: IconProps) => <Icon {...props} name="smartphone-outline" />;
-	const TopTabBar = ({ navigation, state }) => {
-		const onSelect = (index) => {
-			navigation.navigate(state.routeNames[index]);
-		};
 
-		return (
-			<SafeAreaView>
-				<TabView selectedIndex={state.index} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={onSelect}>
-					<Tab icon={MirrorsIcon} title="Mirrors" />
-					<Tab icon={DiscoverIcon} title="Discover Software" />
-					<Tab icon={BranchIcon} title="Branch Compare" />
-				</TabView>
-			</SafeAreaView>
-		);
-	};
 	const SubTabBar = () => (
-
-		<TabView selectedIndex={subTabIndex} indicatorStyle={{ backgroundColor: '#ffaa00' }} onSelect={(index) => setSubTabIndex(index)}>
+		<TabBar
+			selectedIndex={subTabIndex}
+			indicatorStyle={{ backgroundColor: '#ffaa00' }}
+			onSelect={(index) => setSubTabIndex(index)}
+		>
 			<Tab icon={X64Icon} title="X64" />
 			<Tab icon={ARMIcon} title="ARM" />
-		</TabView>
-	)
+		</TabBar>
+	);
 	const BranchScreenWithSubBar = () => (
 		<Layout>
 			<SubTabBar />
 			<BranchScreen tabIndex={subTabIndex} {...props} />
 		</Layout>
-	)
+	);
 	return (
-		<NavigationContainer independent={true} >
-			<TopTab.Navigator lazy swipeEnabled={false}
-				lazyPreloadDistance={2}
-				tabBarOptions={{ scrollEnabled: false }} tabBar={TopTabBar}>
+		<NavigationContainer independent={true}>
+			<TopTab.Navigator
+				screenOptions={{
+					tabBarLabelStyle: { fontFamily: 'ComfortaaRegular', color: '#fff' },
+					tabBarStyle: { backgroundColor: theme['color-primary-default'] },
+					tabBarIndicatorStyle: {
+						backgroundColor: '#fff',
+					},
+					lazy: true,
+					swipeEnabled: false,
+				}}
+			>
 				<TopTab.Screen name="Mirrors" component={MirrorsScreen} />
 				<TopTab.Screen name="Discover" component={DiscoverScreen} />
 				<TopTab.Screen name="Branch" component={BranchScreenWithSubBar} />

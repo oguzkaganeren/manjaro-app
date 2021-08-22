@@ -14,11 +14,6 @@
 	"[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-	"react-native": {
-		"packager": {
-			"port": 19001
-		}
-	},
 	"better-comments.tags": [
 		{
 			"tag": "!",
@@ -51,7 +46,11 @@
 			"backgroundColor": "transparent"
 		}
 	],
-
+	"colorize.languages": [
+		"json",
+		"typescript",
+		"javascript"
+	  ]
 	"cSpell.words": [
 		"Formik",
 		"Scrollable",
