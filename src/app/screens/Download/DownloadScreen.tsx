@@ -36,7 +36,6 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 		<NavigationContainer independent={true}>
 			{downloadJson.response ? (
 				<TopTab.Navigator
-					tabBarOptions={{ scrollEnabled: true }}
 					screenOptions={{
 						tabBarLabelStyle: { fontFamily: 'ComfortaaRegular', color: '#fff' },
 						tabBarStyle: { backgroundColor: theme['color-primary-default'] },
@@ -46,6 +45,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 						lazy: true,
 						swipeEnabled: false,
 						lazyPlaceholder: () => <PlaceHolderLoading />,
+						tabBarScrollEnabled: true,
 					}}
 				>
 					<TopTab.Screen name="Official" component={Official} />

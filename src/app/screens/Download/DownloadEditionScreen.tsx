@@ -53,7 +53,6 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 	if (routes.length != 0) {
 		return (
 			<TopTab.Navigator
-				tabBarOptions={{ scrollEnabled: true }}
 				screenOptions={{
 					tabBarLabelStyle: { fontFamily: 'ComfortaaRegular', color: '#fff' },
 					tabBarStyle: { backgroundColor: theme['color-primary-default'] },
@@ -63,6 +62,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 					lazy: true,
 					swipeEnabled: false,
 					lazyPlaceholder: () => <PlaceHolderLoading />,
+					tabBarScrollEnabled: true,
 				}}
 			>
 				{tabnavigatorRender}
