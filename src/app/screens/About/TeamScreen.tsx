@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ScrollView, ViewStyle, ViewProps } from 'react-native';
 import { Text, Layout, Card, Icon, Avatar, EvaProp, CardProps, withStyles, LayoutProps } from '@ui-kitten/components';
-import globalStyle from './../../theme/GlobalStyle'
+import globalStyle from './../../theme/GlobalStyle';
 export interface TeamProps {
 	navigation: any;
 	route: any;
@@ -19,8 +19,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/philip.jpg', cache: 'only-if-cached'
-
+						uri: 'https://manjaro.org/img/team/philip.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, style]}>
@@ -32,7 +32,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DE.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/DE.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -46,7 +47,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/bernhard.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/bernhard.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, style]}>
@@ -58,7 +60,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/AT.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/AT.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -82,7 +85,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/FR.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/FR.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -96,7 +100,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/stefano.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/stefano.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -108,7 +113,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/IT.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/IT.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -132,7 +138,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DK.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/DK.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -146,7 +153,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/matti.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/matti.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -158,7 +166,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/FI.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/FI.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -172,7 +181,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/dan.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/dan.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -184,7 +194,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DK.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/DK.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -208,7 +219,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/US.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/US.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -222,7 +234,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/vitor.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/vitor.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -234,7 +247,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/PT.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/PT.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -248,7 +262,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/helmut.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/helmut.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -260,7 +275,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DE.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/DE.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -274,7 +290,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/bogan.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/bogan.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -286,7 +303,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/RO.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/RO.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -300,7 +318,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/artem.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/artem.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -312,7 +331,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/RU.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/RU.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -326,7 +346,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/oguz.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/oguz.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -338,7 +359,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/TR.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/TR.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -352,7 +374,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/tobias.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/tobias.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -364,7 +387,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DE.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/DE.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -388,7 +412,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/DE.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/DE.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -412,7 +437,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/IN.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/IN.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -436,7 +462,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/US.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/US.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -461,7 +488,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="tiny"
 					style={[eva.style!.flag, style]}
 					source={{
-						uri: 'https://manjaro.org/img/flags/US.png', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/flags/US.png',
+						cache: 'only-if-cached',
 					}}
 				/>
 			</Layout>
@@ -475,7 +503,8 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 					size="giant"
 					style={[eva.style!.avatar, style]}
 					source={{
-						uri: 'https://manjaro.org/img/team/coffee.jpg', cache: 'only-if-cached'
+						uri: 'https://manjaro.org/img/team/coffee.jpg',
+						cache: 'only-if-cached',
 					}}
 				/>
 				<Text category="h6" style={[eva.style!.subHeader, { textAlign: 'center' }]}>
@@ -486,7 +515,7 @@ const TeamScreenThemed: React.FC<TeamProps> = (props) => {
 		</Layout>
 	);
 	return (
-		<Layout style={[globalStyle.containerCentered, style]}>
+		<Layout style={[globalStyle.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'center' }}>
@@ -612,5 +641,5 @@ export const TeamScreen = withStyles(TeamScreenThemed, (theme) => ({
 	},
 	subHeader: {
 		lineHeight: 25,
-	}
+	},
 }));

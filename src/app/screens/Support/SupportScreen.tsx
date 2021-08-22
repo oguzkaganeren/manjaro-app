@@ -5,7 +5,7 @@ import { SafeAreaView, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { FirstStepsScreen } from './FirstStepsScreen';
 import { UserGuideScreen } from './UserGuideScreen';
-
+import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
 export interface SupportProps {
 	navigation: any;
 	route: any;
@@ -29,6 +29,7 @@ const SupportScreenThemed: React.FC<SupportProps> = (props) => {
 					},
 					lazy: true,
 					swipeEnabled: false,
+					lazyPlaceholder: () => <PlaceHolderComponent {...props} />,
 				}}
 			>
 				<TopTab.Screen name="Mirrors" component={FirstStepsScreen} />

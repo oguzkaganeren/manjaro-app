@@ -6,6 +6,7 @@ import { BranchScreen } from './BranchScreen';
 import { DiscoverScreen } from './DiscoverScreen';
 import { MirrorsScreen } from './MirrorsScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
 export interface AboutProps {
 	navigation: any;
 	route: any;
@@ -48,6 +49,7 @@ const PackagesScreenThemed: React.FC<AboutProps> = (props) => {
 					},
 					lazy: true,
 					swipeEnabled: false,
+					lazyPlaceholder: () => <PlaceHolderComponent {...props} />,
 				}}
 			>
 				<TopTab.Screen name="Mirrors" component={MirrorsScreen} />

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { EvaProp, Layout, Spinner, useTheme, withStyles } from '@ui-kitten/components';
+import { EvaProp, Layout, useTheme, withStyles } from '@ui-kitten/components';
 import { Dimensions, SafeAreaView, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { SingleScreen } from './SingleScreen';
-import globalStyle from './../../theme/GlobalStyle';
+import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
 export interface HomeProps {
 	navigation: any;
 	route: any;
@@ -45,11 +45,6 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 			{(props) => <SingleScreen {...props} key={subCategory['key']} responseJson={responseJson[index]} />}
 		</TopTab.Screen>
 	));
-	const PlaceHolderLoading = () => (
-		<Layout style={[globalStyle.container, { justifyContent: 'center', alignItems: 'center' }]}>
-			<Spinner />
-		</Layout>
-	);
 	if (routes.length != 0) {
 		return (
 			<TopTab.Navigator
@@ -61,7 +56,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 					},
 					lazy: true,
 					swipeEnabled: false,
-					lazyPlaceholder: () => <PlaceHolderLoading />,
+					lazyPlaceholder: () => <PlaceHolderComponent {...props} />,
 					tabBarScrollEnabled: true,
 				}}
 			>
@@ -69,7 +64,7 @@ const DownloadEditionScreenThemed: React.FC<HomeProps> = (props) => {
 			</TopTab.Navigator>
 		);
 	} else {
-		return <PlaceHolderLoading />;
+		return <PlaceHolderComponent {...props} />;
 	}
 };
 

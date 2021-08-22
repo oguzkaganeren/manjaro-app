@@ -91,7 +91,7 @@ function DrawerContent({ navigation, state }) {
 			footer={Footer}
 			selectedIndex={selectedIndex}
 			onSelect={(index) => {
-				if (index.section !== undefined) {
+				if (index.section !== undefined && index.section !== 3) {
 					const sectionRoute = routes[index.section][index.row];
 					navigation.navigate(sectionRoute);
 				} else {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, ViewStyle } from 'react-native';
 import { Text, Layout, Card, Icon, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-import globalStyle from './../../theme/GlobalStyle'
+import globalStyle from './../../theme/GlobalStyle';
 export interface UnderYourControlProps {
 	navigation: any;
 	route: any;
@@ -45,7 +45,7 @@ const UnderYourControlScreenThemed: React.FC<UnderYourControlProps> = (props) =>
 		</Layout>
 	);
 	return (
-		<Layout style={[globalStyle.containerCentered, style]}>
+		<Layout style={[globalStyle.container, style]}>
 			<ScrollView>
 				<Card disabled status="primary" header={ChangeHeader}>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>

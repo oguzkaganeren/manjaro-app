@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Text, Layout, Spinner, Icon, List, BottomNavigationTab, Card, withStyles, EvaProp } from '@ui-kitten/components';
+import { Text, Layout, Icon, List, BottomNavigationTab, Card, withStyles, EvaProp } from '@ui-kitten/components';
 import { Image, Dimensions, ScrollView, useWindowDimensions, ViewStyle } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import globalStyle from './../../theme/GlobalStyle'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import globalStyle from './../../theme/GlobalStyle';
 import axios from 'axios';
+import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
 export interface NewsScreenProps {
 	navigation: any;
 	route: any;
@@ -46,64 +47,60 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 		return axios.get('https://forum.manjaro.org/c/arm/unstable-updates/81.json');
 	}
 	React.useEffect(() => {
-		Promise.all([getStableJson(), getTestingJson(), getUnstableJson(), getNewsJson(), getArmJson(), getReleaseJson(), getArmReleaseJson(), getArmStableJson(), getArmTestingJson(), getArmUnstableJson()])
-			.then(function (results) {
-				let allResults = [];
-				results.forEach(element => {
-					element.data.topic_list.topics.forEach(elementTopic => {
-						allResults.push(elementTopic);
-					});
-
+		Promise.all([
+			getStableJson(),
+			getTestingJson(),
+			getUnstableJson(),
+			getNewsJson(),
+			getArmJson(),
+			getReleaseJson(),
+			getArmReleaseJson(),
+			getArmStableJson(),
+			getArmTestingJson(),
+			getArmUnstableJson(),
+		]).then(function (results) {
+			let allResults = [];
+			results.forEach((element) => {
+				element.data.topic_list.topics.forEach((elementTopic) => {
+					allResults.push(elementTopic);
 				});
-				allResults.sort((a, b) => {
-					return new Date(a.created_at).getTime() -
-						new Date(b.created_at).getTime()
-				}).reverse();
-				setIsLoading(false)
-				setAllFeed(allResults)
 			});
-	}, [])
+			allResults
+				.sort((a, b) => {
+					return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+				})
+				.reverse();
+			setIsLoading(false);
+			setAllFeed(allResults);
+		});
+	}, []);
 	const renderItemHeader = (headerProps, info) => (
 		<Layout {...headerProps}>
-			<Text category='h6'>
-				{info.item.title}
-			</Text>
+			<Text category="h6">{info.item.title}</Text>
 		</Layout>
 	);
 	const onPressTopic = (idOfTopic) => {
 		props.navigation.navigate('NewsSingleScreen', {
-			idOfTopic: idOfTopic
+			idOfTopic: idOfTopic,
 		});
-	}
+	};
 	const renderItemFooter = (footerProps, info) => (
 		<BottomNavigationTab
 			icon={(props) => (
 				<Layout style={[globalStyle.sideContainer, style]}>
-					<Icon
-						{...props}
-						name="eye-outline"
-					/>
+					<Icon {...props} name="eye-outline" />
 					<Text appearance="hint" style={[eva.style!.iconText, style]}>
 						{info.item.views}
 					</Text>
-					<Icon
-						{...props}
-						name="heart-outline"
-					/>
+					<Icon {...props} name="heart-outline" />
 					<Text appearance="hint" style={[eva.style!.iconText, style]}>
 						{info.item.like_count}
 					</Text>
-					<Icon
-						{...props}
-						name="message-circle-outline"
-					/>
+					<Icon {...props} name="message-circle-outline" />
 					<Text appearance="hint" style={[eva.style!.iconText, style]}>
 						{info.item.reply_count}
 					</Text>
-					<Icon
-						{...props}
-						name="calendar-outline"
-					/>
+					<Icon {...props} name="calendar-outline" />
 					<Text appearance="hint" style={[eva.style!.iconText, style]}>
 						{info.item.created_at.split('T')[0]}
 					</Text>
@@ -113,33 +110,31 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	);
 
 	const renderItem = (info) => (
-		<TouchableOpacity
-			onPress={() => onPressTopic(info.item.id)}
-		>
+		<TouchableOpacity onPress={() => onPressTopic(info.item.id)}>
 			<Card
-				status='success'
-				header={headerProps => renderItemHeader(headerProps, info)}
-				footer={footerProps => renderItemFooter(footerProps, info)}>
-				<Image style={[eva.style!.image, style]} source={{
-					uri: info.item.image_url, cache: 'only-i- cached'
-				}} />
+				status="success"
+				header={(headerProps) => renderItemHeader(headerProps, info)}
+				footer={(footerProps) => renderItemFooter(footerProps, info)}
+			>
+				<Image
+					style={[eva.style!.image, style]}
+					source={{
+						uri: info.item.image_url,
+						cache: 'only-i- cached',
+					}}
+				/>
 			</Card>
 		</TouchableOpacity>
 	);
 
 	return (
-		<Layout style={[globalStyle.containerCentered, style]}>
-			{!isLoading ? (<List
-				data={allFeed}
-				renderItem={renderItem}
-			/>) : (<Spinner status='success' />)}
-
+		<Layout style={[globalStyle.container, style]}>
+			{!isLoading ? <List data={allFeed} renderItem={renderItem} /> : <PlaceHolderComponent {...props} />}
 		</Layout>
 	);
 };
 
 export const NewsScreen = withStyles(NewsScreenThemed, (theme) => ({
-
 	icon: {
 		width: 16,
 		height: 16,
@@ -153,6 +148,6 @@ export const NewsScreen = withStyles(NewsScreenThemed, (theme) => ({
 	},
 	iconText: {
 		marginRight: 20,
-		marginLeft: 5
-	}
+		marginLeft: 5,
+	},
 }));

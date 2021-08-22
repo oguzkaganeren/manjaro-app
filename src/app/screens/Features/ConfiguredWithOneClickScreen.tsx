@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, Image, Dimensions, ViewStyle } from 'react-native';
 import { Text, Layout, Card, Icon, Avatar, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-import globalStyle from './../../theme/GlobalStyle'
+import globalStyle from './../../theme/GlobalStyle';
 export interface ConfiguredWithOneClickProps {
 	navigation: any;
 	route: any;
@@ -48,7 +48,10 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 	const GraphicCardHeader = (props) => (
 		<Layout {...props}>
 			<Layout style={[eva.style!.subContainer, style]}>
-				<Image style={[eva.style!.image, style]} source={require('../../../../assets/featureImages/manjaro_mhwd.png')} />
+				<Image
+					style={[eva.style!.image, style]}
+					source={require('../../../../assets/featureImages/manjaro_mhwd.png')}
+				/>
 				<Text category="h6">New graphics card? One click and it's done</Text>
 			</Layout>
 		</Layout>
@@ -76,7 +79,7 @@ const ConfiguredWithOneClickScreenThemed: React.FC<ConfiguredWithOneClickProps> 
 		</Layout>
 	);
 	return (
-		<Layout style={[globalStyle.containerCentered, style]}>
+		<Layout style={[globalStyle.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -142,5 +145,5 @@ export const ConfiguredWithOneClickScreen = withStyles(ConfiguredWithOneClickScr
 		width: Dimensions.get('window').width - 50,
 		height: Dimensions.get('window').height / 2,
 		resizeMode: 'contain',
-	}
+	},
 }));

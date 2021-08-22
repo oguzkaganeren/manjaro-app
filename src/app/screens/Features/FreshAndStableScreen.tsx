@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
 import { Text, Layout, Card, Icon, Avatar, Divider, Button, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-import globalStyle from './../../theme/GlobalStyle'
+import globalStyle from './../../theme/GlobalStyle';
 export interface FreshAndStableProps {
 	navigation: any;
 	route: any;
@@ -14,7 +14,7 @@ const FreshAndStableScreenThemed: React.FC<FreshAndStableProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 
 	return (
-		<Layout style={[globalStyle.containerCentered, style]}>
+		<Layout style={[globalStyle.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -62,5 +62,5 @@ export const FreshAndStableScreen = withStyles(FreshAndStableScreenThemed, (them
 		overflow: 'visible',
 		resizeMode: 'contain',
 		backgroundColor: '#EBEBEB',
-	}
+	},
 }));

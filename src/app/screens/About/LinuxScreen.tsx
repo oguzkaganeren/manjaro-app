@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, ViewStyle, Dimensions, Linking } from 'react-native';
 import { Text, Layout, Card, Icon, EvaProp, Divider, useTheme } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-import globalStyle from './../../theme/GlobalStyle'
+import globalStyle from './../../theme/GlobalStyle';
 export interface LinuxProps {
 	navigation: any;
 	route: any;
@@ -14,7 +14,7 @@ const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {
 	const { eva, style, ...restProps } = props;
 	const theme = useTheme();
 	return (
-		<Layout style={[globalStyle.containerCentered, style]}>
+		<Layout style={[globalStyle.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text category="h6" style={{ textAlign: 'justify' }}>
@@ -82,6 +82,4 @@ const LinuxScreenThemed: React.FC<LinuxProps> = (props) => {
 	);
 };
 
-export const LinuxScreen = withStyles(LinuxScreenThemed, (theme) => ({
-
-}));
+export const LinuxScreen = withStyles(LinuxScreenThemed, (theme) => ({}));

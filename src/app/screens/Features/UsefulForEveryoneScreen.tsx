@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, Image, Dimensions, Linking, ViewStyle } from 'react-native';
 import { Text, Layout, Card, Icon, Avatar, Divider, useTheme, EvaProp } from '@ui-kitten/components';
 import { withStyles } from '@ui-kitten/components';
-import globalStyle from './../../theme/GlobalStyle'
+import globalStyle from './../../theme/GlobalStyle';
 export interface UsefulForEveryoneProps {
 	navigation: any;
 	route: any;
@@ -56,7 +56,7 @@ const UsefulForEveryoneScreenThemed: React.FC<UsefulForEveryoneProps> = (props) 
 		</Layout>
 	);
 	return (
-		<Layout style={[globalStyle.containerCentered, style]}>
+		<Layout style={[globalStyle.container, style]}>
 			<ScrollView>
 				<Card disabled>
 					<Text appearance="hint" style={{ textAlign: 'justify' }}>
@@ -368,5 +368,5 @@ export const UsefulForEveryoneScreen = withStyles(UsefulForEveryoneScreenThemed,
 	},
 	download: {
 		marginHorizontal: 15,
-	}
+	},
 }));

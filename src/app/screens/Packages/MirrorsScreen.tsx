@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Text, Layout, Spinner, List, Card, EvaProp, Input, withStyles, Icon, Tab, IconProps } from '@ui-kitten/components';
+import { Text, Layout, List, Card, EvaProp, Input, withStyles, Icon, Tab, IconProps } from '@ui-kitten/components';
 import { View, ViewStyle, Dimensions, Linking } from 'react-native';
 import axios from 'axios';
+import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
 export interface MirrorsProps {
 	navigation: any;
 	route: any;
@@ -18,114 +19,104 @@ const MirrorsScreenThemed: React.FC<MirrorsProps> = (props) => {
 
 	let filteredData;
 
-
 	function getStatusOfMirrorsJson() {
 		return axios.get('https://repo.manjaro.org/status.json');
 	}
-	const SearchIcon = (props) => (
-		<Icon {...props} name='search-outline' />
-	);
-	const SyncIcon = (props) => (
-		<Icon {...props} name='checkmark-outline' />
-	);
-	const NotSyncIcon = (props) => (
-		<Icon {...props} name='close-outline' />
-	);
-	const UnknownIcon = (props) => (
-		<Icon {...props} name='question-mark-circle-outline' />
-	);
+	const SearchIcon = (props) => <Icon {...props} name="search-outline" />;
+	const SyncIcon = (props) => <Icon {...props} name="checkmark-outline" />;
+	const NotSyncIcon = (props) => <Icon {...props} name="close-outline" />;
+	const UnknownIcon = (props) => <Icon {...props} name="question-mark-circle-outline" />;
 	React.useEffect(() => {
-		Promise.all([getStatusOfMirrorsJson()])
-			.then(function (results) {
-				let allResults = [];
-				results.forEach(element => {
-					element.data.forEach(elementTopic => {
-						allResults.push(elementTopic);
-					});
-
+		Promise.all([getStatusOfMirrorsJson()]).then(function (results) {
+			let allResults = [];
+			results.forEach((element) => {
+				element.data.forEach((elementTopic) => {
+					allResults.push(elementTopic);
 				});
-				setIsLoading(false)
-				setMirrorsData(allResults)
-				setListDataSource(allResults)
-			})
-	}, [])
+			});
+			setIsLoading(false);
+			setMirrorsData(allResults);
+			setListDataSource(allResults);
+		});
+	}, []);
 
 	const renderItemHeader = (headerProps, info) => {
-		return <Layout  {...headerProps} style={[eva.style!.sideContainer, style]}>
-			<Text category='h6'>
-				{info.item.country}
-			</Text>
-			<Text appearance="hint"  {...headerProps}>
-				Last sync: {info.item.last_sync == -1 ? 'N/A' : info.item.last_sync}
-			</Text>
-		</Layout>
+		return (
+			<Layout {...headerProps} style={[eva.style!.sideContainer, style]}>
+				<Text category="h6">{info.item.country}</Text>
+				<Text appearance="hint" {...headerProps}>
+					Last sync: {info.item.last_sync == -1 ? 'N/A' : info.item.last_sync}
+				</Text>
+			</Layout>
+		);
 	};
 	const renderItemFooter = (footerProps, info) => (
 		<Layout style={[eva.style!.sideContainer, style]}>
-			<Text appearance="hint"  {...footerProps}>
-				Protocol(s): {info.item.protocols.join(", ")}
+			<Text appearance="hint" {...footerProps}>
+				Protocol(s): {info.item.protocols.join(', ')}
 			</Text>
 		</Layout>
-
 	);
 	const stableHeader = (headerProps) => (
 		<Layout {...props} style={{ margin: 10 }}>
-			<Text category='h6'>Stable</Text>
+			<Text category="h6">Stable</Text>
 		</Layout>
-	)
+	);
 	const testingHeader = (headerProps) => (
 		<Layout {...props} style={{ margin: 10 }}>
-			<Text category='h6'>Testing</Text>
+			<Text category="h6">Testing</Text>
 		</Layout>
-	)
+	);
 	const unstableHeader = (headerProps) => (
 		<Layout {...props} style={{ margin: 10 }}>
-			<Text category='h6'>Unstable</Text>
+			<Text category="h6">Unstable</Text>
 		</Layout>
-	)
-	const searchFilterFunction = text => {
+	);
+	const searchFilterFunction = (text) => {
 		// Check if searched text is not blank
 		if (text) {
-			filteredData = mirrorsData.filter(
-				function (item) {
-					const itemData = item.country.toLowerCase();
-					const textData = text.toLowerCase();
-					return itemData.indexOf(textData) > -1;
-				});
-			setListDataSource(filteredData)
+			filteredData = mirrorsData.filter(function (item) {
+				const itemData = item.country.toLowerCase();
+				const textData = text.toLowerCase();
+				return itemData.indexOf(textData) > -1;
+			});
+			setListDataSource(filteredData);
 		} else {
-			setListDataSource(mirrorsData)
-
+			setListDataSource(mirrorsData);
 		}
 
-		setQuery(text)
+		setQuery(text);
 	};
-	const renderStatusIcon = (info, order) => (
-
-		info.item.branches[order] == 1 ? <SyncIcon fill='#8F9BB3' style={[eva.style!.icon, style]} /> : (info.item.branches[order] == 0 ? <NotSyncIcon fill='#8F9BB3' style={[eva.style!.icon, style]} /> : <UnknownIcon fill='#8F9BB3' style={[eva.style!.icon, style]} />)
-	)
+	const renderStatusIcon = (info, order) =>
+		info.item.branches[order] == 1 ? (
+			<SyncIcon fill="#8F9BB3" style={[eva.style!.icon, style]} />
+		) : info.item.branches[order] == 0 ? (
+			<NotSyncIcon fill="#8F9BB3" style={[eva.style!.icon, style]} />
+		) : (
+			<UnknownIcon fill="#8F9BB3" style={[eva.style!.icon, style]} />
+		);
 	const renderItem = (info) => (
 		<Card
-			status='basic'
-			header={headerProps => renderItemHeader(headerProps, info)}
-			footer={footerProps => renderItemFooter(footerProps, info)}
+			status="basic"
+			header={(headerProps) => renderItemHeader(headerProps, info)}
+			footer={(footerProps) => renderItemFooter(footerProps, info)}
 			onPress={() => {
 				Linking.openURL(info.item.url);
-			}}>
-			<View style={{ flexDirection: "row" }}>
-				<Card status='primary' disabled style={{ width: Dimensions.get('window').width / 4 }} header={stableHeader}>
+			}}
+		>
+			<View style={{ flexDirection: 'row' }}>
+				<Card status="primary" disabled style={{ width: Dimensions.get('window').width / 4 }} header={stableHeader}>
 					{renderStatusIcon(info, 0)}
 				</Card>
 
-				<Card status='warning' disabled style={{ width: Dimensions.get('window').width / 4 }} header={testingHeader}>
+				<Card status="warning" disabled style={{ width: Dimensions.get('window').width / 4 }} header={testingHeader}>
 					{renderStatusIcon(info, 1)}
 				</Card>
 
-				<Card status='danger' disabled style={{ width: Dimensions.get('window').width / 3 }} header={unstableHeader}>
+				<Card status="danger" disabled style={{ width: Dimensions.get('window').width / 3 }} header={unstableHeader}>
 					{renderStatusIcon(info, 2)}
 				</Card>
 			</View>
-
 		</Card>
 	);
 	return (
@@ -139,10 +130,7 @@ const MirrorsScreenThemed: React.FC<MirrorsProps> = (props) => {
 				onChangeText={searchFilterFunction}
 			/>
 
-			{!isLoading ? <List
-				data={listDataSource}
-				renderItem={renderItem}
-			/> : (<Spinner status='success' />)}
+			{!isLoading ? <List data={listDataSource} renderItem={renderItem} /> : <PlaceHolderComponent {...props} />}
 		</Layout>
 	);
 };

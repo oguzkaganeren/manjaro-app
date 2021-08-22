@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { ViewStyle, Text, View } from 'react-native';
-import { Layout, Tab, TabView, EvaProp, Icon, withStyles, useTheme, Spinner } from '@ui-kitten/components';
+import { Layout, Tab, TabView, EvaProp, Icon, withStyles, useTheme } from '@ui-kitten/components';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { DownloadEditionScreen } from './DownloadEditionScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFetch } from '../../hooks/JsonFetcher';
+import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
 export interface HomeProps {
 	navigation: any;
 	route: any;
@@ -27,11 +28,6 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 	const Development = (props) => (
 		<DownloadEditionScreen key="Development" responseJson={downloadJson.response!.Development} {...props} />
 	);
-	const PlaceHolderLoading = () => (
-		<Layout style={[eva.style!.container, style]}>
-			<Spinner />
-		</Layout>
-	);
 	return (
 		<NavigationContainer independent={true}>
 			{downloadJson.response ? (
@@ -44,7 +40,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 						},
 						lazy: true,
 						swipeEnabled: false,
-						lazyPlaceholder: () => <PlaceHolderLoading />,
+						lazyPlaceholder: () => <PlaceHolderComponent {...props} />,
 						tabBarScrollEnabled: true,
 					}}
 				>
@@ -54,7 +50,7 @@ const DownloadScreenThemed: React.FC<HomeProps> = (props) => {
 					<TopTab.Screen name="Development" component={Development} />
 				</TopTab.Navigator>
 			) : (
-				<PlaceHolderLoading />
+				<PlaceHolderComponent {...props} />
 			)}
 		</NavigationContainer>
 	);
