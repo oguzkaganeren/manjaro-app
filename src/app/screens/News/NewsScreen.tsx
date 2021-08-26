@@ -80,7 +80,7 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 		</Layout>
 	);
 	const onPressTopic = (idOfTopic) => {
-		props.navigation.navigate('NewsSingleScreen', {
+		props.navigation.navigate('NewsSingle', {
 			idOfTopic: idOfTopic,
 		});
 	};

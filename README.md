@@ -19,6 +19,15 @@
 yarn global add turtle-cli
 ```
 
+Add below lines to with `sudo -H gedit /etc/environment`
+
+```
+EXPO_ANDROID_KEYSTORE_PASSWORD="yourkey"
+EXPO_ANDROID_KEY_PASSWORD="yourkey"
+```
+
+After that reboot the system
+
 Inside of project folder run the command:
 
 ```
@@ -31,12 +40,10 @@ Then, go dist folder `cd dist` and
 python -m http.server 8000
 ```
 
-After that run
+Then
 
 ```
-EXPO_ANDROID_KEYSTORE_PASSWORD="yourkey"
-EXPO_ANDROID_KEY_PASSWORD="yourkey"
-sudo turtle build:android --type apk --keystore-path <yourjkslocation> --keystore-alias "yourkey" --allow-non-https-public-url --public-url http://127.0.0.1:8000/android-index.json
+sudo turtle build:android --type apk --keystore-path <yourjkslocation> --keystore-alias "yourkey" --allow-non-https-public-url --public-url http://127.0.0.1:8000/android-index.json -o ~/Desktop/manjaro.apk
 
 ```
 

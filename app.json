@@ -2,7 +2,7 @@
     "expo": {
         "name": "Manjaro",
         "slug": "manjaro-app",
-        "version": "1.0.6",
+        "version": "1.0.8",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
         "splash": {
@@ -23,7 +23,7 @@
         },
         "android": {
             "package": "com.manjaro.manjarohome",
-            "versionCode": 13,
+            "versionCode": 15,
             "permissions": []
         },
         "web": {

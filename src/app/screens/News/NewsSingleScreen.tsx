@@ -11,8 +11,7 @@ import {
 	EvaProp,
 } from '@ui-kitten/components';
 import { Linking, Dimensions, ScrollView, useWindowDimensions, Image, ViewStyle } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import HTML from 'react-native-render-html';
+import HTML, { HTMLElementModel, HTMLContentModel } from 'react-native-render-html';
 import axios from 'axios';
 import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
 export interface NewsScreenProps {
@@ -31,18 +30,47 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 	const [isLoading, setIsLoading] = React.useState(true);
 	const contentWidth = useWindowDimensions().width;
 	const theme = useTheme();
+
 	const renderItemHeader = (headerProps, info) => (
 		<Layout {...headerProps}>
 			<Text category="h6">{info.item.title}</Text>
 		</Layout>
 	);
+	const customHTMLElementModels = {
+		details: HTMLElementModel.fromCustomModel({
+			tagName: 'details',
+			mixedUAStyles: {
+				color: theme['color-basic-600'],
+			},
+			contentModel: HTMLContentModel.textual,
+		}),
+		summary: HTMLElementModel.fromCustomModel({
+			tagName: 'summary',
+			mixedUAStyles: {
+				color: theme['color-basic-600'],
+			},
+			contentModel: HTMLContentModel.textual,
+		}),
+		code: HTMLElementModel.fromCustomModel({
+			tagName: 'code',
+			mixedUAStyles: {
+				color: theme['color-basic-600'],
+				backgroundColor: theme['color-basic-900'],
+				borderRadius: 5,
+				padding: 10,
+			},
+			contentModel: HTMLContentModel.textual,
+		}),
+	};
+	const defaultTextProps = {
+		selectable: true,
+	};
 	React.useEffect(() => {
 		axios
 			.get('https://forum.manjaro.org/t/' + idOfTopic + '.json')
 			.then(function (response) {
-				//console.log(response);
-				setIsLoading(false);
 				setSingleTopicInfo({ item: response.data });
+				setIsLoading(false);
 			})
 			.catch(function (error) {
 				// handle error
@@ -85,26 +113,19 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 					>
 						<HTML
 							source={{ html: singleTopicInfo.item.post_stream.posts[0].cooked }}
-							listsPrefixesRenderers={{
-								ul: (_htmlAttribs, _children, _convertedCSSStyles, passProps) => (
-									<Text appearance="hint">{'\u2B24'} </Text>
-								),
-							}}
-							ignoredTags={['br', 'code', 'aside']}
+							ignoredDomTags={['br', 'aside', 'svg']}
+							ignoredStyles={['height', 'width']}
+							defaultTextProps={defaultTextProps}
+							baseStyle={{ marginRight: 40 }}
 							tagsStyles={{
 								p: {
 									color: theme['color-basic-600'],
-									textAlign: 'justify',
-									marginTop: 5,
 								},
 								li: {
 									color: theme['color-basic-600'],
-									textAlign: 'justify',
-									marginTop: 5,
 								},
 								em: {
 									color: theme['color-basic-600'],
-									textAlign: 'justify',
 									fontStyle: 'italic',
 								},
 								h1: { color: theme['color-basic-600'] },
@@ -114,45 +135,18 @@ const NewsSingleScreenThemed: React.FC<NewsScreenProps> = (props) => {
 								h5: { color: theme['color-basic-600'] },
 								h6: { color: theme['color-basic-600'] },
 								a: { color: theme['color-primary-400'] },
+								ul: { color: theme['color-basic-600'] },
 							}}
-							renderers={{
-								img: (htmlAttribs, children, convertedCSSStyles, passProps) => {
-									if (typeof htmlAttribs.class !== 'undefined') {
-										if (htmlAttribs.class == 'emoji') {
-											return (
-												<Layout>
-													<Image
-														style={[eva.style!.emoji, style]}
-														source={{
-															uri: htmlAttribs.src,
-															cache: 'only-if-cached',
-														}}
-													/>
-												</Layout>
-											);
-										}
-									}
-									return (
-										<Layout>
-											<Image
-												style={[eva.style!.image, style]}
-												source={{
-													uri: htmlAttribs.src,
-													cache: 'only-if-cached',
-												}}
-											/>
-										</Layout>
-									);
-								},
-							}}
+							enableExperimentalMarginCollapsing={true}
 							contentWidth={contentWidth}
-							ignoreNodesFunction={(node, parentTagName, parentIsText) => {
+							customHTMLElementModels={customHTMLElementModels}
+							ignoreDomNode={(node, parentTagName) => {
 								if (typeof node.attribs !== 'undefined') {
 									if (typeof node.attribs.class !== 'undefined') {
 										if (
-											node.attribs.class == 'poll' ||
-											node.attribs.class == 'informations' ||
-											node.attribs.class == 'filename'
+											node.attribs.class === 'poll' ||
+											node.attribs.class === 'informations' ||
+											node.attribs.class === 'filename'
 										) {
 											return true;
 										}
@@ -183,18 +177,11 @@ export const NewsSingleScreen = withStyles(NewsSingleScreenThemed, (theme) => ({
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
-	sharp: {
-		color: theme['color-primary-500'],
-		paddingRight: 3,
-	},
 	description: {
 		backgroundColor: 'rgba(53, 191, 92, 0.1)',
 		marginTop: 10,
 		marginHorizontal: 15,
 		padding: 20,
-	},
-	logo: {
-		marginBottom: 10,
 	},
 	buttonContainer: {
 		flexDirection: 'row',
@@ -203,27 +190,11 @@ export const NewsSingleScreen = withStyles(NewsSingleScreenThemed, (theme) => ({
 	download: {
 		marginHorizontal: 15,
 	},
-	learnMore: {
-		marginHorizontal: 15,
-	},
-	image: {
-		marginVertical: 10,
-		width: Dimensions.get('window').width - 50,
-		height: Dimensions.get('window').height / 3,
-		overflow: 'visible',
-		resizeMode: 'contain',
-	},
 	iconText: {
 		marginRight: 20,
 		marginLeft: 5,
 	},
-	codeLayout: {
-		width: Dimensions.get('window').width - 50,
-		height: Dimensions.get('window').height / 2,
-	},
-	emoji: {
-		width: 20,
-		height: 20,
-		overflow: 'visible',
+	scrollView: {
+		flexGrow: 1,
 	},
 }));
