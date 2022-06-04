@@ -10,28 +10,26 @@ import { ThemeContext } from '../../theme-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default () => {
-	const [theme, setTheme] = React.useState('light');
+	const [theme, setTheme] = React.useState('dark');
 
 	React.useEffect(() => {
 		getTheme().then((value: string | undefined) => {
 			if (value) {
-				setTheme(value)
+				setTheme(value);
 			}
-
-		})
-
-	}, [])
+		});
+	}, []);
 
 	const storeTheme = async (value: string) => {
 		try {
-			await AsyncStorage.setItem('@THEME', value)
+			await AsyncStorage.setItem('@THEME', value);
 		} catch (e) {
 			// saving error
 		}
-	}
+	};
 	async function getTheme() {
 		try {
-			const value = await AsyncStorage.getItem('@THEME')
+			const value = await AsyncStorage.getItem('@THEME');
 			if (value !== null) {
 				return value;
 			}
@@ -42,17 +40,21 @@ export default () => {
 
 	const toggleTheme = () => {
 		const nextTheme = theme === 'light' ? 'dark' : 'light';
-		storeTheme(nextTheme)
+		storeTheme(nextTheme);
 		setTheme(nextTheme);
-
-
 	};
-	return <>
-		<IconRegistry icons={[EvaIconsPack, AwesomeIconsPack]} />
-		<ThemeContext.Provider value={{ theme, toggleTheme }}>
-			<ApplicationProvider {...eva} customMapping={{ ...eva.mapping, mapping }} theme={{ ...eva[theme], ...manjaroTheme }}>
-				<AppNavigator />
-			</ApplicationProvider>
-		</ThemeContext.Provider>
-	</>
+	return (
+		<>
+			<IconRegistry icons={[EvaIconsPack, AwesomeIconsPack]} />
+			<ThemeContext.Provider value={{ theme, toggleTheme }}>
+				<ApplicationProvider
+					{...eva}
+					customMapping={{ ...eva.mapping, mapping }}
+					theme={{ ...eva[theme], ...manjaroTheme }}
+				>
+					<AppNavigator />
+				</ApplicationProvider>
+			</ThemeContext.Provider>
+		</>
+	);
 };

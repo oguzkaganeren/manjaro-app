@@ -9944,11 +9944,6 @@ react-native-webview@11.6.2:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
-react-native-x2-carousel@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-x2-carousel/-/react-native-x2-carousel-1.0.1.tgz#6bf31e9a43332079d3b8929d4e98c4d0730cd455"
-  integrity sha512-dD8x/qQ2sP1WXmjjf8KexTVwgLioynS4nFHu81G3lA0wg5q6pRk0gkDRJCR2nkHy9P6qG+F1PRBm/m043DZlgw==
-
 react-native-youtube-iframe@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/react-native-youtube-iframe/-/react-native-youtube-iframe-2.1.2.tgz#cd98208193c6beef426f749df7af39a929d544c2"
