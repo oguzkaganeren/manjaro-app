@@ -1,14 +1,15 @@
 {
     "expo": {
-        "name": "Manjaro",
-        "slug": "manjaro-app",
-        "version": "1.0.8",
+        "name": "manjaro-news",
+        "slug": "manjaro-news",
+        "version": "1.0.9",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
+        "userInterfaceStyle": "light",
         "splash": {
             "image": "./assets/splash3.png",
             "resizeMode": "contain",
-            "backgroundColor": "#35BF5C"
+            "backgroundColor": "#1DE9B6"
         },
         "updates": {
             "fallbackToCacheTimeout": 0
@@ -17,18 +18,15 @@
             "**/*"
         ],
         "ios": {
-            "bundleIdentifier": "com.manjaro.manjarohome",
-            "buildNumber": "1.0.1",
             "supportsTablet": true
         },
         "android": {
-            "package": "com.manjaro.manjarohome",
-            "versionCode": 15,
+            "package": "com.manjaro.news",
+            "versionCode": 16,
             "permissions": []
         },
         "web": {
             "favicon": "./assets/favicon.png"
-        },
-        "description": ""
+        }
     }
 }
