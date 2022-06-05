@@ -4,6 +4,7 @@ import { Image, Dimensions, ScrollView, useWindowDimensions, ViewStyle } from 'r
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import globalStyle from './../../theme/GlobalStyle';
 import axios from 'axios';
+import { scale, verticalScale } from 'react-native-size-matters';
 import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
 export interface NewsScreenProps {
 	navigation: any;
@@ -116,13 +117,17 @@ const NewsScreenThemed: React.FC<NewsScreenProps> = (props) => {
 				header={(headerProps) => renderItemHeader(headerProps, info)}
 				footer={(footerProps) => renderItemFooter(footerProps, info)}
 			>
-				<Image
-					style={[eva.style!.image, style]}
-					source={{
-						uri: info.item.image_url,
-						cache: 'only-i- cached',
-					}}
-				/>
+				{info.item.image_url ? (
+					<Image
+						style={[eva.style!.image, style]}
+						source={{
+							uri: info.item.image_url,
+							cache: 'only-i- cached',
+						}}
+					/>
+				) : (
+					<Image style={[eva.style!.image, style]} source={require('./../../../../assets/splash.png')} />
+				)}
 			</Card>
 		</TouchableOpacity>
 	);
@@ -140,11 +145,8 @@ export const NewsScreen = withStyles(NewsScreenThemed, (theme) => ({
 		height: 16,
 	},
 	image: {
-		marginVertical: 10,
-		width: Dimensions.get('window').width - 50,
-		height: Dimensions.get('window').height / 3,
-		overflow: 'visible',
-		resizeMode: 'contain',
+		width: scale(300),
+		height: verticalScale(150),
 	},
 	iconText: {
 		marginRight: 20,
