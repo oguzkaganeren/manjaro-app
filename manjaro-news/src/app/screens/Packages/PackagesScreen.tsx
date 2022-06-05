@@ -3,7 +3,6 @@ import { Layout, Tab, TabView, useTheme, Icon, EvaProp, IconProps, withStyles, T
 import { SafeAreaView, ViewStyle } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { BranchScreen } from './BranchScreen';
-import { DiscoverScreen } from './DiscoverScreen';
 import { MirrorsScreen } from './MirrorsScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { PlaceHolderComponent } from '../../components/Public/PlaceHolderComponent';
@@ -53,8 +52,8 @@ const PackagesScreenThemed: React.FC<AboutProps> = (props) => {
 				}}
 			>
 				<TopTab.Screen name="Mirrors" component={MirrorsScreen} />
-				<TopTab.Screen name="Discover" component={DiscoverScreen} />
-				<TopTab.Screen name="Branch" component={BranchScreenWithSubBar} />
+				{/* 
+				<TopTab.Screen name="Branch" component={BranchScreenWithSubBar} /> */}
 			</TopTab.Navigator>
 		</NavigationContainer>
 	);
